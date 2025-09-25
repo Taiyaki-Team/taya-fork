@@ -428,8 +428,9 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
 
 class AutoScrollingText extends StatefulWidget {
   final String text;
+  final Color? textColor;
 
-  const AutoScrollingText({required this.text});
+  const AutoScrollingText({required this.text, this.textColor});
 
   @override
   State<AutoScrollingText> createState() => _AutoScrollingTextState();
@@ -477,8 +478,8 @@ class _AutoScrollingTextState extends State<AutoScrollingText> {
       child: Text(
         _processText(widget.text),
         textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Color.fromRGBO(59, 159, 178, 0.8),
+        style: TextStyle(
+          color: widget.textColor ?? const Color.fromRGBO(59, 159, 178, 0.8),
           fontSize: 16,
           height: 1.4,
         ),

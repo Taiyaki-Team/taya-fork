@@ -95,7 +95,7 @@ class _ConverstationsWidgetState extends State<ConverstationsWidget> {
           _isPhoneMicPaused;
       bool isRecording = provider.recordingState == RecordingState.record;
 
-      print("💌💌💌💌💌💌💌>=== ${isRecording}");
+      print("💌💌💌💌💌💌💌>=== ${provider.segments.map((segment) => segment.text).join(' ')}");
       // Determine pause state based on recording type
       bool isPaused = false;
       if (isDeviceRecording) {
@@ -109,39 +109,39 @@ class _ConverstationsWidgetState extends State<ConverstationsWidget> {
           children: [
             // lestning charts
 
-            Container(
-              // height: 30,
-              //child: AudioWaveformDemo(),
-              child: ShaderMask(
-                shaderCallback: (bounds) => LinearGradient(
-                  colors: [
-                    const Color.fromRGBO(131, 189, 200, 1),
-                    TayaColors.secondaryTextColor,
-                    const Color.fromRGBO(131, 189, 200, 1)
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ).createShader(bounds),
-                blendMode: BlendMode.srcIn,
-                child: Waveform(
-                  //amplitudeStream: _mockAmplitudeStream,
-                  amplitudeStream: provider.amplitudeStream.asyncMap((val) {
-                    return Amplitude(current: val * 100, max: 100);
-                  }),
-                ),
-              ),
-            ),
+            // Container(
+            //   // height: 30,
+            //   //child: AudioWaveformDemo(),
+            //   child: ShaderMask(
+            //     shaderCallback: (bounds) => LinearGradient(
+            //       colors: [
+            //         const Color.fromRGBO(131, 189, 200, 1),
+            //         TayaColors.secondaryTextColor,
+            //         const Color.fromRGBO(131, 189, 200, 1)
+            //       ],
+            //       begin: Alignment.topLeft,
+            //       end: Alignment.bottomRight,
+            //     ).createShader(bounds),
+            //     blendMode: BlendMode.srcIn,
+            //     child: Waveform(
+            //       //amplitudeStream: _mockAmplitudeStream,
+            //       amplitudeStream: provider.amplitudeStream.asyncMap((val) {
+            //         return Amplitude(current: val * 100, max: 100);
+            //       }),
+            //     ),
+            //   ),
+            // ),
             // AmplitudeTestWidget(),
-            Container(
-              // color: Colors.red,
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Center(
-                child: Text(
-                  "Live transcription · Auto-stops after silence",
-                  style: TextStyle(color: TayaColors.secondaryTextColor, fontSize: 12, fontWeight: FontWeight.w500),
-                ),
-              ),
-            ),
+            // Container(
+            //   // color: Colors.red,
+            //   padding: const EdgeInsets.only(bottom: 15),
+            //   child: Center(
+            //     child: Text(
+            //       "Live transcription · Auto-stops after silence",
+            //       style: TextStyle(color: TayaColors.secondaryTextColor, fontSize: 12, fontWeight: FontWeight.w500),
+            //     ),
+            //   ),
+            // ),
             // Show transcript below controls during recording
 
             Stack(
@@ -152,19 +152,26 @@ class _ConverstationsWidgetState extends State<ConverstationsWidget> {
                     margin: const EdgeInsets.only(top: 12, bottom: 4),
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: AutoScrollingText(
-                      text: provider.segments.map((segment) => segment.text).join(' '),
+                      text: () {
+                        final fullText = provider.segments.map((segment) => segment.text).join(' ');
+                        final lines = fullText.split('.');
+                        return lines.length > 8 
+                          ? lines.sublist(lines.length - 8).join('.')
+                          : fullText;
+                      }(),
+                      textColor: Colors.white,
                     ),
                   ),
                 ],
-                SizedBox(
-                  height: 15,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: PlayPauseButton(
-                    isPlaying: isRecording,
-                  ),
-                ),
+                // SizedBox(
+                //   height: 15,
+                // ),
+                // Align(
+                //   alignment: Alignment.center,
+                //   child: PlayPauseButton(
+                //     isPlaying: isRecording,
+                //   ),
+                // ),
               ],
             )
           ],
