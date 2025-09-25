@@ -157,14 +157,14 @@ class _ConversationsPageState extends State<ConversationsPage> with AutomaticKee
             controller: _scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
-              // const SliverToBoxAdapter(child: SizedBox(height: 16)), // above capture widget
+              const SliverToBoxAdapter(child: SizedBox(height: 16)), // above capture widget
               // const SliverToBoxAdapter(child: SpeechProfileCardWidget()),
               // const SliverToBoxAdapter(child: UpdateFirmwareCardWidget()),
-              //const SliverToBoxAdapter(child: ConversationCaptureWidget()),
-              const SliverToBoxAdapter(child: SizedBox(height: 12)), // above search widget
-              const SliverToBoxAdapter(
-                child: ConverstationsWidget(),
-              ),
+              const SliverToBoxAdapter(child: ConversationCaptureWidget()),
+              // const SliverToBoxAdapter(child: SizedBox(height: 12)), // above search widget
+              // const SliverToBoxAdapter(
+              //   child: ConverstationsWidget(),
+              // ),
               const SliverToBoxAdapter(child: SizedBox(height: 0)),
               //  const SliverToBoxAdapter(child: SearchWidget()), //below search widget
               const SliverToBoxAdapter(child: SearchResultHeaderWidget()),

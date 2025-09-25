@@ -49,8 +49,8 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
           margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           width: double.maxFinite,
           decoration: BoxDecoration(
-            color: const Color(0xFF1F1F25),
-            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.0),
           ),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(10, 18, 10, 16),
@@ -179,13 +179,13 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
           const SizedBox(width: 12),
           Container(
             decoration: BoxDecoration(
-              color: const Color(0xFF35343B),
+              color: const Color(0xFFF5F5F5),
               borderRadius: BorderRadius.circular(16),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             child: Text(
               'Waiting for device...',
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: const Color.fromRGBO(13, 41, 81, 1)),
               maxLines: 1,
             ),
           ),
@@ -199,13 +199,13 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
           const SizedBox(width: 12),
           Container(
             decoration: BoxDecoration(
-              color: const Color(0xFF35343B),
+              color: const Color(0xFFF5F5F5),
               borderRadius: BorderRadius.circular(16),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             child: Text(
               (isHavingTranscript || isHavingPhotos) ? 'In progress...' : 'Say something...',
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: const Color.fromRGBO(13, 41, 81, 1)),
               maxLines: 1,
             ),
           ),
@@ -248,7 +248,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
             children: [
               Text(
                 stateText,
-                style: TextStyle(color: Colors.grey.shade400, fontSize: 14),
+                style: TextStyle(color: const Color.fromRGBO(191, 185, 165, 1), fontSize: 14),
                 maxLines: 1,
                 textAlign: TextAlign.end,
               ),
@@ -308,7 +308,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF35343B),
+                    color: const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
@@ -317,7 +317,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
                       Text(
                         isPaused ? (isDeviceRecording ? 'Muted' : 'Paused') : 'Listening',
                         style: const TextStyle(
-                          color: Color(0xFFC9CBCF),
+                          color: Color.fromRGBO(13, 41, 81, 1),
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
@@ -353,7 +353,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
                                   ? const Color(0xFFFE5D50)
                                   : const Color(0xFF7C3AED)
                               : isDeviceRecording
-                                  ? const Color(0xFF35343B)
+                                  ? const Color(0xFFE0E0E0)
                                   : const Color(0xFFFF9500),
                           shape: BoxShape.circle,
                         ),
@@ -366,7 +366,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
                                 : isDeviceRecording
                                     ? FontAwesomeIcons.microphone
                                     : FontAwesomeIcons.pause,
-                            color: Colors.white,
+                            color: isDeviceRecording && !isPaused ? const Color.fromRGBO(13, 41, 81, 1) : Colors.white,
                             size: 12,
                           ),
                         ),
@@ -479,7 +479,7 @@ class _AutoScrollingTextState extends State<AutoScrollingText> {
         _processText(widget.text),
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: widget.textColor ?? const Color.fromRGBO(59, 159, 178, 0.8),
+          color: widget.textColor ?? const Color.fromRGBO(13, 41, 81, 1),
           fontSize: 16,
           height: 1.4,
         ),
@@ -715,7 +715,7 @@ class _ProcessingConversationWidgetState extends State<ProcessingConversationWid
         margin: const EdgeInsets.symmetric(horizontal: 16),
         width: double.maxFinite,
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Padding(
@@ -757,19 +757,19 @@ class _ProcessingConversationWidgetState extends State<ProcessingConversationWid
                 width: 22,
                 height: 22,
                 child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  valueColor: AlwaysStoppedAnimation<Color>(Color.fromRGBO(13, 41, 81, 1)),
                 ),
               ),
               const SizedBox(width: 20),
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF35343B),
+                  color: const Color(0xFFF5F5F5),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 child: Text(
                   'Processing',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: const Color.fromRGBO(13, 41, 81, 1)),
                   maxLines: 1,
                 ),
               ),
