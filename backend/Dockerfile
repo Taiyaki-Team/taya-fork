@@ -18,7 +18,6 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN apt-get update && apt-get -y install ffmpeg curl unzip && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /opt/venv /opt/venv
-COPY --from=builder /tmp/google-credentials.json /app/google-credentials.json
 
 # Copy the build context to /app and list its contents
 COPY . /app
