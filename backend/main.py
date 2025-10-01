@@ -32,9 +32,14 @@ from routers import (
 
 from utils.other.timeout import TimeoutMiddleware
 
+print("♥️♥️♥️♥️♥️♥️♥️♥️♥️")
+
 if os.environ.get('SERVICE_ACCOUNT_JSON'):
+    print("Has service account json")
     service_account_info = json.loads(os.environ["SERVICE_ACCOUNT_JSON"])
+    print("Service account info", service_account_info)
     credentials = firebase_admin.credentials.Certificate(service_account_info)
+    print("Credentials", credentials)
     firebase_admin.initialize_app(credentials)
 else:
     firebase_admin.initialize_app()
