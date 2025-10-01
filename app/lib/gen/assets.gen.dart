@@ -82,9 +82,36 @@ class $AssetsImagesGen {
   /// File path: assets/images/5.mov
   String get a5 => 'assets/images/5.mov';
 
+  /// File path: assets/images/ClockClockwise.svg
+  String get clockClockwise => 'assets/images/ClockClockwise.svg';
+
+  /// File path: assets/images/Feather.svg
+  String get feather => 'assets/images/Feather.svg';
+
   /// File path: assets/images/Logo Text White.png
   AssetGenImage get logoTextWhite =>
       const AssetGenImage('assets/images/Logo Text White.png');
+
+  /// File path: assets/images/Logo.svg
+  String get logo => 'assets/images/Logo.svg';
+
+  /// File path: assets/images/MsgBubbles.svg
+  String get msgBubbles => 'assets/images/MsgBubbles.svg';
+
+  /// File path: assets/images/MsgSparkle.svg
+  String get msgSparkle => 'assets/images/MsgSparkle.svg';
+
+  /// File path: assets/images/PenSparkle.svg
+  String get penSparkle => 'assets/images/PenSparkle.svg';
+
+  /// File path: assets/images/ShareLeft.svg
+  String get shareLeft => 'assets/images/ShareLeft.svg';
+
+  /// File path: assets/images/Sparkles.svg
+  String get sparkles => 'assets/images/Sparkles.svg';
+
+  /// File path: assets/images/Trash.svg
+  String get trash => 'assets/images/Trash.svg';
 
   /// File path: assets/images/ai_magic.svg
   String get aiMagic => 'assets/images/ai_magic.svg';
@@ -311,7 +338,16 @@ class $AssetsImagesGen {
     a3,
     a4,
     a5,
+    clockClockwise,
+    feather,
     logoTextWhite,
+    logo,
+    msgBubbles,
+    msgSparkle,
+    penSparkle,
+    shareLeft,
+    sparkles,
+    trash,
     aiMagic,
     appLauncherIcon,
     appleRemindersLogo,
