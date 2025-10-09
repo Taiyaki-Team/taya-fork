@@ -307,37 +307,37 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
           const SizedBox(height: 32),
 
           // Share & Get Section
-          _buildSectionContainer(
-            children: [
-              if (PlatformService.isIOS)
-                _buildSettingsItem(
-                  title: 'Share Taya for iPhone',
-                  icon: const FaIcon(FontAwesomeIcons.solidShareFromSquare, color: Colors.white, size: 20),
-                  onTap: () async {
-                    Navigator.pop(context);
-                    await Share.share('https://apps.apple.com/us/app/omi-ai-scale-yourself/id6502156163');
-                  },
-                ),
-              if (PlatformService.isAndroid)
-                _buildSettingsItem(
-                  title: 'Share Taya for Android',
-                  icon: const FaIcon(FontAwesomeIcons.googlePlay, color: Color(0xFF8E8E93), size: 20),
-                  onTap: () async {
-                    Navigator.pop(context);
-                    await Share.share('https://play.google.com/store/apps/details?id=com.friend.ios');
-                  },
-                ),
-              const Divider(height: 1, color: Color(0xFF3C3C43)),
-              _buildSettingsItem(
-                title: 'Share Omi for Mac',
-                icon: const FaIcon(FontAwesomeIcons.desktop, color: Color(0xFF8E8E93), size: 20),
-                onTap: () async {
-                  Navigator.pop(context);
-                  await Share.share('https://apps.apple.com/us/app/omi-ai-scale-yourself/id6502156163');
-                },
-              ),
-            ],
-          ),
+          // _buildSectionContainer(
+          //   children: [
+          //     if (PlatformService.isIOS)
+          //       _buildSettingsItem(
+          //         title: 'Share Taya for iPhone',
+          //         icon: const FaIcon(FontAwesomeIcons.solidShareFromSquare, color: Colors.white, size: 20),
+          //         onTap: () async {
+          //           Navigator.pop(context);
+          //           await Share.share('https://apps.apple.com/us/app/omi-ai-scale-yourself/id6502156163');
+          //         },
+          //       ),
+          //     if (PlatformService.isAndroid)
+          //       _buildSettingsItem(
+          //         title: 'Share Taya for Android',
+          //         icon: const FaIcon(FontAwesomeIcons.googlePlay, color: Color(0xFF8E8E93), size: 20),
+          //         onTap: () async {
+          //           Navigator.pop(context);
+          //           await Share.share('https://play.google.com/store/apps/details?id=com.friend.ios');
+          //         },
+          //       ),
+          //     const Divider(height: 1, color: Color(0xFF3C3C43)),
+          //     _buildSettingsItem(
+          //       title: 'Share Omi for Mac',
+          //       icon: const FaIcon(FontAwesomeIcons.desktop, color: Color(0xFF8E8E93), size: 20),
+          //       onTap: () async {
+          //         Navigator.pop(context);
+          //         await Share.share('https://apps.apple.com/us/app/omi-ai-scale-yourself/id6502156163');
+          //       },
+          //     ),
+          //   ],
+          // ),
           const SizedBox(height: 32),
 
           // Support Section
@@ -409,7 +409,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               ),
               const Divider(height: 1, color: Color(0xFF3C3C43)),
               _buildSettingsItem(
-                title: 'About Omi',
+                title: 'About Taya',
                 icon: const FaIcon(FontAwesomeIcons.infoCircle, color: Color(0xFF8E8E93), size: 20),
                 onTap: () {
                   Navigator.pop(context);

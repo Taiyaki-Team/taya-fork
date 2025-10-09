@@ -180,8 +180,9 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                   // Device Title and Status
                   Column(
                     children: [
-                      Text(
-                        provider.pairedDevice?.name ?? 'Unknown Device',
+                      const Text(
+                        'Taya',
+                        // provider.pairedDevice?.name ?? 'Unknown Device',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 32,
@@ -361,18 +362,20 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                             children: [
                               _buildSectionRow(
                                 'Product Name',
-                                provider.pairedDevice?.name ?? 'Unknown Device',
+                                'Taya',
+                                // provider.pairedDevice?.name ?? 'Unknown Device',
                                 hasArrow: false,
                                 isFirst: true,
                               ),
-                              _buildSectionRow(
-                                'Model Number',
-                                provider.pairedDevice?.modelNumber ?? 'Unknown',
-                                hasArrow: false,
-                              ),
+                              // _buildSectionRow(
+                              //   'Model Number',
+                              //   provider.pairedDevice?.modelNumber ?? 'Unknown',
+                              //   hasArrow: false,
+                              // ),
                               _buildSectionRow(
                                 'Manufacturer Name',
-                                provider.pairedDevice?.manufacturerName ?? 'Unknown',
+                                'Taya Necklace',
+                                // provider.pairedDevice?.manufacturerName ?? 'Unknown',
                                 hasArrow: false,
                               ),
                               _buildSectionRow(

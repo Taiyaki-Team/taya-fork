@@ -859,18 +859,23 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
               //     }
               //   },
               // ),
-              Container(
-                margin: const EdgeInsets.only(left: 10),
-                width: 36,
-                height: 36,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.white),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: ClipOval(
-                  child: Image.network(
-                    "https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg",
-                    fit: BoxFit.cover,
+              GestureDetector(
+                onTap: () {
+                  SettingsDrawer.show(context);
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  width: 36,
+                  height: 36,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Colors.white),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: ClipOval(
+                    child: Image.network(
+                      "https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

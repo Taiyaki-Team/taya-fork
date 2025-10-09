@@ -33,24 +33,24 @@ class _AboutOmiPageState extends State<AboutOmiPage> {
                 MixpanelManager().pageOpened('About Privacy Policy');
                 routeToPage(
                   context,
-                  const PageWebView(url: 'https://www.omi.me/pages/privacy', title: 'Privacy Policy'),
+                  const PageWebView(url: 'https://www.tayanecklace.com/pages/privacy', title: 'Privacy Policy'),
                 );
               },
             ),
             ListTile(
               contentPadding: const EdgeInsets.fromLTRB(4, 0, 24, 0),
               title: const Text('Visit Website', style: TextStyle(color: Colors.white)),
-              subtitle: const Text('https://omi.me'),
+              subtitle: const Text('https://tayanecklace.com'),
               trailing: const Icon(Icons.language_outlined, size: 20),
               onTap: () {
                 MixpanelManager().pageOpened('About Visit Website');
                 // routeToPage(context, const PageWebView(url: 'https://www.omi.me/', title: 'omi'));
-                launchUrl(Uri.parse('https://www.omi.me/'));
+                launchUrl(Uri.parse('https://tayanecklace.com/'));
               },
             ),
             ListTile(
               title: const Text('Help or Inquiries?', style: TextStyle(color: Colors.white)),
-              subtitle: const Text('team@basedhardware.com'),
+              subtitle: const Text('team@tayanecklace.com'),
               contentPadding: const EdgeInsets.fromLTRB(4, 0, 24, 0),
               trailing: const Icon(Icons.help_outline_outlined, color: Colors.white, size: 20),
               onTap: () async {
@@ -64,7 +64,7 @@ class _AboutOmiPageState extends State<AboutOmiPage> {
               trailing: const Icon(Icons.discord, color: Colors.purple, size: 20),
               onTap: () {
                 MixpanelManager().pageOpened('About Join Discord');
-                launchUrl(Uri.parse('http://discord.omi.me'));
+                launchUrl(Uri.parse('http://discord.tayanecklace.com'));
               },
             ),
           ],
