@@ -182,7 +182,7 @@ class SectionAppItemCard extends StatelessWidget {
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
-                      color: Color(0xFF35343B),
+                      color: Color(0xFFE0E0E0),
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
@@ -190,7 +190,7 @@ class SectionAppItemCard extends StatelessWidget {
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
-                      color: Color(0xFF35343B),
+                      color: Color(0xFFE0E0E0),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Icon(Icons.error_outline, color: Colors.white54, size: 24),
@@ -238,7 +238,7 @@ class SectionAppItemCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: isEnabled ? Colors.white : Colors.black,
+                        color: isEnabled ? Colors.white : Color(0xFF0D1F40),
                       ),
                     ),
                   ),

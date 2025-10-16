@@ -43,7 +43,7 @@ class _NameWidgetState extends State<NameWidget> {
           width: double.infinity,
           padding: EdgeInsets.fromLTRB(32, 26, 32, MediaQuery.of(context).padding.bottom + 8),
           decoration: const BoxDecoration(
-            color: Colors.black,
+            color: Color(0xFF0D1F40),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40),
               topRight: Radius.circular(40),
@@ -140,7 +140,7 @@ class _NameWidgetState extends State<NameWidget> {
                           },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: nameController.text.trim().isEmpty ? Colors.grey[800] : Colors.white,
-                      foregroundColor: nameController.text.trim().isEmpty ? Colors.grey[600] : Colors.black,
+                      foregroundColor: nameController.text.trim().isEmpty ? Colors.grey[600] : Color(0xFF0D1F40),
                       disabledBackgroundColor: Colors.grey[800],
                       disabledForegroundColor: Colors.grey[600],
                       shape: RoundedRectangleBorder(

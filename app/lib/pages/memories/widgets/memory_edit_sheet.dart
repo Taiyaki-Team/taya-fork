@@ -28,7 +28,7 @@ class MemoryEditSheet extends StatelessWidget {
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25),
+          color: const Color(0xFFF5F5F5),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),

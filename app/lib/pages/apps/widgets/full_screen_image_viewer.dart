@@ -13,9 +13,9 @@ class FullScreenImageViewer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF0D1F40),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0D1F40),
         leading: IconButton(
           icon: const Icon(Icons.close),
           onPressed: () => Navigator.pop(context),
@@ -25,7 +25,7 @@ class FullScreenImageViewer extends StatelessWidget {
         imageProvider: CachedNetworkImageProvider(imageUrl),
         minScale: PhotoViewComputedScale.contained,
         maxScale: PhotoViewComputedScale.covered * 2,
-        backgroundDecoration: const BoxDecoration(color: Colors.black),
+        backgroundDecoration: const BoxDecoration(color: Color(0xFF0D1F40)),
       ),
     );
   }

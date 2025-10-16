@@ -47,7 +47,7 @@ class AppListItem extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             margin: EdgeInsets.only(bottom: 8, top: index == 0 ? 16 : 0),
             decoration: BoxDecoration(
-              color: const Color(0xFF1F1F25).withOpacity(0.3),
+              color: const Color(0xFFF5F5F5).withOpacity(0.3),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
@@ -59,7 +59,7 @@ class AppListItem extends StatelessWidget {
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
-                      color: Color(0xFF35343B),
+                      color: Color(0xFFE0E0E0),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: CachedNetworkImage(
@@ -170,7 +170,7 @@ class AppListItem extends StatelessWidget {
                           width: 72,
                           height: 32,
                           decoration: BoxDecoration(
-                            color: state.enabled ? Colors.grey.shade700 : Color(0xFF8B5CF6),
+                            color: state.enabled ? Colors.grey.shade700 : Color(0xFF4FAFBE),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Center(

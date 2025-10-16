@@ -180,7 +180,7 @@ class _CustomRefreshIndicatorState extends State<CustomRefreshIndicator> with Ti
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.black.withOpacity(0.3),
+                      Color(0xFF0D1F40).withOpacity(0.3),
                       Colors.transparent,
                     ],
                   ),

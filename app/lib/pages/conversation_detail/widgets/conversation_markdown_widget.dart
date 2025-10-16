@@ -229,7 +229,7 @@ class _ConversationMarkdownWidgetState extends State<ConversationMarkdownWidget>
           color: Colors.white,
         ),
         blockquoteDecoration: BoxDecoration(
-          color: Color(0xFF35343B),
+          color: Color(0xFFE0E0E0),
           borderRadius: BorderRadius.circular(4),
         ),
         code: style.copyWith(
@@ -313,7 +313,7 @@ class _SearchHighlightBuilder extends MarkdownElementBuilder {
       text: TextSpan(
         text: element.textContent,
         style: (preferredStyle ?? const TextStyle()).copyWith(
-          backgroundColor: isCurrent ? Colors.orange : Colors.deepPurple,
+          backgroundColor: isCurrent ? Colors.orange : Color(0xFF4FAFBE),
           color: Colors.white,
         ),
       ),

@@ -18,7 +18,7 @@ class ExternalIntegrationsSection extends StatelessWidget {
           children: [
             const Text(
               'External App Access',
-              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             const Text(

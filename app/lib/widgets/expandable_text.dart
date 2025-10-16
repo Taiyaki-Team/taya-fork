@@ -18,7 +18,7 @@ class ExpandableTextWidget extends StatefulWidget {
     this.maxLines = 3,
     this.expandText = 'show more ↓',
     this.collapseText = 'show less ↑',
-    this.linkColor = Colors.deepPurple,
+    this.linkColor = const Color(0xFF4FAFBE),
     required this.isExpanded,
     required this.toggleExpand,
   });
@@ -52,10 +52,10 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
               p: widget.style,
               blockquote: widget.style.copyWith(
                 backgroundColor: Colors.transparent,
-                color: Colors.black,
+                color: Color(0xFF0D1F40),
               ),
               blockquoteDecoration: BoxDecoration(
-                color: Color(0xFF35343B),
+                color: Color(0xFFE0E0E0),
                 borderRadius: BorderRadius.circular(4),
               ),
               code: widget.style.copyWith(
@@ -85,7 +85,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
                 child: Text(
                   widget.isExpanded ? widget.collapseText : widget.expandText,
                   style: TextStyle(
-                    color: Colors.deepPurple,
+                    color: Color(0xFF4FAFBE),
                     fontWeight: FontWeight.w500,
                     fontSize: widget.style.fontSize,
                   ),

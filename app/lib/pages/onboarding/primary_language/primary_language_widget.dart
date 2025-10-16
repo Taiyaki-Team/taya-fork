@@ -137,15 +137,15 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
               fillColor: const Color(0xFF2A2A2A),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Color(0xFF35343B)),
+                borderSide: BorderSide(color: Color(0xFFE0E0E0)),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Color(0xFF35343B)),
+                borderSide: BorderSide(color: Color(0xFFE0E0E0)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: Colors.deepPurple),
+                borderSide: const BorderSide(color: Color(0xFF4FAFBE)),
               ),
             ),
           ),
@@ -171,9 +171,9 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
                           language.key,
                           style: const TextStyle(color: Colors.white),
                         ),
-                        trailing: isSelected ? const Icon(Icons.check_circle, color: Colors.deepPurple) : null,
+                        trailing: isSelected ? const Icon(Icons.check_circle, color: Color(0xFF4FAFBE)) : null,
                         selected: isSelected,
-                        selectedTileColor: Colors.deepPurple.withOpacity(0.2),
+                        selectedTileColor: Color(0xFF4FAFBE).withOpacity(0.2),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -265,7 +265,7 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
           width: double.infinity,
           padding: EdgeInsets.fromLTRB(32, 26, 32, MediaQuery.of(context).padding.bottom + 8),
           decoration: const BoxDecoration(
-            color: Colors.black,
+            color: Color(0xFF0D1F40),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40),
               topRight: Radius.circular(40),
@@ -355,7 +355,7 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
                           },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: selectedLanguage == null ? Colors.grey[800] : Colors.white,
-                      foregroundColor: selectedLanguage == null ? Colors.grey[600] : Colors.black,
+                      foregroundColor: selectedLanguage == null ? Colors.grey[600] : Color(0xFF0D1F40),
                       disabledBackgroundColor: Colors.grey[800],
                       disabledForegroundColor: Colors.grey[600],
                       shape: RoundedRectangleBorder(

@@ -27,7 +27,7 @@ class DesktopMemoryManagementDialog extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.15),
+              color: Color(0xFF0D1F40).withOpacity(0.15),
               blurRadius: 40,
               offset: const Offset(0, 20),
               spreadRadius: -5,
@@ -387,7 +387,7 @@ class DesktopMemoryManagementDialog extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
+                color: Color(0xFF0D1F40).withOpacity(0.3),
                 blurRadius: 30,
                 offset: const Offset(0, 15),
               ),
@@ -522,7 +522,7 @@ class DesktopMemoryManagementDialog extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
+                  color: Color(0xFF0D1F40).withOpacity(0.2),
                   blurRadius: 8,
                   offset: const Offset(0, 4),
                 ),
@@ -567,7 +567,7 @@ class DesktopMemoryManagementDialog extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
+                  color: Color(0xFF0D1F40).withOpacity(0.2),
                   blurRadius: 8,
                   offset: const Offset(0, 4),
                 ),

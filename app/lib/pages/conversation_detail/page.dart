@@ -415,7 +415,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
                       //     height: 36,
                       //     margin: const EdgeInsets.only(right: 8),
                       //     decoration: BoxDecoration(
-                      //       color: _isSearching ? Colors.deepPurple.withOpacity(0.8) : Colors.grey.withOpacity(0.3),
+                      //       color: _isSearching ? Color(0xFF4FAFBE).withOpacity(0.8) : Colors.grey.withOpacity(0.3),
                       //       shape: BoxShape.circle,
                       //     ),
                       //     child: IconButton(
@@ -691,10 +691,10 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
               //        ),
               //        decoration: BoxDecoration(
               //          borderRadius: BorderRadius.circular(16),
-              //          color: const Color(0xFF1F1F25),
+              //          color: const Color(0xFFF5F5F5),
               //          boxShadow: [
               //            BoxShadow(
-              //              color: Colors.black.withOpacity(0.3),
+              //              color: Color(0xFF0D1F40).withOpacity(0.3),
               //              spreadRadius: 1,
               //              blurRadius: 2,
               //              offset: const Offset(0, 1),
@@ -728,7 +728,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
               //            ),
               //            ElevatedButton(
               //              style: ElevatedButton.styleFrom(
-              //                backgroundColor: Colors.deepPurple.withOpacity(0.5),
+              //                backgroundColor: Color(0xFF4FAFBE).withOpacity(0.5),
               //                shape: RoundedRectangleBorder(
               //                  borderRadius: BorderRadius.circular(16),
               //                ),
@@ -740,7 +740,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
               //                showModalBottomSheet(
               //                  context: context,
               //                  isScrollControlled: true,
-              //                  backgroundColor: Colors.black,
+              //                  backgroundColor: Color(0xFF0D1F40),
               //                  shape: const RoundedRectangleBorder(
               //                    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
               //                  ),
@@ -876,7 +876,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
                                       )
                                     : null,
                                 filled: true,
-                                fillColor: const Color(0xFF1C1C1E).withOpacity(0.95),
+                                fillColor: const Color(0xFFF5F5F5).withOpacity(0.95),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                   borderSide: BorderSide.none,
@@ -1031,7 +1031,7 @@ class TranscriptWidgets extends StatelessWidget {
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
-                    backgroundColor: Colors.black,
+                    backgroundColor: Color(0xFF0D1F40),
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                     ),
@@ -1130,7 +1130,7 @@ class _ActionItemDetailWidgetState extends State<ActionItemDetailWidget> {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
+                  color: Color(0xFF0D1F40).withValues(alpha: 0.1),
                   blurRadius: 4,
                   offset: const Offset(0, 2),
                 ),

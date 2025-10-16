@@ -49,10 +49,10 @@ class _SearchWidgetState extends State<SearchWidget> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1F1F25),
+                    color: const Color(0xFFF5F5F5),
                     border: Border(
                       bottom: BorderSide(
-                        color: Color(0xFF35343B),
+                        color: Color(0xFFE0E0E0),
                         width: 0.5,
                       ),
                     ),
@@ -84,7 +84,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                         child: const Text(
                           'Done',
                           style: TextStyle(
-                            color: Colors.deepPurple,
+                            color: Color(0xFF4FAFBE),
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
@@ -96,7 +96,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 // Date picker
                 Expanded(
                   child: Container(
-                    color: const Color(0xFF1F1F25),
+                    color: const Color(0xFFF5F5F5),
                     child: CupertinoDatePicker(
                       mode: CupertinoDatePickerMode.date,
                       initialDateTime: DateTime.now(),
@@ -138,7 +138,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 hintText: 'Search Conversations',
                 hintStyle: const TextStyle(color: Colors.white60, fontSize: 14),
                 filled: true,
-                fillColor: const Color(0xFF1F1F25),
+                fillColor: const Color(0xFFF5F5F5),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -180,7 +180,7 @@ class _SearchWidgetState extends State<SearchWidget> {
               return Container(
                 decoration: BoxDecoration(
                   color:
-                      convoProvider.selectedDate != null ? Colors.deepPurple.withOpacity(0.5) : const Color(0xFF1F1F25),
+                      convoProvider.selectedDate != null ? Color(0xFF4FAFBE).withOpacity(0.5) : const Color(0xFFF5F5F5),
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
                 ),
                 child: IconButton(
@@ -214,7 +214,7 @@ class _SearchWidgetState extends State<SearchWidget> {
               builder: (BuildContext context, ConversationProvider convoProvider, Widget? child) {
             return Container(
               decoration: BoxDecoration(
-                color: convoProvider.showDiscardedConversations ? Colors.red.withOpacity(0.5) : const Color(0xFF1F1F25),
+                color: convoProvider.showDiscardedConversations ? Colors.red.withOpacity(0.5) : const Color(0xFFF5F5F5),
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
               ),
               child: IconButton(

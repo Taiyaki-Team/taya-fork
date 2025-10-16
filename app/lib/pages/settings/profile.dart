@@ -35,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _buildSectionContainer({required List<Widget> children}) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF1C1C1E),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -55,7 +55,7 @@ class _ProfilePageState extends State<ProfilePage> {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF1C1C1E),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
@@ -75,7 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Text(
                       title,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: const Color(0xFF0D1F40),
                         fontSize: 17,
                         fontWeight: FontWeight.w400,
                       ),
@@ -85,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text(
                         subtitle,
                         style: const TextStyle(
-                          color: Color(0xFF8E8E93),
+                          color: Color(0xFF4A5568),
                           fontSize: 15,
                           fontWeight: FontWeight.w400,
                         ),
@@ -114,7 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF1C1C1E),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
@@ -124,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
             SizedBox(
               width: 24,
               height: 24,
-              child: FaIcon(FontAwesomeIcons.chartLine, color: Color(0xFF8E8E93), size: 20),
+              child: FaIcon(FontAwesomeIcons.chartLine, color: Color(0xFF4A5568), size: 20),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -133,7 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Text(
                   title,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: const Color(0xFF0D1F40),
                     fontSize: 17,
                     fontWeight: FontWeight.w400,
                   ),
@@ -147,7 +147,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 decoration: BoxDecoration(
                   color: value ? const Color(0xFF007AFF) : Colors.transparent,
                   border: Border.all(
-                    color: value ? const Color(0xFF007AFF) : const Color(0xFF8E8E93),
+                    color: value ? const Color(0xFF007AFF) : const Color(0xFF4A5568),
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(12),
@@ -157,7 +157,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: value
                     ? const Icon(
                         Icons.check,
-                        color: Colors.white,
+                        color: const Color(0xFF0D1F40),
                         size: 16,
                       )
                     : null,
@@ -177,7 +177,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: const Text(
           'Profile',
           style: TextStyle(
-            color: Colors.white,
+            color: const Color(0xFF0D1F40),
             fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
@@ -185,7 +185,7 @@ class _ProfilePageState extends State<ProfilePage> {
         centerTitle: true,
         backgroundColor: const Color(0xFF000000),
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: const Color(0xFF0D1F40)),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -199,7 +199,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _buildProfileItem(
                   title: SharedPreferencesUtil().givenName.isEmpty ? 'Set Your Name' : 'Change Your Name',
                   subtitle: SharedPreferencesUtil().givenName.isEmpty ? 'Not set' : SharedPreferencesUtil().givenName,
-                  icon: const FaIcon(FontAwesomeIcons.solidUser, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.solidUser, color: Color(0xFF4A5568), size: 20),
                   onTap: () async {
                     MixpanelManager().pageOpened('Profile Change Name');
                     await showDialog(
@@ -224,7 +224,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     return _buildProfileItem(
                       title: 'Primary Language',
                       subtitle: languageName,
-                      icon: const FaIcon(FontAwesomeIcons.globe, color: Color(0xFF8E8E93), size: 20),
+                      icon: const FaIcon(FontAwesomeIcons.globe, color: Color(0xFF4A5568), size: 20),
                       onTap: () async {
                         MixpanelManager().pageOpened('Profile Change Language');
                         await LanguageSelectionDialog.show(context, isRequired: false, forceShow: true);
@@ -238,7 +238,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _buildProfileItem(
                   title: 'Persona',
                   subtitle: 'Manage your Taya persona',
-                  icon: const FaIcon(FontAwesomeIcons.solidCircleUser, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.solidCircleUser, color: Color(0xFF4A5568), size: 20),
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -261,7 +261,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _buildProfileItem(
                   title: 'Speech Profile',
                   subtitle: 'Teach Taya your voice',
-                  icon: const FaIcon(FontAwesomeIcons.microphone, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.microphone, color: Color(0xFF4A5568), size: 20),
                   onTap: () {
                     routeToPage(context, const SpeechProfilePage());
                     MixpanelManager().pageOpened('Profile Speech Profile');
@@ -271,7 +271,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _buildProfileItem(
                   title: 'Identifying Others',
                   subtitle: 'Tell Taya who said it 🗣️',
-                  icon: const FaIcon(FontAwesomeIcons.users, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.users, color: Color(0xFF4A5568), size: 20),
                   onTap: () {
                     routeToPage(context, const UserPeoplePage());
                   },
@@ -280,7 +280,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _buildProfileItem(
                   title: 'Conversation Timeout',
                   subtitle: 'Set silence duration before auto-end',
-                  icon: const FaIcon(FontAwesomeIcons.clock, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.clock, color: Color(0xFF4A5568), size: 20),
                   onTap: () {
                     ConversationTimeoutDialog.show(context);
                   },
@@ -295,7 +295,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _buildProfileItem(
                   title: 'Payment Methods',
                   subtitle: 'Add or change your payment method',
-                  icon: const FaIcon(FontAwesomeIcons.solidCreditCard, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.solidCreditCard, color: Color(0xFF4A5568), size: 20),
                   onTap: () {
                     routeToPage(context, const PaymentsPage());
                   },
@@ -327,7 +327,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _buildProfileItem(
                   title: 'User ID',
                   subtitle: SharedPreferencesUtil().uid,
-                  icon: const FaIcon(FontAwesomeIcons.solidClipboard, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.solidClipboard, color: Color(0xFF4A5568), size: 20),
                   onTap: () {
                     Clipboard.setData(ClipboardData(text: SharedPreferencesUtil().uid));
                     ScaffoldMessenger.of(context)

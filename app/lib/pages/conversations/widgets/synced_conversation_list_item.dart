@@ -71,7 +71,7 @@ class _SyncedConversationListItemState extends State<SyncedConversationListItem>
         child: Container(
           width: double.maxFinite,
           decoration: BoxDecoration(
-            color: const Color(0xFF1F1F25),
+            color: const Color(0xFFF5F5F5),
             borderRadius: BorderRadius.circular(16.0),
           ),
           child: Padding(
@@ -190,7 +190,7 @@ class _SyncedConversationListItemState extends State<SyncedConversationListItem>
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF35343B),
+                        color: const Color(0xFFE0E0E0),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(

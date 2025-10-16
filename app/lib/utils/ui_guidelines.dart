@@ -3,53 +3,53 @@ import 'package:flutter/material.dart';
 /// UI Guidelines to ensure consistent styling throughout the app
 /// Use this class for reference when creating new UI components
 class AppStyles {
-  // Text Styles
+  // Text Styles - Light mode
   static const TextStyle title = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
-    color: Colors.white,
+    color: Color(0xFF0F5878),
   );
 
   static const TextStyle subtitle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
-    color: Colors.white,
+    color: Color(0xFF0D1F40),
   );
 
   static const TextStyle body = TextStyle(
     fontSize: 15,
     height: 1.4,
-    color: Colors.white,
+    color: Color(0xFF0D1F40),
   );
 
   static const TextStyle caption = TextStyle(
     fontSize: 14,
-    color: Colors.white70,
+    color: Color(0xFF4A5568),
   );
 
   static const TextStyle small = TextStyle(
     fontSize: 12,
-    color: Colors.white70,
+    color: Color(0xFF4A5568),
   );
 
   static const TextStyle label = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w500,
-    color: Colors.white70,
+    color: Color(0xFF4A5568),
   );
 
-  // Colors
-  static final Color backgroundPrimary = Colors.black;
-  static final Color backgroundSecondary = Colors.white;
-  static final Color backgroundTertiary = const Color.fromARGB(255, 208, 208, 208);
+  // Colors - Light mode
+  static final Color backgroundPrimary = const Color(0xFFFFFFFF); // Pure white
+  static final Color backgroundSecondary = const Color(0xFFFFFFFF); // White
+  static final Color backgroundTertiary = const Color(0xFFF5F5F5); // Light gray
 
-  static const Color textPrimary = Colors.white;
-  static final Color textSecondary = Colors.white.withOpacity(0.8);
-  static final Color textTertiary = Colors.white.withOpacity(0.6);
+  static const Color textPrimary = Color(0xFF0F5878); // Dark teal
+  static final Color textSecondary = const Color(0xFF0D1F40); // Dark blue
+  static final Color textTertiary = const Color(0xFF4A5568); // Medium gray
 
-  static const Color accent = Colors.blue;
-  static final Color error = Colors.red.shade800;
-  static final Color success = Colors.green.shade600;
+  static const Color accent = Color(0xFF4FAFBE); // Teal
+  static final Color error = const Color(0xFFEF4444); // Red
+  static final Color success = const Color(0xFF10B981); // Green
 
   // Spacing
   static const double spacingXS = 4.0;
@@ -71,7 +71,7 @@ class AppStyles {
     borderRadius: BorderRadius.circular(radiusLarge),
     boxShadow: [
       BoxShadow(
-        color: Colors.black.withOpacity(0.1),
+        color: Color(0xFF0D1F40).withOpacity(0.1),
         blurRadius: 4,
         offset: const Offset(0, 2),
       ),

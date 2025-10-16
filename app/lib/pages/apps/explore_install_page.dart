@@ -491,7 +491,7 @@ class ExploreInstallPageState extends State<ExploreInstallPage> with AutomaticKe
                 HapticFeedback.mediumImpact();
                 await context.read<AppProvider>().forceRefreshApps();
               },
-              color: Colors.deepPurpleAccent,
+              color: Color(0xFF3B9FB2),
               backgroundColor: Colors.white,
               child: CustomScrollView(
                 controller: widget.scrollController,
@@ -523,7 +523,7 @@ class ExploreInstallPageState extends State<ExploreInstallPage> with AutomaticKe
                                   Container(
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFF1F1F25),
+                                      color: const Color(0xFFF5F5F5),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: const Icon(
@@ -533,24 +533,24 @@ class ExploreInstallPageState extends State<ExploreInstallPage> with AutomaticKe
                                     ),
                                   ),
                                   const SizedBox(width: 16),
-                                  const Expanded(
+                                  Expanded(
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(
+                                        const Text(
                                           'Create Your Own App',
                                           style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
-                                            color: Colors.black,
+                                            color: Color(0xFF0D1F40),
                                           ),
                                         ),
-                                        SizedBox(height: 2),
+                                        const SizedBox(height: 2),
                                         Text(
                                           'Build and share your custom app',
                                           style: TextStyle(
                                             fontSize: 13,
-                                            color: Colors.black54,
+                                            color: Color(0xFF0D1F40).withOpacity(0.54),
                                           ),
                                         ),
                                       ],
@@ -558,7 +558,7 @@ class ExploreInstallPageState extends State<ExploreInstallPage> with AutomaticKe
                                   ),
                                   const Icon(
                                     Icons.chevron_right,
-                                    color: Colors.black,
+                                    color: Color(0xFF0D1F40),
                                     size: 24,
                                   ),
                                 ],

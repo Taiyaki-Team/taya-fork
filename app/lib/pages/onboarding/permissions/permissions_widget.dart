@@ -38,7 +38,7 @@ class _PermissionsWidgetState extends State<PermissionsWidget> {
             width: double.infinity,
             padding: EdgeInsets.fromLTRB(32, 0, 32, MediaQuery.of(context).padding.bottom + 8),
             decoration: const BoxDecoration(
-              color: Colors.black,
+              color: Color(0xFF0D1F40),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),
@@ -232,7 +232,7 @@ class _PermissionsWidgetState extends State<PermissionsWidget> {
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              foregroundColor: Colors.black,
+                              foregroundColor: Color(0xFF0D1F40),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(28),
                               ),
@@ -308,7 +308,7 @@ class _PermissionsWidgetState extends State<PermissionsWidget> {
               value: value,
               onChanged: onChanged,
               activeColor: Colors.white,
-              checkColor: Colors.black,
+              checkColor: Color(0xFF0D1F40),
               side: BorderSide(
                 color: Colors.grey[500]!,
                 width: 2,

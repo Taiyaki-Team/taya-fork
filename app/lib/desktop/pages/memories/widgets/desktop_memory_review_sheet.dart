@@ -194,12 +194,12 @@ class _DesktopMemoryReviewSheetState extends State<DesktopMemoryReviewSheet> wit
               color: ResponsiveHelper.backgroundPrimary,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.3),
+                  color: Color(0xFF0D1F40).withValues(alpha: 0.3),
                   blurRadius: 32,
                   offset: const Offset(-8, 0),
                 ),
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
+                  color: Color(0xFF0D1F40).withValues(alpha: 0.1),
                   blurRadius: 64,
                   offset: const Offset(-16, 0),
                 ),

@@ -50,7 +50,7 @@ class _MemoryDialogState extends State<MemoryDialog> {
         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xFF1F1F25),
+            color: const Color(0xFFF5F5F5),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           ),
           padding: const EdgeInsets.all(16),
@@ -82,7 +82,7 @@ class _MemoryDialogState extends State<MemoryDialog> {
               const SizedBox(height: 16),
               Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF35343B),
+                  color: Color(0xFFE0E0E0),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -128,13 +128,13 @@ class _MemoryDialogState extends State<MemoryDialog> {
                             Icon(
                               visibility == MemoryVisibility.private ? Icons.lock_outline : Icons.public,
                               size: 16,
-                              color: isSelected ? Colors.black : Colors.white70,
+                              color: isSelected ? Color(0xFF0D1F40) : Colors.white70,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               visibility == MemoryVisibility.private ? 'Private' : 'Public',
                               style: TextStyle(
-                                color: isSelected ? Colors.black : Colors.white70,
+                                color: isSelected ? Color(0xFF0D1F40) : Colors.white70,
                                 fontSize: 13,
                                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                               ),
@@ -143,7 +143,7 @@ class _MemoryDialogState extends State<MemoryDialog> {
                         ),
                         selected: isSelected,
                         showCheckmark: false,
-                        backgroundColor: Color(0xFF35343B),
+                        backgroundColor: Color(0xFFE0E0E0),
                         selectedColor: Colors.white,
                         onSelected: (bool selected) {
                           if (selected) {

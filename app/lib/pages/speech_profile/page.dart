@@ -379,7 +379,7 @@ class _SpeechProfilePageState extends State<SpeechProfilePage> with TickerProvid
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
                                       child: Text(
                                         SharedPreferencesUtil().hasSpeakerProfile ? 'Do it again' : 'Get Started',
-                                        style: const TextStyle(color: Colors.black),
+                                        style: const TextStyle(color: Color(0xFF0D1F40)),
                                       ),
                                     ),
                               const SizedBox(height: 24),

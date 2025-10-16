@@ -59,10 +59,10 @@ class _PaymentWebViewPageState extends State<PaymentWebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF0D1F40),
       appBar: AppBar(
         title: const Text('Complete Your Upgrade'),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0D1F40),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.close),
@@ -74,7 +74,7 @@ class _PaymentWebViewPageState extends State<PaymentWebViewPage> {
           WebViewWidget(controller: _controller),
           if (_isLoading)
             const Center(
-              child: CircularProgressIndicator(color: Colors.deepPurple),
+              child: CircularProgressIndicator(color: Color(0xFF4FAFBE)),
             ),
         ],
       ),

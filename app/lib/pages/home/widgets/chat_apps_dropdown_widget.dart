@@ -112,7 +112,7 @@ class ChatAppsDropdownWidget extends StatelessWidget {
               itemBuilder: (BuildContext context) {
                 return _getAppsDropdownItems(context, provider);
               },
-              color: const Color(0xFF1F1F25),
+              color: const Color(0xFFF5F5F5),
             ),
           ),
         );

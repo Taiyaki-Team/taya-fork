@@ -57,7 +57,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                       padding: EdgeInsets.symmetric(horizontal: 4.0),
                       child: Text(
                         'Save',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(color: const Color(0xFF0D1F40), fontWeight: FontWeight.w500, fontSize: 16),
                       ),
                     ),
                   )
@@ -127,8 +127,8 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                                       final f = files[i];
                                       final name = f.uri.pathSegments.last;
                                       return ListTile(
-                                        title: Text(name, style: const TextStyle(color: Colors.white)),
-                                        trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                                        title: Text(name, style: const TextStyle(color: const Color(0xFF0D1F40))),
+                                        trailing: const Icon(Icons.chevron_right, color: const Color(0xFF4A5568)),
                                         onTap: () => Navigator.of(ctx).pop(f),
                                       );
                                     },
@@ -171,7 +171,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                   //     alignment: Alignment.centerLeft,
                   //     child: Text(
                   //       'Transcription Model',
-                  //       style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                  //       style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16, fontWeight: FontWeight.w500),
                   //     ),
                   //   ),
                   // ),
@@ -180,7 +180,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                   //   child: Container(
                   //     height: 60,
                   //     decoration: BoxDecoration(
-                  //       border: Border.all(color: Colors.white),
+                  //       border: Border.all(color: const Color(0xFF0D1F40)),
                   //       borderRadius: BorderRadius.circular(14),
                   //     ),
                   //     padding: const EdgeInsets.only(left: 16, right: 12, top: 8, bottom: 10),
@@ -207,9 +207,9 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                   //           );
                   //         }
                   //       },
-                  //       dropdownColor: Colors.black,
-                  //       style: const TextStyle(color: Colors.white, fontSize: 16),
-                  //       underline: Container(height: 0, color: Colors.white),
+                  //       dropdownColor: Color(0xFF0D1F40),
+                  //       style: const TextStyle(color: const Color(0xFF0D1F40), fontSize: 16),
+                  //       underline: Container(height: 0, color: const Color(0xFF0D1F40)),
                   //       isExpanded: true,
                   //       itemHeight: 48,
                   //       items: ['deepgram', 'soniox'].map<DropdownMenuItem<String>>((String value) {
@@ -222,7 +222,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                   //                 : value == 'speechmatics'
                   //                     ? 'Speechmatics (Experimental)'
                   //                     : 'Soniox (better quality)',
-                  //             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
+                  //             style: const TextStyle(color: const Color(0xFF0D1F40), fontWeight: FontWeight.w500, fontSize: 16),
                   //           ),
                   //         );
                   //       }).toList(),
@@ -239,7 +239,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                             height: 16,
                             width: 16,
                             child: CircularProgressIndicator(
-                              color: Colors.white,
+                              color: const Color(0xFF0D1F40),
                               strokeWidth: 1,
                             ),
                           )
@@ -282,7 +282,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                   //           height: 16,
                   //           width: 16,
                   //           child: CircularProgressIndicator(
-                  //             color: Colors.white,
+                  //             color: const Color(0xFF0D1F40),
                   //             strokeWidth: 2,
                   //           ),
                   //         )
@@ -332,7 +332,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                     children: [
                       const Text(
                         'MCP',
-                        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
+                        style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -344,7 +344,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                           child: Text(
                             'Docs',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: const Color(0xFF0D1F40),
                               fontSize: 16,
                               decoration: TextDecoration.underline,
                             ),
@@ -364,15 +364,15 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                     children: [
                       const Text(
                         'API Keys',
-                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                        style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       TextButton.icon(
                         onPressed: () => showDialog(
                           context: context,
                           builder: (context) => const CreateMcpApiKeyDialog(),
                         ),
-                        icon: const Icon(Icons.add, color: Colors.white, size: 18),
-                        label: const Text('Create Key', style: TextStyle(color: Colors.white)),
+                        icon: const Icon(Icons.add, color: const Color(0xFF0D1F40), size: 18),
+                        label: const Text('Create Key', style: TextStyle(color: const Color(0xFF0D1F40))),
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
@@ -404,7 +404,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                   const SizedBox(height: 16),
                   const Text(
                     'Claude Desktop Integration',
-                    style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                    style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -440,7 +440,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                     children: [
                       const Text(
                         'Webhooks',
-                        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
+                        style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                       const Spacer(),
                       GestureDetector(
@@ -453,7 +453,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                           child: Text(
                             'Docs',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: const Color(0xFF0D1F40),
                               fontSize: 16,
                               decoration: TextDecoration.underline,
                             ),
@@ -477,7 +477,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                         enabled: true,
                         enableSuggestions: false,
                         decoration: _getTextFieldDecoration('Endpoint URL'),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: const Color(0xFF0D1F40)),
                       ),
                       const SizedBox(height: 16),
                     ],
@@ -495,7 +495,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                           enabled: true,
                           enableSuggestions: false,
                           decoration: _getTextFieldDecoration('Endpoint URL'),
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: const Color(0xFF0D1F40)),
                         ),
                         const SizedBox(height: 16),
                       ],
@@ -512,7 +512,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                           enabled: true,
                           enableSuggestions: false,
                           decoration: _getTextFieldDecoration('Endpoint URL'),
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: const Color(0xFF0D1F40)),
                         ),
                         TextField(
                           controller: provider.webhookAudioBytesDelay,
@@ -522,7 +522,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                           enableSuggestions: false,
                           keyboardType: TextInputType.number,
                           decoration: _getTextFieldDecoration('Every x seconds'),
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: const Color(0xFF0D1F40)),
                         ),
                         const SizedBox(height: 16),
                       ],
@@ -539,7 +539,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                         enabled: true,
                         enableSuggestions: false,
                         decoration: _getTextFieldDecoration('Endpoint URL'),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: const Color(0xFF0D1F40)),
                       ),
                       const SizedBox(height: 16),
                     ],
@@ -548,7 +548,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
 
                   // const Text(
                   //   'Websocket Real-time audio bytes:',
-                  //   style: TextStyle(color: Colors.white, fontSize: 16),
+                  //   style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16),
                   // ),
                   // TextField(
                   //   controller: provider.webhookAudioBytes,
@@ -557,14 +557,14 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                   //   enabled: true,
                   //   enableSuggestions: false,
                   //   decoration: _getTextFieldDecoration('Endpoint URL'),
-                  //   style: const TextStyle(color: Colors.white),
+                  //   style: const TextStyle(color: const Color(0xFF0D1F40)),
                   // ),
                   const SizedBox(height: 16),
                   Divider(color: Colors.grey.shade500),
                   const SizedBox(height: 32),
                   const Text(
                     'Experimental',
-                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -576,7 +576,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                     contentPadding: const EdgeInsets.all(0),
                     title: const Text(
                       'Transcription service diagnostic status',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16),
                     ),
                     subtitle: const Text(
                       'Enable detailed diagnostic messages from the transcription service',
@@ -590,7 +590,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                     contentPadding: const EdgeInsets.all(0),
                     title: const Text(
                       'Auto-create and tag new speakers',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16),
                     ),
                     subtitle: const Text(
                       'Automatically create a new person when a name is detected in the transcript.',
@@ -603,7 +603,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                   const SizedBox(height: 36),
                   const Text(
                     'Pilot Features',
-                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -615,7 +615,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
                     contentPadding: const EdgeInsets.all(0),
                     title: const Text(
                       'Suggest follow up question',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16),
                     ),
                     value: provider.followUpQuestionEnabled,
                     onChanged: provider.onFollowUpQuestionChanged,

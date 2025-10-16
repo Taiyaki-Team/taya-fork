@@ -110,7 +110,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
       child: Container(
         margin: const EdgeInsets.only(bottom: 1),
         decoration: BoxDecoration(
-          color: const Color(0xFF1C1C1E),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
@@ -127,7 +127,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                 child: Text(
                   title,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: const Color(0xFF0D1F40),
                     fontSize: 17,
                     fontWeight: FontWeight.w400,
                   ),
@@ -135,7 +135,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               ),
               const Icon(
                 Icons.chevron_right,
-                color: Color(0xFF3C3C43),
+                color: Color(0xFFE0E0E0),
                 size: 20,
               ),
             ],
@@ -148,7 +148,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
   Widget _buildSectionContainer({required List<Widget> children}) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF1C1C1E),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -170,7 +170,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
         Text(
           displayText,
           style: const TextStyle(
-            color: Color(0xFF8E8E93),
+            color: Color(0xFF4A5568),
             fontSize: 13,
             fontWeight: FontWeight.w400,
           ),
@@ -183,7 +183,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             child: const Icon(
               Icons.copy,
               size: 12,
-              color: Color(0xFF8E8E93),
+              color: Color(0xFF4A5568),
             ),
           ),
         ),
@@ -219,11 +219,11 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               width: MediaQuery.of(context).size.width * 0.7,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: Colors.black87,
+                color: Color(0xFF0D1F40).withOpacity(0.87),
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Color(0xFF0D1F40).withOpacity(0.2),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),
@@ -232,7 +232,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               child: const Text(
                 'App and device details copied',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white, fontSize: 14),
+                style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 14),
               ),
             ),
           ),
@@ -257,16 +257,16 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             children: [
               _buildSettingsItem(
                 title: 'Profile',
-                icon: const FaIcon(FontAwesomeIcons.solidUser, color: Color(0xFF8E8E93), size: 20),
+                icon: const FaIcon(FontAwesomeIcons.solidUser, color: Color(0xFF4A5568), size: 20),
                 onTap: () {
                   Navigator.pop(context);
                   routeToPage(context, const ProfilePage());
                 },
               ),
-              const Divider(height: 1, color: Color(0xFF3C3C43)),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
               _buildSettingsItem(
                 title: showSubscription ? 'Plan & Usage' : 'Usage Insights',
-                icon: const FaIcon(FontAwesomeIcons.chartBar, color: Color(0xFF8E8E93), size: 20),
+                icon: const FaIcon(FontAwesomeIcons.chartBar, color: Color(0xFF4A5568), size: 20),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context).push(
@@ -276,10 +276,10 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                   );
                 },
               ),
-              const Divider(height: 1, color: Color(0xFF3C3C43)),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
               _buildSettingsItem(
                 title: 'Storage',
-                icon: const FaIcon(FontAwesomeIcons.database, color: Color(0xFF8E8E93), size: 20),
+                icon: const FaIcon(FontAwesomeIcons.database, color: Color(0xFF4A5568), size: 20),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context).push(
@@ -289,10 +289,10 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                   );
                 },
               ),
-              const Divider(height: 1, color: Color(0xFF3C3C43)),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
               _buildSettingsItem(
                 title: 'Device Settings',
-                icon: const FaIcon(FontAwesomeIcons.bluetooth, color: Color(0xFF8E8E93), size: 20),
+                icon: const FaIcon(FontAwesomeIcons.bluetooth, color: Color(0xFF4A5568), size: 20),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context).push(
@@ -312,7 +312,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
           //     if (PlatformService.isIOS)
           //       _buildSettingsItem(
           //         title: 'Share Taya for iPhone',
-          //         icon: const FaIcon(FontAwesomeIcons.solidShareFromSquare, color: Colors.white, size: 20),
+          //         icon: const FaIcon(FontAwesomeIcons.solidShareFromSquare, color: const Color(0xFF0D1F40), size: 20),
           //         onTap: () async {
           //           Navigator.pop(context);
           //           await Share.share('https://apps.apple.com/us/app/omi-ai-scale-yourself/id6502156163');
@@ -321,16 +321,16 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
           //     if (PlatformService.isAndroid)
           //       _buildSettingsItem(
           //         title: 'Share Taya for Android',
-          //         icon: const FaIcon(FontAwesomeIcons.googlePlay, color: Color(0xFF8E8E93), size: 20),
+          //         icon: const FaIcon(FontAwesomeIcons.googlePlay, color: Color(0xFF4A5568), size: 20),
           //         onTap: () async {
           //           Navigator.pop(context);
           //           await Share.share('https://play.google.com/store/apps/details?id=com.friend.ios');
           //         },
           //       ),
-          //     const Divider(height: 1, color: Color(0xFF3C3C43)),
+          //     const Divider(height: 1, color: Color(0xFFE0E0E0)),
           //     _buildSettingsItem(
           //       title: 'Share Omi for Mac',
-          //       icon: const FaIcon(FontAwesomeIcons.desktop, color: Color(0xFF8E8E93), size: 20),
+          //       icon: const FaIcon(FontAwesomeIcons.desktop, color: Color(0xFF4A5568), size: 20),
           //       onTap: () async {
           //         Navigator.pop(context);
           //         await Share.share('https://apps.apple.com/us/app/omi-ai-scale-yourself/id6502156163');
@@ -346,7 +346,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               children: [
                 _buildSettingsItem(
                   title: 'Send Feedback',
-                  icon: const FaIcon(FontAwesomeIcons.solidEnvelope, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.solidEnvelope, color: Color(0xFF4A5568), size: 20),
                   onTap: () async {
                     Navigator.pop(context);
                     final Uri url = Uri.parse('https://feedback.omi.me/');
@@ -355,10 +355,10 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                     }
                   },
                 ),
-                const Divider(height: 1, color: Color(0xFF3C3C43)),
+                const Divider(height: 1, color: Color(0xFFE0E0E0)),
                 _buildSettingsItem(
                   title: 'Report a bug',
-                  icon: const FaIcon(FontAwesomeIcons.exclamationTriangle, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.exclamationTriangle, color: Color(0xFF4A5568), size: 20),
                   onTap: () async {
                     Navigator.pop(context);
                     final Uri url = Uri.parse('https://feedback.omi.me/');
@@ -367,10 +367,10 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                     }
                   },
                 ),
-                const Divider(height: 1, color: Color(0xFF3C3C43)),
+                const Divider(height: 1, color: Color(0xFFE0E0E0)),
                 _buildSettingsItem(
                   title: 'Help Center',
-                  icon: const FaIcon(FontAwesomeIcons.book, color: Color(0xFF8E8E93), size: 20),
+                  icon: const FaIcon(FontAwesomeIcons.book, color: Color(0xFF4A5568), size: 20),
                   onTap: () async {
                     Navigator.pop(context);
                     final Uri url = Uri.parse('https://help.omi.me/en/');
@@ -388,7 +388,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             children: [
               _buildSettingsItem(
                 title: 'Data & Privacy',
-                icon: const FaIcon(FontAwesomeIcons.shield, color: Color(0xFF8E8E93), size: 20),
+                icon: const FaIcon(FontAwesomeIcons.shield, color: Color(0xFF4A5568), size: 20),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context).push(
@@ -398,19 +398,19 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                   );
                 },
               ),
-              const Divider(height: 1, color: Color(0xFF3C3C43)),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
               _buildSettingsItem(
                 title: 'Developer Mode',
-                icon: const FaIcon(FontAwesomeIcons.code, color: Color(0xFF8E8E93), size: 20),
+                icon: const FaIcon(FontAwesomeIcons.code, color: Color(0xFF4A5568), size: 20),
                 onTap: () async {
                   Navigator.pop(context);
                   await routeToPage(context, const DeveloperSettingsPage());
                 },
               ),
-              const Divider(height: 1, color: Color(0xFF3C3C43)),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
               _buildSettingsItem(
                 title: 'About Taya',
-                icon: const FaIcon(FontAwesomeIcons.infoCircle, color: Color(0xFF8E8E93), size: 20),
+                icon: const FaIcon(FontAwesomeIcons.infoCircle, color: Color(0xFF4A5568), size: 20),
                 onTap: () {
                   Navigator.pop(context);
                   routeToPage(context, const AboutOmiPage());
@@ -425,7 +425,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             children: [
               _buildSettingsItem(
                 title: 'Sign Out',
-                icon: const FaIcon(FontAwesomeIcons.signOutAlt, color: Color(0xFF8E8E93), size: 20),
+                icon: const FaIcon(FontAwesomeIcons.signOutAlt, color: Color(0xFF4A5568), size: 20),
                 onTap: () async {
                   // Capture the provider reference before any navigation
                   final personaProvider = Provider.of<PersonaProvider>(context, listen: false);
@@ -473,7 +473,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
           children: [
             _buildSettingsItem(
               title: 'Need Help? Chat with us',
-              icon: const FaIcon(FontAwesomeIcons.solidComments, color: Color(0xFF8E8E93), size: 20),
+              icon: const FaIcon(FontAwesomeIcons.solidComments, color: Color(0xFF4A5568), size: 20),
               onTap: () async {
                 Navigator.pop(context);
                 await Intercom.instance.displayMessenger();
@@ -488,7 +488,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
           children: [
             _buildSettingsItem(
               title: 'Sign Out',
-              icon: const FaIcon(FontAwesomeIcons.signOutAlt, color: Color(0xFF8E8E93), size: 20),
+              icon: const FaIcon(FontAwesomeIcons.signOutAlt, color: Color(0xFF4A5568), size: 20),
               onTap: () async {
                 // Capture the provider reference before any navigation
                 final personaProvider = Provider.of<PersonaProvider>(context, listen: false);
@@ -535,7 +535,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.9,
       decoration: const BoxDecoration(
-        color: Color(0xFF000000),
+        color: Color(0xFF0D1F40),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
@@ -549,7 +549,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             height: 4,
             width: 36,
             decoration: BoxDecoration(
-              color: const Color(0xFF3C3C43),
+              color: const Color(0xFFE0E0E0),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -563,7 +563,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                   child: const Text(
                     'Settings',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: const Color(0xFF0D1F40),
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
@@ -577,7 +577,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                     child: const Text(
                       'Done',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: const Color(0xFF0D1F40),
                         fontSize: 17,
                         fontWeight: FontWeight.w400,
                       ),

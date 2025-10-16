@@ -80,7 +80,7 @@ class LanguageSelectionDialog {
               title: const Text(
                 'Tell us your primary language',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: const Color(0xFF0D1F40),
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -102,7 +102,7 @@ class LanguageSelectionDialog {
                     const SizedBox(height: 16),
                     TextField(
                       onChanged: filterLanguages,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: const Color(0xFF0D1F40)),
                       decoration: InputDecoration(
                         hintText: 'Search language by name or code',
                         hintStyle: const TextStyle(color: Colors.grey),
@@ -111,15 +111,15 @@ class LanguageSelectionDialog {
                         fillColor: const Color(0xFF2A2A2A),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Color(0xFF35343B)),
+                          borderSide: BorderSide(color: Color(0xFFE0E0E0)),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Color(0xFF35343B)),
+                          borderSide: BorderSide(color: Color(0xFFE0E0E0)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: const BorderSide(color: Colors.deepPurple),
+                          borderSide: const BorderSide(color: Color(0xFF4FAFBE)),
                         ),
                       ),
                     ),
@@ -142,12 +142,12 @@ class LanguageSelectionDialog {
                                 return ListTile(
                                   title: Text(
                                     language.key,
-                                    style: const TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: const Color(0xFF0D1F40)),
                                   ),
                                   trailing:
-                                      isSelected ? const Icon(Icons.check_circle, color: Colors.deepPurple) : null,
+                                      isSelected ? const Icon(Icons.check_circle, color: Color(0xFF4FAFBE)) : null,
                                   selected: isSelected,
-                                  selectedTileColor: Colors.deepPurple.withOpacity(0.2),
+                                  selectedTileColor: Color(0xFF4FAFBE).withOpacity(0.2),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -210,8 +210,8 @@ class LanguageSelectionDialog {
                           }
                         },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    disabledBackgroundColor: Colors.deepPurple.withOpacity(0.3),
+                    backgroundColor: Color(0xFF4FAFBE),
+                    disabledBackgroundColor: Color(0xFF4FAFBE).withOpacity(0.3),
                     foregroundColor: Colors.white,
                   ),
                   child: const Text('Confirm'),

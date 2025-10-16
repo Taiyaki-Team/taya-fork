@@ -54,7 +54,7 @@ class _PageWebViewState extends State<PageWebView> {
       ),
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: progress != 100
-          ? const Center(child: CircularProgressIndicator(color: Colors.white))
+          ? const Center(child: CircularProgressIndicator(color: const Color(0xFF0D1F40)))
           : WebViewWidget(controller: webViewController),
     );
   }

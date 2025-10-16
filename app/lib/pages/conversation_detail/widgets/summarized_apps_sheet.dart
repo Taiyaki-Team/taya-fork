@@ -68,7 +68,7 @@ class _SheetContainer extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.pop(context),
       child: Container(
-        color: Colors.black,
+        color: Color(0xFF0D1F40),
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
         child: Column(children: children),
       ),
@@ -381,7 +381,7 @@ class _AppListItem extends StatelessWidget {
               child: const Text(
                 'Last Used',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Color(0xFF0D1F40),
                   fontSize: 11,
                   fontWeight: FontWeight.w600,
                 ),
@@ -527,7 +527,7 @@ class _CreateTemplateListItem extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: const Color(0xFF1F1F25),
+                color: const Color(0xFFF5F5F5),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(
@@ -537,24 +537,24 @@ class _CreateTemplateListItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
-            const Expanded(
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Create Custom Template',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: Colors.black,
+                      color: Color(0xFF0D1F40),
                     ),
                   ),
-                  SizedBox(height: 2),
+                  const SizedBox(height: 2),
                   Text(
                     'Build a personalized analysis app for your conversations',
                     style: TextStyle(
                       fontSize: 13,
-                      color: Colors.black54,
+                      color: Color(0xFF0D1F40).withOpacity(0.54),
                     ),
                   ),
                 ],
@@ -562,7 +562,7 @@ class _CreateTemplateListItem extends StatelessWidget {
             ),
             const Icon(
               Icons.chevron_right,
-              color: Colors.black,
+              color: Color(0xFF0D1F40),
               size: 24,
             ),
           ],

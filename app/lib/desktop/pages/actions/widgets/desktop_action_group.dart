@@ -144,7 +144,7 @@ class _DesktopActionGroupState extends State<DesktopActionGroup> {
             decoration: BoxDecoration(
               color: Colors.green.shade600,
               borderRadius: BorderRadius.circular(8),
-              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 8, offset: const Offset(0, 4))],
+              boxShadow: [BoxShadow(color: Color(0xFF0D1F40).withOpacity(0.2), blurRadius: 8, offset: const Offset(0, 4))],
             ),
             child: const Row(
               mainAxisSize: MainAxisSize.min,
@@ -182,7 +182,7 @@ class _DesktopActionGroupState extends State<DesktopActionGroup> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: Color(0xFF0D1F40).withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

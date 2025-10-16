@@ -130,7 +130,7 @@ class PaymentMethodCard extends StatelessWidget {
                     onPressed: onManageTap,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      foregroundColor: Colors.black,
+                      foregroundColor: Color(0xFF0D1F40),
                       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -174,7 +174,7 @@ class PaymentMethodCard extends StatelessWidget {
                     onPressed: onManageTap,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      foregroundColor: Colors.black,
+                      foregroundColor: Color(0xFF0D1F40),
                       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

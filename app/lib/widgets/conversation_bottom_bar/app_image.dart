@@ -100,7 +100,7 @@ class AppImage extends StatelessWidget {
         height: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Color(0xFF35343B),
+          color: Color(0xFFE0E0E0),
         ),
         child: Icon(Icons.error_outline, size: size * 2 / 3, color: Colors.white),
       ),

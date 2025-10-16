@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// Premium responsive utility class with sophisticated dark theme
-/// Inspired by modern productivity apps with purple accent system
+/// Premium responsive utility class with sophisticated light theme
+/// Inspired by modern productivity apps with teal/yellow accent system
 class ResponsiveHelper {
   final BuildContext context;
   late final Size _screenSize;
@@ -26,23 +26,23 @@ class ResponsiveHelper {
     _isLargeScreen = _screenWidth >= 1400;
   }
 
-  // Premium color system inspired by sophisticated dark interfaces
-  static const Color backgroundPrimary = Color(0xFF0F0F0F); // Deep black
-  static const Color backgroundSecondary = Color(0xFF1A1A1A); // Elevated surface
-  static const Color backgroundTertiary = Color(0xFF252525); // Cards and components
-  static const Color backgroundQuaternary = Color(0xFF2A2A2A); // Hover states
+  // Premium color system inspired by light, clean interfaces
+  static const Color backgroundPrimary = Color(0xFFFFFFFF); // Pure white
+  static const Color backgroundSecondary = Color(0xFFFFFFFF); // White
+  static const Color backgroundTertiary = Color(0xFFF5F5F5); // Light gray
+  static const Color backgroundQuaternary = Color(0xFFE0E0E0); // Medium gray for hover
 
-  // Premium purple gradient system
-  static const Color purplePrimary = Color(0xFF8B5CF6); // Main purple
-  static const Color purpleSecondary = Color(0xFFA855F7); // Lighter purple
-  static const Color purpleAccent = Color(0xFF7C3AED); // Darker purple
-  static const Color purpleLight = Color(0xFFD946EF); // Pink-purple
+  // Premium teal gradient system
+  static const Color purplePrimary = Color(0xFF4FAFBE); // Main teal
+  static const Color purpleSecondary = Color(0xFF46AFC1); // Lighter teal
+  static const Color purpleAccent = Color(0xFF3B9FB2); // Darker teal
+  static const Color purpleLight = Color(0xFF4DA1B5); // Bright teal
 
-  // Sophisticated text colors
-  static const Color textPrimary = Color(0xFFFFFFFF); // Pure white for headers
-  static const Color textSecondary = Color(0xFFE5E5E5); // Light gray for body
-  static const Color textTertiary = Color(0xFFB0B0B0); // Medium gray for meta
-  static const Color textQuaternary = Color(0xFF888888); // Dark gray for disabled
+  // Sophisticated text colors for light mode
+  static const Color textPrimary = Color(0xFF0F5878); // Dark teal for headers
+  static const Color textSecondary = Color(0xFF0D1F40); // Dark blue for body
+  static const Color textTertiary = Color(0xFF4A5568); // Medium gray for meta
+  static const Color textQuaternary = Color(0xFF9CA3AF); // Light gray for disabled
 
   // Accent colors
   static const Color successColor = Color(0xFF10B981); // Green
@@ -338,7 +338,7 @@ class ResponsiveHelper {
   // Premium shadow definitions
   List<BoxShadow> get softShadow => [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Color(0xFF0D1F40).withOpacity(0.1),
           blurRadius: spacing(baseSpacing: 12, minSpacing: 8, maxSpacing: 16),
           offset: Offset(0, spacing(baseSpacing: 4, minSpacing: 2, maxSpacing: 6)),
         ),
@@ -346,7 +346,7 @@ class ResponsiveHelper {
 
   List<BoxShadow> get mediumShadow => [
         BoxShadow(
-          color: Colors.black.withOpacity(0.15),
+          color: Color(0xFF0D1F40).withOpacity(0.15),
           blurRadius: spacing(baseSpacing: 20, minSpacing: 15, maxSpacing: 25),
           offset: Offset(0, spacing(baseSpacing: 8, minSpacing: 6, maxSpacing: 10)),
         ),
@@ -354,7 +354,7 @@ class ResponsiveHelper {
 
   List<BoxShadow> get strongShadow => [
         BoxShadow(
-          color: Colors.black.withOpacity(0.25),
+          color: Color(0xFF0D1F40).withOpacity(0.25),
           blurRadius: spacing(baseSpacing: 30, minSpacing: 20, maxSpacing: 40),
           offset: Offset(0, spacing(baseSpacing: 12, minSpacing: 8, maxSpacing: 16)),
         ),

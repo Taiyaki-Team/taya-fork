@@ -193,12 +193,12 @@ class _WelcomePageState extends State<WelcomePage> with TickerProviderStateMixin
                           children: [
                             // Dim overlay
                             Container(
-                              color: Colors.black.withOpacity(0.4),
+                              color: Color(0xFF0D1F40).withOpacity(0.4),
                             ),
                             // Fade to black overlay (increases during expansion)
                             if (_isExpandingTop)
                               Container(
-                                color: Colors.black.withOpacity(_fadeToBlackAnimation.value * 0.9),
+                                color: Color(0xFF0D1F40).withOpacity(_fadeToBlackAnimation.value * 0.9),
                               ),
                             // Content positioned in lower half
                             Positioned(
@@ -222,10 +222,10 @@ class _WelcomePageState extends State<WelcomePage> with TickerProviderStateMixin
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            const Text(
+                                            Text(
                                               'Connect Taya / OmiGlass',
                                               style: TextStyle(
-                                                color: Colors.black87,
+                                                color: Color(0xFF0D1F40).withOpacity(0.87),
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w600,
                                                 fontFamily: 'Manrope',
@@ -237,10 +237,10 @@ class _WelcomePageState extends State<WelcomePage> with TickerProviderStateMixin
                                               builder: (context, child) {
                                                 return Transform.translate(
                                                   offset: Offset(_arrowAnimation1.value, 0),
-                                                  child: const Icon(
+                                                  child: Icon(
                                                     Icons.arrow_forward,
                                                     size: 20,
-                                                    color: Colors.black87,
+                                                    color: Color(0xFF0D1F40).withOpacity(0.87),
                                                   ),
                                                 );
                                               },
@@ -282,7 +282,7 @@ class _WelcomePageState extends State<WelcomePage> with TickerProviderStateMixin
                             children: [
                               // Dim overlay
                               Container(
-                                color: Colors.black.withOpacity(0.5),
+                                color: Color(0xFF0D1F40).withOpacity(0.5),
                               ),
 
                               // Content positioned in lower half

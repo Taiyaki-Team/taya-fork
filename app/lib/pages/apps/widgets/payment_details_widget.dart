@@ -19,7 +19,7 @@ class PaymentDetailsWidget extends StatelessWidget {
         padding: const EdgeInsets.only(top: 12.0),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xFF1F1F25),
+            color: const Color(0xFFF5F5F5),
             borderRadius: BorderRadius.circular(12.0),
           ),
           padding: const EdgeInsets.all(14.0),
@@ -37,7 +37,7 @@ class PaymentDetailsWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
                 margin: const EdgeInsets.only(left: 2.0, right: 2.0, top: 10, bottom: 6),
                 decoration: BoxDecoration(
-                  color: Color(0xFF35343B),
+                  color: Color(0xFFE0E0E0),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 width: double.infinity,
@@ -170,7 +170,7 @@ class PaymentDetailsWidget extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 2.0, right: 2.0, top: 10, bottom: 6),
                   padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: Color(0xFF35343B),
+                    color: Color(0xFFE0E0E0),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   width: double.infinity,

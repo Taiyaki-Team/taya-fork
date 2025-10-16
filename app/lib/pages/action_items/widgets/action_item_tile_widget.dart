@@ -125,8 +125,8 @@ class _ActionItemTileWidgetState extends State<ActionItemTileWidget> {
       icon = Icons.calendar_today;
       dueDateText = _formatDueDate(dueDate);
     } else {
-      chipColor = Colors.purple.withOpacity(0.15);
-      textColor = Colors.purple.shade300;
+      chipColor = Color(0xFF4FAFBE).withOpacity(0.15);
+      textColor = Color(0xFF46AFC1);
       icon = Icons.schedule;
       dueDateText = _formatDueDate(dueDate);
     }
@@ -225,7 +225,7 @@ class _ActionItemTileWidgetState extends State<ActionItemTileWidget> {
                   color: isExported ? Colors.green : Colors.blue,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: const Color(0xFF1F1F25),
+                    color: const Color(0xFFF5F5F5),
                     width: 1.5,
                   ),
                 ),
@@ -360,12 +360,12 @@ class _ActionItemTileWidgetState extends State<ActionItemTileWidget> {
     return Card(
       elevation: 0,
       margin: EdgeInsets.zero,
-      color: widget.isSelected ? Colors.deepPurpleAccent.withOpacity(0.1) : const Color(0xFF1F1F25),
+      color: widget.isSelected ? Color(0xFF3B9FB2).withOpacity(0.1) : const Color(0xFFF5F5F5),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(
           color: widget.isSelected
-              ? Colors.deepPurpleAccent.withOpacity(0.5)
+              ? Color(0xFF3B9FB2).withOpacity(0.5)
               : (widget.actionItem.completed ? Colors.grey.withOpacity(0.2) : Colors.transparent),
           width: widget.isSelected ? 2 : 1,
         ),
@@ -391,10 +391,10 @@ class _ActionItemTileWidgetState extends State<ActionItemTileWidget> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: widget.isSelected ? Colors.deepPurpleAccent : Colors.grey.shade600,
+                            color: widget.isSelected ? Color(0xFF3B9FB2) : Colors.grey.shade600,
                             width: 2,
                           ),
-                          color: widget.isSelected ? Colors.deepPurpleAccent : Colors.transparent,
+                          color: widget.isSelected ? Color(0xFF3B9FB2) : Colors.transparent,
                         ),
                         child: widget.isSelected
                             ? const Icon(
@@ -416,12 +416,12 @@ class _ActionItemTileWidgetState extends State<ActionItemTileWidget> {
                           shape: BoxShape.circle,
                           border: Border.all(
                             color: (widget.actionItem.completed || _isAnimating)
-                                ? Colors.deepPurpleAccent
+                                ? Color(0xFF3B9FB2)
                                 : Colors.grey.shade600,
                             width: 2,
                           ),
                           color: (widget.actionItem.completed || _isAnimating)
-                              ? Colors.deepPurpleAccent
+                              ? Color(0xFF3B9FB2)
                               : Colors.transparent,
                         ),
                         child: (widget.actionItem.completed || _isAnimating)
@@ -490,7 +490,7 @@ class _ActionItemTileWidgetState extends State<ActionItemTileWidget> {
                       child: Container(
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Colors.black.withValues(alpha: 0.01),
+                          color: Color(0xFF0D1F40).withValues(alpha: 0.01),
                           borderRadius: const BorderRadius.all(Radius.circular(8)),
                         ),
                         child: const Text(

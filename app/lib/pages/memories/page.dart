@@ -98,11 +98,11 @@ class MemoriesPageState extends State<MemoriesPage> with AutomaticKeepAliveClien
               width: MediaQuery.of(context).size.width * 0.9,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: Colors.black87,
+                color: Color(0xFF0D1F40).withOpacity(0.87),
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Color(0xFF0D1F40).withOpacity(0.2),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),
@@ -244,7 +244,7 @@ class MemoriesPageState extends State<MemoriesPage> with AutomaticKeepAliveClien
                   HapticFeedback.mediumImpact();
                   await provider.init();
                 },
-                color: Colors.deepPurpleAccent,
+                color: Color(0xFF3B9FB2),
                 backgroundColor: Colors.white,
                 child: provider.loading && _isInitialLoad
                     ? CustomScrollView(
@@ -692,7 +692,7 @@ class MemoriesPageState extends State<MemoriesPage> with AutomaticKeepAliveClien
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF1F1F25),
+        backgroundColor: const Color(0xFFF5F5F5),
         title: const Text(
           'Clear Taya\'s Memory',
           style: TextStyle(color: Colors.white),

@@ -80,7 +80,7 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
 
   Widget _buildProgressSection() {
     return Card(
-      color: Colors.black.withOpacity(0.2),
+      color: Color(0xFF0D1F40).withOpacity(0.2),
       elevation: 2.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
@@ -126,8 +126,8 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Colors.purpleAccent.shade100,
-                          Colors.deepPurple.shade300,
+                          Color(0xFF8DD4DB),
+                          Color(0xFF6BC4CF),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(4),
@@ -169,7 +169,7 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
 
   Widget _buildSuccessSection() {
     return Card(
-      color: Colors.black.withOpacity(0.2),
+      color: Color(0xFF0D1F40).withOpacity(0.2),
       elevation: 2.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
@@ -258,7 +258,7 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
     bool hasChangelog = changelogData != null && changelogData is List && (List<String>.from(changelogData)).isNotEmpty;
 
     return Card(
-      color: Colors.black.withOpacity(0.2),
+      color: Color(0xFF0D1F40).withOpacity(0.2),
       elevation: 2.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
@@ -285,7 +285,7 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        Icon(Icons.memory, size: 20, color: Colors.deepPurple.shade100),
+                        Icon(Icons.memory, size: 20, color: Color(0xFF8DD4DB)),
                         const SizedBox(width: 8),
                         Text(
                           widget.device!.firmwareRevision,
@@ -313,7 +313,7 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(Icons.system_update_alt_rounded, size: 20, color: Colors.purpleAccent.shade100),
+                          Icon(Icons.system_update_alt_rounded, size: 20, color: Color(0xFF8DD4DB)),
                           const SizedBox(width: 8),
                           Text(
                             '${latestFirmwareDetails['version']}',
@@ -341,7 +341,7 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
                   title: Text(
                     'View Changelog',
                     style: TextStyle(
-                      color: Colors.deepPurple.shade50,
+                      color: Color(0xFFB8E8ED),
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
@@ -360,7 +360,7 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
                                     Padding(
                                       padding: const EdgeInsets.only(right: 10.0, top: 5.0),
                                       child:
-                                          Icon(Icons.fiber_manual_record, size: 8, color: Colors.deepPurple.shade100),
+                                          Icon(Icons.fiber_manual_record, size: 8, color: Color(0xFF8DD4DB)),
                                     ),
                                     Expanded(
                                       child: Text(
@@ -389,7 +389,7 @@ class _FirmwareUpdateState extends State<FirmwareUpdate> with FirmwareMixin {
                     border: Border.all(color: Colors.white.withOpacity(0.1))),
                 child: Row(
                   children: [
-                    Icon(Icons.info_outline_rounded, color: Colors.purpleAccent.shade100, size: 20),
+                    Icon(Icons.info_outline_rounded, color: Color(0xFF8DD4DB), size: 20),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(

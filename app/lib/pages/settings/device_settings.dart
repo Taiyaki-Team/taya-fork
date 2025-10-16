@@ -129,7 +129,7 @@ class _DeviceSettingsState extends State<DeviceSettings> {
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
+                                color: Color(0xFF0D1F40).withOpacity(0.1),
                                 spreadRadius: 5,
                                 blurRadius: 7,
                                 offset: const Offset(0, 3),
@@ -140,7 +140,7 @@ class _DeviceSettingsState extends State<DeviceSettings> {
                             child: Text(
                               'Connect your device to\naccess these settings',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: const Color(0xFF0D1F40),
                                 fontSize: 18,
                                 height: 1.3,
                                 fontWeight: FontWeight.w500,
@@ -161,7 +161,7 @@ class _DeviceSettingsState extends State<DeviceSettings> {
                       padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                       child: Text(
                         'Customization',
-                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                        style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                     ),
                     _buildDimmingControl(),
@@ -217,7 +217,7 @@ class _DeviceSettingsState extends State<DeviceSettings> {
                     },
                     child: Text(
                       provider.connectedDevice == null ? "Unpair" : "Disconnect",
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                      style: const TextStyle(color: const Color(0xFF0D1F40), fontSize: 16),
                     ),
                   ),
                 ),

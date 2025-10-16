@@ -113,7 +113,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
               ),
               isDeleteing
                   ? const CircularProgressIndicator(
-                      color: Colors.white,
+                      color: const Color(0xFF0D1F40),
                     )
                   : Container(
                       decoration: BoxDecoration(

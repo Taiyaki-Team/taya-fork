@@ -172,7 +172,7 @@ class _FoundDevicesState extends State<FoundDevices> {
                               style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 18,
-                                color: Colors.black,
+                                color: Color(0xFF0D1F40),
                               ),
                             ),
                           ),
@@ -186,7 +186,7 @@ class _FoundDevicesState extends State<FoundDevices> {
                                       width: 20,
                                       child: CircularProgressIndicator(
                                         strokeWidth: 2,
-                                        valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                                        valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF0D1F40)),
                                       ),
                                     )
                                   : const SizedBox.shrink(),

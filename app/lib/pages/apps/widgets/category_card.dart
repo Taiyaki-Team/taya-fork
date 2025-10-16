@@ -63,7 +63,7 @@ class CategoryCard extends StatelessWidget {
       case 'health':
         return Colors.green;
       case 'entertainment':
-        return Colors.purple;
+        return Color(0xFF4FAFBE);
       case 'education':
         return Colors.orange;
       case 'social':
@@ -89,7 +89,7 @@ class CategoryCard extends StatelessWidget {
       case 'sports':
         return Colors.lime;
       case 'music':
-        return Colors.deepPurple;
+        return Color(0xFF4FAFBE);
       case 'photo':
         return Colors.brown;
       case 'gaming':
@@ -108,7 +108,7 @@ class CategoryCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25).withOpacity(0.3),
+          color: const Color(0xFFF5F5F5).withOpacity(0.3),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Padding(

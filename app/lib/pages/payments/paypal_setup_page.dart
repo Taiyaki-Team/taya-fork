@@ -151,7 +151,7 @@ class _PaypalSetupPageState extends State<PaypalSetupPage> {
                       Container(
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1F1F25),
+                          color: const Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
@@ -168,7 +168,7 @@ class _PaypalSetupPageState extends State<PaypalSetupPage> {
                               padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
                               margin: const EdgeInsets.only(left: 2.0, right: 2.0, top: 10, bottom: 6),
                               decoration: BoxDecoration(
-                                color: Color(0xFF35343B),
+                                color: Color(0xFFE0E0E0),
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               width: double.infinity,
@@ -197,7 +197,7 @@ class _PaypalSetupPageState extends State<PaypalSetupPage> {
                               padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
                               margin: const EdgeInsets.only(left: 2.0, right: 2.0, top: 10, bottom: 6),
                               decoration: BoxDecoration(
-                                color: Color(0xFF35343B),
+                                color: Color(0xFFE0E0E0),
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               width: double.infinity,
@@ -222,10 +222,10 @@ class _PaypalSetupPageState extends State<PaypalSetupPage> {
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF1F1F25),
+                            color: const Color(0xFFF5F5F5),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: Color(0xFF35343B),
+                              color: Color(0xFFE0E0E0),
                               width: 1,
                             ),
                           ),
@@ -277,10 +277,10 @@ class _PaypalSetupPageState extends State<PaypalSetupPage> {
             }
           },
           text: _isComplete ? 'Update PayPal Details' : 'Save PayPal Details',
-          loaderColor: Colors.black,
+          loaderColor: Color(0xFF0D1F40),
           width: MediaQuery.of(context).size.width * 0.8,
           textStyle: const TextStyle(
-            color: Colors.black,
+            color: Color(0xFF0D1F40),
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),

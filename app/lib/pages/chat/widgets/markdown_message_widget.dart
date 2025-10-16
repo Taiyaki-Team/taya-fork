@@ -22,7 +22,7 @@ Widget getMarkdownWidget(BuildContext context, String content) {
         color: TayaColors.secondaryTextColor,
       ),
       blockquoteDecoration: BoxDecoration(
-        color: Color(0xFF35343B),
+        color: Color(0xFFE0E0E0),
         borderRadius: BorderRadius.circular(4),
       ),
       code: style.copyWith(

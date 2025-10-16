@@ -53,11 +53,11 @@ class ConversationBottomBar extends StatelessWidget {
         width: mode == ConversationBottomBarMode.recording ? 180 : null,
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
         decoration: BoxDecoration(
-          color: const Color(0xFF1A0B2E), // Very deep purple
+          color: const Color(0xFF0A1A1E), // Very deep teal
           borderRadius: BorderRadius.circular(28),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Color(0xFF0D1F40).withOpacity(0.3),
               spreadRadius: 1,
               blurRadius: 5,
               offset: const Offset(0, 2),

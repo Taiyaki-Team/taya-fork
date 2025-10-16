@@ -30,7 +30,7 @@ class _AboutSdCardSyncState extends State<AboutSdCardSync> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: const Color(0xFF1F1F25),
+                color: const Color(0xFFF5F5F5),
                 borderRadius: BorderRadius.circular(24),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),

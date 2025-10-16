@@ -57,7 +57,7 @@ List<TextSpan> highlightSearchMatches(String text, String searchQuery, {int curr
       text: text.substring(index, index + searchQuery.length),
       style: TextStyle(
         backgroundColor:
-            isCurrentResult ? Colors.orange.withValues(alpha: 0.9) : Colors.deepPurple.withValues(alpha: 0.6),
+            isCurrentResult ? Colors.orange.withValues(alpha: 0.9) : Color(0xFF4FAFBE).withValues(alpha: 0.6),
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
@@ -747,7 +747,7 @@ class GetGeolocationWidgets extends StatelessWidget {
                         height: 200,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
-                          color: Color(0xFF35343B),
+                          color: Color(0xFFE0E0E0),
                         ),
                         child: const Center(
                           child: Text(

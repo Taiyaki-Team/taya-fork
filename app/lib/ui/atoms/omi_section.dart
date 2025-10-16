@@ -37,7 +37,7 @@ class OmiSection extends AdaptiveWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: Color(0xFF0D1F40).withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 4),
           ),

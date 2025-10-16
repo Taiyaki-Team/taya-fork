@@ -155,7 +155,7 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        foregroundColor: Color(0xFF0D1F40),
         elevation: 0,
         title: Text(
           _isNewJournal
@@ -247,7 +247,7 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
                             child: Container(
                               padding: EdgeInsets.all(4),
                               decoration: BoxDecoration(
-                                color: Colors.black54,
+                                color: Color(0xFF0D1F40).withOpacity(0.54),
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(

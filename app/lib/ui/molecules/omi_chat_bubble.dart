@@ -36,7 +36,7 @@ class OmiChatBubble extends AdaptiveWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Color(0xFF0D1F40).withOpacity(0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

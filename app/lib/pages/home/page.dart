@@ -658,7 +658,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
                             //                   shape: BoxShape.circle,
                             //                   color: isRecording ? Colors.red : Colors.deepPurple,
                             //                   border: Border.all(
-                            //                     color: Colors.black,
+                            //                     color: Color(0xFF0D1F40),
                             //                     width: 5,
                             //                   ),
                             //                 ),

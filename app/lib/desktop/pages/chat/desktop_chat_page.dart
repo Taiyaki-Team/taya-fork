@@ -435,7 +435,7 @@ class DesktopChatPageState extends State<DesktopChatPage> with AutomaticKeepAliv
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.1),
+                color: Color(0xFF0D1F40).withValues(alpha: 0.1),
                 blurRadius: 20,
                 offset: const Offset(0, 10),
               ),
@@ -532,7 +532,7 @@ class DesktopChatPageState extends State<DesktopChatPage> with AutomaticKeepAliv
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: Color(0xFF0D1F40).withValues(alpha: 0.1),
             blurRadius: 30,
             offset: const Offset(0, 15),
           ),
@@ -896,7 +896,7 @@ class DesktopChatPageState extends State<DesktopChatPage> with AutomaticKeepAliv
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: Color(0xFF0D1F40).withValues(alpha: 0.1),
             blurRadius: 30,
             offset: const Offset(0, 10),
           ),
@@ -959,7 +959,7 @@ class DesktopChatPageState extends State<DesktopChatPage> with AutomaticKeepAliv
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Color(0xFF0D1F40).withOpacity(0.1),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -985,7 +985,7 @@ class DesktopChatPageState extends State<DesktopChatPage> with AutomaticKeepAliv
                       if (provider.isFileUploading(provider.selectedFiles[idx].path))
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.6),
+                            color: Color(0xFF0D1F40).withOpacity(0.6),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Center(

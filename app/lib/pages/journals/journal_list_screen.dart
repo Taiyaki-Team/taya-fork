@@ -11,7 +11,7 @@ class JournalListScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('My Journals'),
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        foregroundColor: Color(0xFF0D1F40),
         elevation: 0,
       ),
       body: Consumer<JournalProvider>(

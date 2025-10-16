@@ -127,7 +127,7 @@ class AppReviewService {
             width: double.infinity,
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: Color(0xFF0D1F40),
               borderRadius: BorderRadius.circular(24),
               border: Border.all(color: Colors.grey.shade800, width: 1),
             ),
@@ -184,7 +184,7 @@ class AppReviewService {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
+                        backgroundColor: Color(0xFF4FAFBE),
                         foregroundColor: Colors.white,
                         minimumSize: const Size(double.infinity, 48),
                         shape: RoundedRectangleBorder(

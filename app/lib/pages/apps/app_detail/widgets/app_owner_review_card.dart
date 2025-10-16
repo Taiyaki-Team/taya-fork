@@ -55,7 +55,7 @@ class _AppOwnerReviewCardState extends State<AppOwnerReviewCard> {
         padding: const EdgeInsets.all(16.0),
         margin: const EdgeInsets.only(left: 12.0, right: 12.0, top: 2, bottom: 6),
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Column(
@@ -74,7 +74,7 @@ class _AppOwnerReviewCardState extends State<AppOwnerReviewCard> {
                   itemSize: 20,
                   tapOnlyMode: false,
                   itemPadding: const EdgeInsets.symmetric(horizontal: 0),
-                  itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.deepPurple),
+                  itemBuilder: (context, _) => const Icon(Icons.star, color: Color(0xFF4FAFBE)),
                   maxRating: 5.0,
                   onRatingUpdate: (rating) {},
                 ),
@@ -209,7 +209,7 @@ class _AppOwnerReviewCardState extends State<AppOwnerReviewCard> {
                                           }
                                         },
                                         child: const Text('Submit Reply',
-                                            style: TextStyle(color: Colors.black, fontSize: 16)),
+                                            style: TextStyle(color: Color(0xFF0D1F40), fontSize: 16)),
                                       ),
                                     ),
                                   ],
@@ -267,7 +267,7 @@ class _AppOwnerReviewCardState extends State<AppOwnerReviewCard> {
                         },
                         child: Text(
                           widget.review.response.isNotEmpty ? 'Edit Your Reply' : 'Reply To Review',
-                          style: const TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Color(0xFF0D1F40)),
                         ),
                       ),
                     ],

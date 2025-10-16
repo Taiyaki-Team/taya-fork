@@ -124,7 +124,7 @@ class _MemoriesReviewPageState extends State<MemoriesReviewPage> with TickerProv
           approve ? 'Saved $count memories' : 'Discarded $count memories',
           style: const TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0xFF35343B),
+        backgroundColor: Color(0xFFE0E0E0),
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
@@ -174,7 +174,7 @@ class _MemoriesReviewPageState extends State<MemoriesReviewPage> with TickerProv
           approve ? 'Memory saved' : 'Memory discarded',
           style: const TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0xFF35343B),
+        backgroundColor: Color(0xFFE0E0E0),
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
@@ -335,7 +335,7 @@ class _MemoriesReviewPageState extends State<MemoriesReviewPage> with TickerProv
                               borderRadius: BorderRadius.circular(16),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.2),
+                                  color: Color(0xFF0D1F40).withOpacity(0.2),
                                   blurRadius: 8,
                                   offset: const Offset(0, 3),
                                 ),
@@ -358,7 +358,7 @@ class _MemoriesReviewPageState extends State<MemoriesReviewPage> with TickerProv
                               borderRadius: BorderRadius.circular(16),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
+                                  color: Color(0xFF0D1F40).withOpacity(0.25),
                                   blurRadius: 8,
                                   offset: const Offset(0, 3),
                                 ),
@@ -424,11 +424,11 @@ class _MemoriesReviewPageState extends State<MemoriesReviewPage> with TickerProv
                                     decoration: BoxDecoration(
                                       color: _isDragging
                                           ? (_cardOffset > 0 ? const Color(0xFF08A25C) : const Color(0xFFE0582F))
-                                          : Color(0xFF35343B),
+                                          : Color(0xFFE0E0E0),
                                       borderRadius: BorderRadius.circular(16),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
+                                          color: Color(0xFF0D1F40).withOpacity(0.3),
                                           blurRadius: 10,
                                           offset: const Offset(0, 4),
                                         ),
@@ -595,11 +595,11 @@ class _MemoriesReviewPageState extends State<MemoriesReviewPage> with TickerProv
                       margin: const EdgeInsets.only(bottom: 12),
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Color(0xFF35343B),
+                        color: Color(0xFFE0E0E0),
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Color(0xFF0D1F40).withOpacity(0.2),
                             blurRadius: 4,
                             offset: const Offset(0, 2),
                           ),

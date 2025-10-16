@@ -83,7 +83,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
 
   Color _getSpeakerBubbleColor(bool isUser, int speakerId) {
     if (isUser) {
-      return Color(0xFF8B5CF6).withOpacity(0.8);
+      return Color(0xFF4FAFBE).withOpacity(0.8);
     }
     // Use speakerId to get consistent color for each speaker
     final colorIndex = speakerId % _speakerColors.length;
@@ -92,7 +92,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
 
   Color _getSpeakerAvatarColor(bool isUser, int speakerId) {
     if (isUser) {
-      return Color(0xFF8B5CF6).withOpacity(0.3);
+      return Color(0xFF4FAFBE).withOpacity(0.3);
     }
     final colorIndex = speakerId % _speakerColors.length;
     return _speakerColors[colorIndex].withOpacity(0.3);
@@ -371,7 +371,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
         child: Container(
           key: matchKey,
           decoration: BoxDecoration(
-            color: isCurrentResult ? Colors.orange.withValues(alpha: 0.9) : Colors.deepPurple.withValues(alpha: 0.6),
+            color: isCurrentResult ? Colors.orange.withValues(alpha: 0.9) : Color(0xFF4FAFBE).withValues(alpha: 0.6),
             borderRadius: BorderRadius.circular(2),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 1),
@@ -567,7 +567,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.15),
+                                    color: Color(0xFF0D1F40).withOpacity(0.15),
                                     blurRadius: 4,
                                     offset: const Offset(0, 1),
                                   ),

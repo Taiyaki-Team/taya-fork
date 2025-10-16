@@ -174,12 +174,12 @@ class _DesktopAppDetailState extends State<DesktopAppDetail> with SingleTickerPr
           color: ResponsiveHelper.backgroundPrimary,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.4),
+              color: Color(0xFF0D1F40).withOpacity(0.4),
               blurRadius: 24,
               offset: const Offset(-6, 0),
             ),
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Color(0xFF0D1F40).withOpacity(0.2),
               blurRadius: 40,
               offset: const Offset(-12, 0),
             ),
@@ -225,7 +225,7 @@ class _DesktopAppDetailState extends State<DesktopAppDetail> with SingleTickerPr
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.2),
+                    color: Color(0xFF0D1F40).withValues(alpha: 0.2),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),

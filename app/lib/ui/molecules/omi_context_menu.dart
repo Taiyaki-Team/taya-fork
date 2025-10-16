@@ -40,7 +40,7 @@ class OmiContextMenu {
       ),
       color: ResponsiveHelper.backgroundSecondary,
       surfaceTintColor: Colors.transparent,
-      shadowColor: Colors.black.withOpacity(0.3),
+      shadowColor: Color(0xFF0D1F40).withOpacity(0.3),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(

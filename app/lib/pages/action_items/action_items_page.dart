@@ -128,7 +128,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
               HapticFeedback.mediumImpact();
               return provider.forceRefreshActionItems();
             },
-            color: Colors.deepPurpleAccent,
+            color: Color(0xFF3B9FB2),
             backgroundColor: Colors.white,
             child: CustomScrollView(
               controller: _scrollController,
@@ -310,7 +310,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
                       child: Container(
                         height: 52,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1F1F25),
+                          color: const Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Center(
@@ -351,7 +351,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
                         child: ElevatedButton(
                           onPressed: () => provider.loadMoreActionItems(),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepPurpleAccent,
+                            backgroundColor: Color(0xFF3B9FB2),
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                             shape: RoundedRectangleBorder(
@@ -517,7 +517,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
 
   PreferredSizeWidget _buildSelectionAppBar(ActionItemsProvider provider) {
     return AppBar(
-      backgroundColor: Colors.black.withValues(alpha: 0.05),
+      backgroundColor: Color(0xFF0D1F40).withValues(alpha: 0.05),
       elevation: 0,
       foregroundColor: Colors.white,
       leading: IconButton(
@@ -685,15 +685,15 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                const Color(0xFF8B5CF6).withOpacity(0.1),
-                const Color(0xFFA855F7).withOpacity(0.05),
+                const Color(0xFF4FAFBE).withOpacity(0.1),
+                const Color(0xFF46AFC1).withOpacity(0.05),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
             borderRadius: BorderRadius.circular(32),
             border: Border.all(
-              color: const Color(0xFF8B5CF6).withOpacity(0.2),
+              color: const Color(0xFF4FAFBE).withOpacity(0.2),
               width: 1,
             ),
           ),
@@ -703,7 +703,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
               Icon(
                 Icons.assignment_outlined,
                 size: 40,
-                color: const Color(0xFF8B5CF6).withOpacity(0.6),
+                color: const Color(0xFF4FAFBE).withOpacity(0.6),
               ),
               Positioned(
                 right: 24,
@@ -775,7 +775,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
                     width: 6,
                     height: 6,
                     decoration: const BoxDecoration(
-                      color: Color(0xFF8B5CF6),
+                      color: Color(0xFF4FAFBE),
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -799,7 +799,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
                     width: 6,
                     height: 6,
                     decoration: const BoxDecoration(
-                      color: Color(0xFF8B5CF6),
+                      color: Color(0xFF4FAFBE),
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -823,7 +823,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
                     width: 6,
                     height: 6,
                     decoration: const BoxDecoration(
-                      color: Color(0xFF8B5CF6),
+                      color: Color(0xFF4FAFBE),
                       shape: BoxShape.circle,
                     ),
                   ),

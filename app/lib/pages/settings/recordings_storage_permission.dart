@@ -45,7 +45,7 @@ class _RecordingsStoragePermissionState extends State<RecordingsStoragePermissio
       body: loading || _hasPermission == null
           ? const Center(
               child: CircularProgressIndicator(
-              color: Colors.white,
+              color: const Color(0xFF0D1F40),
             ))
           : SingleChildScrollView(
               child: Padding(
@@ -100,7 +100,7 @@ class _RecordingsStoragePermissionState extends State<RecordingsStoragePermissio
                         child: Text(
                           _hasPermission! ? "Already Authorized" : "Authorize",
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: const Color(0xFF0D1F40),
                             decoration: TextDecoration.underline,
                           ),
                         ),
@@ -112,7 +112,7 @@ class _RecordingsStoragePermissionState extends State<RecordingsStoragePermissio
                           onPressed: _revokeAuthorization,
                           child: const Text(
                             "Revoke Authorization",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: const Color(0xFF0D1F40)),
                           ),
                         ),
                       ),

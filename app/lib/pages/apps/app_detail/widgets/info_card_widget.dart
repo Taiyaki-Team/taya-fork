@@ -31,7 +31,7 @@ class InfoCardWidget extends StatelessWidget {
           bottom: 6,
         ),
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Column(
@@ -70,7 +70,7 @@ class InfoCardWidget extends StatelessWidget {
                           backgroundColor: Colors.transparent,
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Color(0xFF35343B),
+                              color: Color(0xFFE0E0E0),
                             ),
                           ),
                         ))
@@ -91,7 +91,7 @@ class InfoCardWidget extends StatelessWidget {
                           backgroundColor: Colors.transparent,
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Color(0xFF35343B),
+                              color: Color(0xFFE0E0E0),
                             ),
                           ),
                         ))

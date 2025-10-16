@@ -100,10 +100,10 @@ Future<void> _selectDate(BuildContext context) async {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1F1F25),
+                  color: const Color(0xFFF5F5F5),
                   border: Border(
                     bottom: BorderSide(
-                      color: Color(0xFF35343B),
+                      color: Color(0xFFE0E0E0),
                       width: 0.5,
                     ),
                   ),
@@ -135,7 +135,7 @@ Future<void> _selectDate(BuildContext context) async {
                       child: const Text(
                         'Done',
                         style: TextStyle(
-                          color: Colors.deepPurple,
+                          color: Color(0xFF4FAFBE),
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -147,7 +147,7 @@ Future<void> _selectDate(BuildContext context) async {
               // Date picker
               Expanded(
                 child: Container(
-                  color: const Color(0xFF1F1F25),
+                  color: const Color(0xFFF5F5F5),
                   child: CupertinoDatePicker(
                     mode: CupertinoDatePickerMode.date,
                     initialDateTime: DateTime.now(),

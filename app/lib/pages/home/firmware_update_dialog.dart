@@ -70,7 +70,7 @@ class _FirmwareUpdateDialogState extends State<FirmwareUpdateDialog> {
           maxHeight: 500,
         ),
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Padding(
@@ -105,7 +105,7 @@ class _FirmwareUpdateDialogState extends State<FirmwareUpdateDialog> {
                         fillColor: MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
                             if (states.contains(MaterialState.selected)) {
-                              return Colors.deepPurple;
+                              return Color(0xFF4FAFBE);
                             }
                             return Colors.grey.shade700;
                           },
@@ -158,7 +158,7 @@ class _FirmwareUpdateDialogState extends State<FirmwareUpdateDialog> {
                     : null,
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: isConfirmed ? Colors.deepPurple : Color(0xFF35343B),
+                  backgroundColor: isConfirmed ? Color(0xFF4FAFBE) : Color(0xFFE0E0E0),
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),

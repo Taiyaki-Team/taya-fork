@@ -220,7 +220,7 @@ class _VoiceRecorderWidgetState extends State<VoiceRecorderWidget> with SingleTi
       case RecordingState.recording:
         return Container(
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: Color(0xFF0D1F40),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
@@ -252,7 +252,7 @@ class _VoiceRecorderWidgetState extends State<VoiceRecorderWidget> with SingleTi
                   ),
                   child: const Icon(
                     Icons.check,
-                    color: Colors.black,
+                    color: Color(0xFF0D1F40),
                     size: 20.0,
                   ),
                 ),
@@ -265,14 +265,14 @@ class _VoiceRecorderWidgetState extends State<VoiceRecorderWidget> with SingleTi
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: Color(0xFF0D1F40),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Shimmer.fromColors(
-                baseColor: Color(0xFF35343B),
+                baseColor: Color(0xFFE0E0E0),
                 highlightColor: Colors.white,
                 child: const Text(
                   'Transcribing...',
@@ -293,7 +293,7 @@ class _VoiceRecorderWidgetState extends State<VoiceRecorderWidget> with SingleTi
               width: double.infinity,
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: Color(0xFF0D1F40),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Text(
@@ -322,7 +322,7 @@ class _VoiceRecorderWidgetState extends State<VoiceRecorderWidget> with SingleTi
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: Color(0xFF0D1F40),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
@@ -356,7 +356,7 @@ class _VoiceRecorderWidgetState extends State<VoiceRecorderWidget> with SingleTi
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
-                          color: Colors.black,
+                          color: Color(0xFF0D1F40),
                           Icons.refresh,
                           size: 20.0,
                         ),

@@ -60,7 +60,7 @@ class _CustomBackendURLFormState extends State<CustomBackendURLForm> {
         decoration: const BoxDecoration(
           // Add gradient background
           gradient: LinearGradient(
-            colors: [Color(0xFF6A11CB), Color(0xFF2575FC)],
+            colors: [Color(0xFF3B9FB2), Color(0xFF4FAFBE)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

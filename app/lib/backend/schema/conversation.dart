@@ -235,13 +235,13 @@ class ServerConversation {
   }
 
   Color getTagTextColor() {
-    if (source == ConversationSource.screenpipe) return Colors.deepPurple;
+    if (source == ConversationSource.screenpipe) return Color(0xFF4FAFBE);
     return Colors.white;
   }
 
   Color getTagColor() {
     if (source == ConversationSource.screenpipe) return Colors.white;
-    return const Color(0xFF35343B);
+    return const Color(0xFFE0E0E0);
   }
 
   VoidCallback? onTagPressed(BuildContext context) {

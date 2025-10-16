@@ -38,22 +38,22 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
               const SizedBox(height: 8),
               CupertinoTextField(
                 controller: nameController,
-                placeholderStyle: const TextStyle(color: Colors.white54),
-                style: const TextStyle(color: Colors.white),
+                placeholderStyle: TextStyle(color: Color(0xFF0D1F40).withOpacity(0.54)),
+                style: const TextStyle(color: Color(0xFF0D1F40)),
               ),
             ],
           ),
         ),
         actions: <Widget>[
           CupertinoDialogAction(
-            textStyle: const TextStyle(color: Colors.white),
+            textStyle: const TextStyle(color: const Color(0xFF0D1F40)),
             onPressed: () {
               Navigator.of(context).pop();
             },
             child: const Text('Cancel'),
           ),
           CupertinoDialogAction(
-            textStyle: const TextStyle(color: Colors.white),
+            textStyle: const TextStyle(color: const Color(0xFF0D1F40)),
             onPressed: () {
               if (nameController.text.isEmpty || nameController.text.trim().isEmpty) {
                 AppSnackbar.showSnackbarError('Name cannot be empty');
@@ -79,7 +79,7 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
               const SizedBox(height: 8),
               TextField(
                 controller: nameController,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: const Color(0xFF0D1F40)),
               ),
             ],
           ),
@@ -91,7 +91,7 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
             },
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: const Color(0xFF0D1F40)),
             ),
           ),
           TextButton(
@@ -107,7 +107,7 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
             },
             child: const Text(
               'Save',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: const Color(0xFF0D1F40)),
             ),
           ),
         ],

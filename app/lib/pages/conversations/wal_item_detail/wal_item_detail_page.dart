@@ -291,7 +291,7 @@ class _WalItemDetailPageState extends State<WalItemDetailPage> {
   void _showOptionsMenu(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: const Color(0xFF1F1F25),
+      backgroundColor: const Color(0xFFF5F5F5),
       builder: (context) => Container(
         padding: const EdgeInsets.all(24),
         child: Column(

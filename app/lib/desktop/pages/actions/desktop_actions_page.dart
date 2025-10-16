@@ -436,7 +436,7 @@ class DesktopActionsPageState extends State<DesktopActionsPage>
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Color(0xFF0D1F40).withOpacity(0.1),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -507,7 +507,7 @@ class DesktopActionsPageState extends State<DesktopActionsPage>
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Color(0xFF0D1F40).withOpacity(0.1),
             blurRadius: 30,
             offset: const Offset(0, 15),
           ),
@@ -600,7 +600,7 @@ class DesktopActionsPageState extends State<DesktopActionsPage>
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Color(0xFF0D1F40).withOpacity(0.1),
               blurRadius: 30,
               offset: const Offset(0, 15),
             ),

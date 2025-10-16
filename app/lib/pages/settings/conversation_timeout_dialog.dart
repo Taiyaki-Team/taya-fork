@@ -27,7 +27,7 @@ class ConversationTimeoutDialog {
               title: const Text(
                 'Conversation Timeout',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: const Color(0xFF0D1F40),
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
@@ -41,7 +41,7 @@ class ConversationTimeoutDialog {
                     const Text(
                       'Choose how long to wait in silence before automatically ending a conversation:',
                       style: TextStyle(
-                        color: Color(0xFF8E8E93),
+                        color: Color(0xFF4A5568),
                         fontSize: 14,
                       ),
                     ),
@@ -87,7 +87,7 @@ class ConversationTimeoutDialog {
                                         Text(
                                           option['description'] as String,
                                           style: TextStyle(
-                                            color: isSelected ? const Color(0xFFAEAEB2) : const Color(0xFF8E8E93),
+                                            color: isSelected ? const Color(0xFFAEAEB2) : const Color(0xFF4A5568),
                                             fontSize: 12,
                                           ),
                                         ),
@@ -97,7 +97,7 @@ class ConversationTimeoutDialog {
                                   if (isSelected)
                                     const Icon(
                                       Icons.check_circle,
-                                      color: Colors.white,
+                                      color: const Color(0xFF0D1F40),
                                       size: 20,
                                     ),
                                 ],
@@ -117,7 +117,7 @@ class ConversationTimeoutDialog {
                   },
                   child: const Text(
                     'Cancel',
-                    style: TextStyle(color: Color(0xFF8E8E93)),
+                    style: TextStyle(color: Color(0xFF4A5568)),
                   ),
                 ),
                 TextButton(
@@ -137,7 +137,7 @@ class ConversationTimeoutDialog {
                   },
                   child: const Text(
                     'Save',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                    style: TextStyle(color: const Color(0xFF0D1F40), fontWeight: FontWeight.w600),
                   ),
                 ),
               ],

@@ -125,7 +125,7 @@ class SectionAppItemCard extends StatelessWidget {
                   width: 50,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Color(0xFF35343B),
+                    color: Color(0xFFE0E0E0),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: const Icon(Icons.error_outline, color: Colors.white54, size: 24),
@@ -159,7 +159,7 @@ class SectionAppItemCard extends StatelessWidget {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.star, color: Colors.deepPurple.shade300, size: 14),
+                            Icon(Icons.star, color: Color(0xFF4FAFBE).shade300, size: 14),
                             const SizedBox(width: 3),
                             Text(
                               app.getRatingAvg()!,

@@ -124,7 +124,7 @@ class _DeviceSelectionPageState extends State<DeviceSelectionPage> with SingleTi
                         const Text(
                           'Taya – Your AI Companion',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Color(0xFF0D1F40),
                             fontSize: 34,
                             fontWeight: FontWeight.bold,
                             height: 1.2,
@@ -136,7 +136,7 @@ class _DeviceSelectionPageState extends State<DeviceSelectionPage> with SingleTi
                         Text(
                           'Capture every moment. Get AI-powered\nsummaries. Never take notes again.',
                           style: TextStyle(
-                            color: Colors.black.withOpacity(0.7),
+                            color: Color(0xFF0D1F40).withOpacity(0.7),
                             fontSize: 16,
                             height: 1.4,
                             fontFamily: 'Manrope',
@@ -158,7 +158,7 @@ class _DeviceSelectionPageState extends State<DeviceSelectionPage> with SingleTi
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
+                              backgroundColor: Color(0xFF0D1F40),
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(28),

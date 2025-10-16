@@ -57,7 +57,7 @@ class _DesktopMemoryDialogState extends State<DesktopMemoryDialog> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Color(0xFF0D1F40).withOpacity(0.2),
               blurRadius: 30,
               offset: const Offset(0, 15),
             ),

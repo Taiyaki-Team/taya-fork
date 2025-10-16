@@ -18,7 +18,7 @@ class MemoriesReviewSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF1F1F25),
+        color: const Color(0xFFF5F5F5),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
@@ -107,7 +107,7 @@ class MemoriesReviewSheet extends StatelessWidget {
                         child: const Text(
                           'Accept All',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Color(0xFF0D1F40),
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                           ),

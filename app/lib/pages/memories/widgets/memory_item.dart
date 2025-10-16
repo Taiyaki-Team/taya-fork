@@ -41,7 +41,7 @@ class MemoryItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.1),
+              color: Color(0xFF0D1F40).withValues(alpha: 0.1),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
@@ -82,7 +82,7 @@ class MemoryItem extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Colors.black.withValues(alpha: 0.01),
+                          color: Color(0xFF0D1F40).withValues(alpha: 0.01),
                           borderRadius: const BorderRadius.all(Radius.circular(8)),
                         ),
                         child: const Text(

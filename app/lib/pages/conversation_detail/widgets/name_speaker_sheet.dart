@@ -439,7 +439,7 @@ class _NameSpeakerBottomSheetState extends State<NameSpeakerBottomSheet> {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
+          foregroundColor: Color(0xFF0D1F40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

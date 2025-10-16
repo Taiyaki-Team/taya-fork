@@ -237,7 +237,7 @@ class _ConversationListItemState extends State<ConversationListItem> {
           child: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha: 0.01),
+              color: Color(0xFF0D1F40).withValues(alpha: 0.01),
               borderRadius: const BorderRadius.all(Radius.circular(8)),
             ),
             child: const Text(
@@ -349,7 +349,7 @@ class _ConversationListItemState extends State<ConversationListItem> {
                       //     child: Container(
                       //       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                       //       decoration: BoxDecoration(
-                      //         color: const Color(0xFF35343B),
+                      //         color: const Color(0xFFE0E0E0),
                       //         borderRadius: BorderRadius.circular(4),
                       //       ),
                       //       child: Text(

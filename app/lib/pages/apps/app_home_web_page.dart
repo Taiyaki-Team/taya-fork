@@ -82,7 +82,7 @@ class _AppHomeWebPageState extends State<AppHomeWebPage> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF0D1F40),
       body: SlideTransition(
           position: _slideAnimation,
           child: SafeArea(
@@ -101,7 +101,7 @@ class _AppHomeWebPageState extends State<AppHomeWebPage> with SingleTickerProvid
                 ),
                 if (_isLoading)
                   Container(
-                    color: Colors.black,
+                    color: Color(0xFF0D1F40),
                     child: const Center(
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
@@ -123,7 +123,7 @@ class _AppHomeWebPageState extends State<AppHomeWebPage> with SingleTickerProvid
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.7),
+                        color: Color(0xFF0D1F40).withOpacity(0.7),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,

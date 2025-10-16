@@ -212,7 +212,7 @@ class _ConversationCapturingPageState extends State<ConversationCapturingPage> w
                                   showModalBottomSheet(
                                       context: context,
                                       isScrollControlled: true,
-                                      backgroundColor: Colors.black,
+                                      backgroundColor: Color(0xFF0D1F40),
                                       shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                                       ),
@@ -263,7 +263,7 @@ class _ConversationCapturingPageState extends State<ConversationCapturingPage> w
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.25),
+                          color: Color(0xFF0D1F40).withOpacity(0.25),
                           spreadRadius: 2,
                           blurRadius: 8,
                           offset: const Offset(0, 4),

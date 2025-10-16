@@ -22,7 +22,7 @@ class PromptTextField extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
           margin: const EdgeInsets.only(left: 2.0, right: 2.0, top: 10, bottom: 6),
           decoration: BoxDecoration(
-            color: Color(0xFF35343B),
+            color: Color(0xFFE0E0E0),
             borderRadius: BorderRadius.circular(10.0),
           ),
           width: double.infinity,

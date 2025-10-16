@@ -42,7 +42,7 @@ class _PhotoViewerPageState extends State<PhotoViewerPage> {
     final isProcessing = currentPhoto.description == null;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF0D1F40),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -68,7 +68,7 @@ class _PhotoViewerPageState extends State<PhotoViewerPage> {
                 },
                 scrollPhysics: const BouncingScrollPhysics(),
                 backgroundDecoration: const BoxDecoration(
-                  color: Colors.black,
+                  color: Color(0xFF0D1F40),
                 ),
               ),
             ),

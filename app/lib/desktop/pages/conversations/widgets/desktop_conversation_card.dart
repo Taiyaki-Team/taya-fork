@@ -179,7 +179,7 @@ class _DesktopConversationCardState extends State<DesktopConversationCard> with 
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.08 + (_elevationAnimation.value * 0.12)),
+                            color: Color(0xFF0D1F40).withValues(alpha: 0.08 + (_elevationAnimation.value * 0.12)),
                             blurRadius: 12 + (_elevationAnimation.value * 8),
                             offset: Offset(0, 4 + (_elevationAnimation.value * 4)),
                             spreadRadius: _elevationAnimation.value * 2,

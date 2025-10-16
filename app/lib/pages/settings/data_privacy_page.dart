@@ -38,7 +38,7 @@ class _DataPrivacyPageState extends State<DataPrivacyPage> {
           const SizedBox(height: 16),
           const Text(
             'Your Privacy, Your Control',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: const Color(0xFF0D1F40)),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
@@ -56,9 +56,9 @@ class _DataPrivacyPageState extends State<DataPrivacyPage> {
                   TextSpan(
                     text: 'Learn more...',
                     style: TextStyle(
-                      color: Colors.deepPurple.shade300,
+                      color: Color(0xFF6BC4CF),
                       decoration: TextDecoration.underline,
-                      decorationColor: Colors.deepPurple.shade300,
+                      decorationColor: Color(0xFF6BC4CF),
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () async {
@@ -143,7 +143,7 @@ class _DataPrivacyPageState extends State<DataPrivacyPage> {
                   const SizedBox(height: 32),
                   const Text(
                     'Data Protection Level',
-                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -165,7 +165,7 @@ class _DataPrivacyPageState extends State<DataPrivacyPage> {
                         children: [
                           const Text(
                             'App Access',
-                            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
                           Text(
@@ -203,7 +203,7 @@ class _DataPrivacyPageState extends State<DataPrivacyPage> {
                                   margin: const EdgeInsets.only(bottom: 10),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
-                                    side: BorderSide(color: Color(0xFF35343B), width: 1),
+                                    side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
                                   ),
                                   elevation: 0,
                                   clipBehavior: Clip.antiAlias,
@@ -234,7 +234,7 @@ class _DataPrivacyPageState extends State<DataPrivacyPage> {
               ),
               if (isLoading && !isMigrating)
                 Container(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Color(0xFF0D1F40).withOpacity(0.5),
                   child: const Center(
                     child: CircularProgressIndicator(),
                   ),

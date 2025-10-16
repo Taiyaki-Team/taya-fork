@@ -20,7 +20,7 @@ class OmiEditDialog {
 
     return showDialog<String>(
       context: context,
-      barrierColor: Colors.black.withValues(alpha: 0.7),
+      barrierColor: Color(0xFF0D1F40).withValues(alpha: 0.7),
       builder: (ctx) => Dialog(
         backgroundColor: Colors.transparent,
         child: Container(
@@ -35,7 +35,7 @@ class OmiEditDialog {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
+                color: Color(0xFF0D1F40).withOpacity(0.3),
                 blurRadius: 24,
                 offset: const Offset(0, 12),
               ),

@@ -237,7 +237,7 @@ class _ActionItemFormSheetState extends State<ActionItemFormSheet> {
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
         decoration: const BoxDecoration(
-          color: Color(0xFF1F1F25),
+          color: Color(0xFFF5F5F5),
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
@@ -256,7 +256,7 @@ class _ActionItemFormSheetState extends State<ActionItemFormSheet> {
                       width: 24,
                       child: Checkbox(
                         value: _isCompleted,
-                        activeColor: Colors.deepPurpleAccent,
+                        activeColor: Color(0xFF3B9FB2),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
@@ -296,7 +296,7 @@ class _ActionItemFormSheetState extends State<ActionItemFormSheet> {
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          backgroundColor: const Color(0xFF1F1F25),
+                          backgroundColor: const Color(0xFFF5F5F5),
                           title: const Text(
                             'Delete Action Item',
                             style: TextStyle(color: Colors.white),
@@ -492,7 +492,7 @@ class _DateTimePickerSheetState extends State<DateTimePickerSheet> {
       child: Container(
         height: MediaQuery.of(context).size.height * 0.65,
         decoration: const BoxDecoration(
-          color: Color(0xFF1F1F25),
+          color: Color(0xFFF5F5F5),
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
         child: Column(
@@ -590,7 +590,7 @@ class _DateTimePickerSheetState extends State<DateTimePickerSheet> {
                     child: const Text(
                       'Done',
                       style: TextStyle(
-                        color: Colors.deepPurpleAccent,
+                        color: Color(0xFF3B9FB2),
                         fontSize: 17,
                         fontWeight: FontWeight.w600,
                       ),
@@ -607,10 +607,10 @@ class _DateTimePickerSheetState extends State<DateTimePickerSheet> {
               margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               decoration: BoxDecoration(
-                color: Colors.deepPurpleAccent.withOpacity(0.1),
+                color: Color(0xFF3B9FB2).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: Colors.deepPurpleAccent.withOpacity(0.3),
+                  color: Color(0xFF3B9FB2).withOpacity(0.3),
                   width: 1,
                 ),
               ),
@@ -618,7 +618,7 @@ class _DateTimePickerSheetState extends State<DateTimePickerSheet> {
                 children: [
                   const Icon(
                     Icons.calendar_today_outlined,
-                    color: Colors.deepPurpleAccent,
+                    color: Color(0xFF3B9FB2),
                     size: 20,
                   ),
                   const SizedBox(width: 12),
@@ -634,7 +634,7 @@ class _DateTimePickerSheetState extends State<DateTimePickerSheet> {
                   ),
                   const Icon(
                     Icons.access_time,
-                    color: Colors.deepPurpleAccent,
+                    color: Color(0xFF3B9FB2),
                     size: 20,
                   ),
                   const SizedBox(width: 8),
@@ -643,7 +643,7 @@ class _DateTimePickerSheetState extends State<DateTimePickerSheet> {
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Colors.deepPurpleAccent,
+                      color: Color(0xFF3B9FB2),
                     ),
                   ),
                 ],
@@ -658,7 +658,7 @@ class _DateTimePickerSheetState extends State<DateTimePickerSheet> {
                 data: ThemeData.dark().copyWith(
                   cupertinoOverrideTheme: const CupertinoThemeData(
                     brightness: Brightness.dark,
-                    primaryColor: Colors.deepPurpleAccent,
+                    primaryColor: Color(0xFF3B9FB2),
                     textTheme: CupertinoTextThemeData(
                       dateTimePickerTextStyle: TextStyle(
                         color: Colors.white,
@@ -673,7 +673,7 @@ class _DateTimePickerSheetState extends State<DateTimePickerSheet> {
                   minimumDate: widget.minimumDate ?? DateTime.now(),
                   maximumDate: DateTime.now().add(const Duration(days: 365 * 5)),
                   use24hFormat: false,
-                  backgroundColor: const Color(0xFF1F1F25),
+                  backgroundColor: const Color(0xFFF5F5F5),
                   onDateTimeChanged: (DateTime newDateTime) {
                     setState(() {
                       _selectedDateTime = newDateTime;

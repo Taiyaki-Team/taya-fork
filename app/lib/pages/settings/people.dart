@@ -56,8 +56,8 @@ class _UserPeoplePageState extends State<_UserPeoplePage> {
                   placeholder: 'Name',
                   keyboardType: TextInputType.name,
                   textCapitalization: TextCapitalization.words,
-                  placeholderStyle: const TextStyle(color: Colors.white),
-                  style: const TextStyle(color: Colors.white),
+                  placeholderStyle: const TextStyle(color: const Color(0xFF0D1F40)),
+                  style: const TextStyle(color: const Color(0xFF0D1F40)),
                   validator: _nameValidator,
                 ),
               ),
@@ -71,7 +71,7 @@ class _UserPeoplePageState extends State<_UserPeoplePage> {
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                 labelText: 'Name',
-                labelStyle: const TextStyle(color: Colors.white),
+                labelStyle: const TextStyle(color: const Color(0xFF0D1F40)),
                 focusColor: Colors.white,
                 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300)),
               ),
@@ -113,11 +113,11 @@ class _UserPeoplePageState extends State<_UserPeoplePage> {
         ? [
             CupertinoDialogAction(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel', style: TextStyle(color: Colors.white)),
+              child: const Text('Cancel', style: TextStyle(color: const Color(0xFF0D1F40))),
             ),
             CupertinoDialogAction(
               onPressed: onPressed,
-              child: Text(person == null ? 'Add' : 'Update', style: const TextStyle(color: Colors.white)),
+              child: Text(person == null ? 'Add' : 'Update', style: const TextStyle(color: const Color(0xFF0D1F40))),
             ),
           ]
         : [
@@ -127,7 +127,7 @@ class _UserPeoplePageState extends State<_UserPeoplePage> {
             ),
             TextButton(
               onPressed: onPressed,
-              child: Text(person == null ? 'Add' : 'Update', style: const TextStyle(color: Colors.white)),
+              child: Text(person == null ? 'Add' : 'Update', style: const TextStyle(color: const Color(0xFF0D1F40))),
             ),
           ];
   }
@@ -249,7 +249,7 @@ class _UserPeoplePageState extends State<_UserPeoplePage> {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 32),
                             child: Text('Create a new person and train Taya to recognize their speech too!',
-                                style: TextStyle(color: Colors.white, fontSize: 24), textAlign: TextAlign.center),
+                                style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 24), textAlign: TextAlign.center),
                           ),
                           SizedBox(height: 64),
                         ],

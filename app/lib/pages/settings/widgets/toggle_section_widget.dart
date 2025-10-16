@@ -38,7 +38,7 @@ class _ToggleSectionWidgetState extends State<ToggleSectionWidget> {
         ListTile(
           title: Text(
             widget.sectionTitle,
-            style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+            style: TextStyle(color: const Color(0xFF0D1F40), fontSize: 16, fontWeight: FontWeight.w500),
           ),
           contentPadding: EdgeInsets.zero,
           subtitle: Text(widget.sectionDescription),

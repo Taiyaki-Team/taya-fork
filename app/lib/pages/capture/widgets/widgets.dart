@@ -49,7 +49,7 @@ class SpeechProfileCardWidget extends StatelessWidget {
                       },
                       child: Container(
                         decoration: const BoxDecoration(
-                          color: Color(0xFF1F1F25),
+                          color: Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.all(Radius.circular(12)),
                         ),
                         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -105,7 +105,7 @@ class UpdateFirmwareCardWidget extends StatelessWidget {
                     },
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: Color(0xFF1F1F25),
+                        color: Color(0xFFF5F5F5),
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                       margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),

@@ -497,7 +497,7 @@ class _AppDetailPageState extends State<AppDetailPage> {
                                   itemSize: 20,
                                   tapOnlyMode: false,
                                   itemPadding: const EdgeInsets.symmetric(horizontal: 0),
-                                  itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.deepPurple),
+                                  itemBuilder: (context, _) => const Icon(Icons.star, color: Color(0xFF4FAFBE)),
                                   maxRating: 5.0,
                                   onRatingUpdate: (rating) {},
                                 ),
@@ -565,7 +565,7 @@ class _AppDetailPageState extends State<AppDetailPage> {
                           text: '',
                           width: MediaQuery.of(context).size.width * 0.9,
                           onPressed: () async {},
-                          color: const Color(0xFF35343B),
+                          color: const Color(0xFFE0E0E0),
                         ),
                       ),
                     )
@@ -923,7 +923,7 @@ class _AppDetailPageState extends State<AppDetailPage> {
                                 right: index == app.thumbnailUrls.length - 1 ? 16 : 8,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.black,
+                                color: Color(0xFF0D1F40),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -1013,7 +1013,7 @@ class _AppDetailPageState extends State<AppDetailPage> {
                     bottom: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1F1F25),
+                    color: const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                   child: Column(
@@ -1051,7 +1051,7 @@ class _AppDetailPageState extends State<AppDetailPage> {
                                   itemSize: 20,
                                   tapOnlyMode: false,
                                   itemPadding: const EdgeInsets.symmetric(horizontal: 0),
-                                  itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.deepPurple),
+                                  itemBuilder: (context, _) => const Icon(Icons.star, color: Color(0xFF4FAFBE)),
                                   maxRating: 5.0,
                                   onRatingUpdate: (rating) {},
                                 ),
@@ -1201,7 +1201,7 @@ class RecentReviewsSection extends StatelessWidget {
                           itemSize: 20,
                           tapOnlyMode: false,
                           itemPadding: const EdgeInsets.symmetric(horizontal: 0),
-                          itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.deepPurple),
+                          itemBuilder: (context, _) => const Icon(Icons.star, color: Color(0xFF4FAFBE)),
                           maxRating: 5.0,
                           onRatingUpdate: (rating) {},
                         ),

@@ -99,7 +99,7 @@ class ManageCreatePage extends StatelessWidget {
                             padding: const EdgeInsets.all(12.0),
                             margin: const EdgeInsets.only(left: 12.0, right: 12.0, top: 2, bottom: 24),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF1F1F25),
+                              color: const Color(0xFFF5F5F5),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: const ListTile(

@@ -30,10 +30,10 @@ class _PaymentsPageState extends State<PaymentsPage> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF1F1F25),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: Color(0xFF35343B),
+          color: Color(0xFFE0E0E0),
           width: 1,
         ),
       ),
@@ -63,7 +63,7 @@ class _PaymentsPageState extends State<PaymentsPage> {
   Widget build(BuildContext context) {
     return Consumer<PaymentMethodProvider>(builder: (context, provider, child) {
       return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0D1F40),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: const Text('Payments', style: TextStyle(color: Colors.white)),

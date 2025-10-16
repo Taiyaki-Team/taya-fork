@@ -739,7 +739,7 @@ class _DesktopDeveloperSettingsPageState extends State<DesktopDeveloperSettingsP
                 ),
                 if (provider.savingSettingsLoading)
                   Container(
-                    color: Colors.black54,
+                    color: Color(0xFF0D1F40).withOpacity(0.54),
                     child: Center(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,

@@ -41,46 +41,69 @@ class _SearchPageState extends State<SearchPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: const Color.fromRGBO(255, 249, 230, 1),
+        color: const Color.fromRGBO(255, 255, 255, 1),
         child: Column(
           children: [
             SafeArea(
-                child: Container(
-              height: 50,
-              width: double.infinity,
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.white),
-              child: TextField(
-                controller: _searchController,
-                focusNode: context.read<HomeProvider>().convoSearchFieldFocusNode,
-                onChanged: (value) {
-                  var provider = Provider.of<ConversationProvider>(context, listen: false);
-                  _debouncer.run(() async {
-                    await provider.searchConversations(value);
-                  });
-                  setShowClearButton();
-                },
-                decoration: InputDecoration(
-                  // hintText: 'Search Conversations',
-                  // hintStyle: const TextStyle(color: Colors.white60, fontSize: 14),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(30),
+                child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                children: [
+                  // Back button with teal theme
+                  Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: TayaColors.primaryColor,
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: TayaColors.secondaryTextColor,
-                  ),
+                  // Search field
+                  Expanded(
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white,
+                      ),
+                      child: TextField(
+                        controller: _searchController,
+                        focusNode: context.read<HomeProvider>().convoSearchFieldFocusNode,
+                        onChanged: (value) {
+                          var provider = Provider.of<ConversationProvider>(context, listen: false);
+                          _debouncer.run(() async {
+                            await provider.searchConversations(value);
+                          });
+                          setShowClearButton();
+                        },
+                        decoration: InputDecoration(
+                          // hintText: 'Search Conversations',
+                          // hintStyle: const TextStyle(color: Colors.white60, fontSize: 14),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: TayaColors.secondaryTextColor,
+                          ),
                   suffixIcon: showClearButton
                       ? Container(
                           margin: const EdgeInsets.all(8),
@@ -103,9 +126,13 @@ class _SearchPageState extends State<SearchPage> {
                           // ),
                         )
                       : null,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                ),
-                style: TextStyle(color: TayaColors.secondaryTextColor),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+                        ),
+                        style: TextStyle(color: TayaColors.secondaryTextColor),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             )),
             Expanded(child: Consumer<ConversationProvider>(builder: (context, convoProvider, child) {
@@ -187,8 +214,21 @@ class _SearchPageState extends State<SearchPage> {
                                   margin: const EdgeInsets.symmetric(horizontal: 15),
                                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                                   width: double.infinity,
-                                  decoration:
-                                      BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Colors.white,
+                                    border: Border.all(
+                                      color: TayaColors.primaryColor,
+                                      width: 1.5,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: TayaColors.primaryColor.withOpacity(0.1),
+                                        blurRadius: 8,
+                                        offset: const Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
                                   child: Column(
                                     children: [
                                       Row(

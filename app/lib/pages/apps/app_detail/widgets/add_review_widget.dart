@@ -81,7 +81,7 @@ class _AddReviewWidgetState extends State<AddReviewWidget> {
         bottom: 6,
       ),
       decoration: BoxDecoration(
-        color: const Color(0xFF1F1F25),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Column(
@@ -120,7 +120,7 @@ class _AddReviewWidgetState extends State<AddReviewWidget> {
                   return dynamicPadding.clamp(8.0, 24.0); // Clamp between reasonable values
                 }(),
               ),
-              itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.deepPurple),
+              itemBuilder: (context, _) => const Icon(Icons.star, color: Color(0xFF4FAFBE)),
               maxRating: 5.0,
               onRatingUpdate: (rating) {
                 if (isLoading) return;
@@ -191,9 +191,9 @@ class _AddReviewWidgetState extends State<AddReviewWidget> {
                           ),
                           showButton
                               ? AnimatedLoadingButton(
-                                  loaderColor: Colors.black,
+                                  loaderColor: Color(0xFF0D1F40),
                                   text: widget.app.userReview != null ? 'Update Review' : 'Submit Review',
-                                  textStyle: const TextStyle(color: Colors.black, fontSize: 16),
+                                  textStyle: const TextStyle(color: Color(0xFF0D1F40), fontSize: 16),
                                   onPressed: () async {
                                     FocusScope.of(context).unfocus();
                                     if (rating == widget.app.userReview?.score &&

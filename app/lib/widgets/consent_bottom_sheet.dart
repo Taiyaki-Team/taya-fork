@@ -18,7 +18,7 @@ class ConsentBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Color(0xFF1C1C1E),
+        color: Color(0xFFF5F5F5),
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
@@ -30,7 +30,7 @@ class ConsentBottomSheet extends StatelessWidget {
             width: 36,
             height: 4,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.3),
+              color: const Color(0xFF4A5568).withOpacity(0.3),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -44,7 +44,7 @@ class ConsentBottomSheet extends StatelessWidget {
                 const Text(
                   'Data & Privacy',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color(0xFF0D1F40),
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -63,7 +63,7 @@ class ConsentBottomSheet extends StatelessWidget {
                       ),
                       child: Icon(
                         authMethod == 'apple' ? FontAwesomeIcons.apple : FontAwesomeIcons.google,
-                        color: authMethod == 'apple' ? Colors.black : Colors.white,
+                        color: authMethod == 'apple' ? Color(0xFF0D1F40) : Colors.white,
                         size: 18,
                       ),
                     ),
@@ -71,7 +71,7 @@ class ConsentBottomSheet extends StatelessWidget {
                     Text(
                       'Sign in with ${authMethod == 'apple' ? 'Apple' : 'Google'}',
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: Color(0xFF0D1F40),
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -85,7 +85,7 @@ class ConsentBottomSheet extends StatelessWidget {
                 const Text(
                   'By continuing, all data you share with this app (including your conversations, recordings, and personal information) will be securely stored on our servers to provide you with AI-powered insights and enable all app features.',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color(0xFF0D1F40),
                     fontSize: 16,
                     height: 1.4,
                   ),
@@ -97,7 +97,7 @@ class ConsentBottomSheet extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                     style: const TextStyle(
-                      color: Colors.white70,
+                      color: Color(0xFF4A5568),
                       fontSize: 14,
                       height: 1.4,
                     ),
@@ -106,7 +106,7 @@ class ConsentBottomSheet extends StatelessWidget {
                       TextSpan(
                         text: 'Privacy Policy',
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: Color(0xFF4FAFBE),
                           decoration: TextDecoration.underline,
                         ),
                         recognizer: TapGestureRecognizer()
@@ -118,7 +118,7 @@ class ConsentBottomSheet extends StatelessWidget {
                       TextSpan(
                         text: 'Terms of Service',
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: Color(0xFF4FAFBE),
                           decoration: TextDecoration.underline,
                         ),
                         recognizer: TapGestureRecognizer()
@@ -147,7 +147,7 @@ class ConsentBottomSheet extends StatelessWidget {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          foregroundColor: Colors.black,
+                          foregroundColor: Color(0xFF0D1F40),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),

@@ -258,30 +258,31 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               supportedLocales: const [Locale('en')],
               theme: ThemeData(
                   useMaterial3: false,
-                  colorScheme: const ColorScheme.dark(
-                    primary: Colors.black,
-                    secondary: Colors.deepPurple,
-                    surface: Colors.black38,
+                  colorScheme: const ColorScheme.light(
+                    primary: Color(0xFF4FAFBE), // Teal
+                    secondary: Color(0xFF3B9FB2), // Darker teal
+                    surface: Color(0xFFFFFFFF), // White
+                    background: Color(0xFFFFFFFF), // White
                   ),
                   snackBarTheme: const SnackBarThemeData(
-                    backgroundColor: Color(0xFF1F1F25),
+                    backgroundColor: Color(0xFF4FAFBE),
                     contentTextStyle: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
                   ),
                   textTheme: TextTheme(
-                    titleLarge: const TextStyle(fontSize: 18, color: Colors.white),
-                    titleMedium: const TextStyle(fontSize: 16, color: Colors.white),
-                    bodyMedium: const TextStyle(fontSize: 14, color: Colors.white),
-                    labelMedium: TextStyle(fontSize: 12, color: Colors.grey.shade200),
+                    titleLarge: const TextStyle(fontSize: 18, color: Color(0xFF0F5878)),
+                    titleMedium: const TextStyle(fontSize: 16, color: Color(0xFF0D1F40)),
+                    bodyMedium: const TextStyle(fontSize: 14, color: Color(0xFF0D1F40)),
+                    labelMedium: const TextStyle(fontSize: 12, color: Color(0xFF0F5878)),
                   ),
                   textSelectionTheme: const TextSelectionThemeData(
-                    cursorColor: Colors.white,
-                    selectionColor: Colors.deepPurple,
-                    selectionHandleColor: Colors.white,
+                    cursorColor: Color(0xFF4FAFBE),
+                    selectionColor: Color(0xFF4FAFBE),
+                    selectionHandleColor: Color(0xFF4FAFBE),
                   ),
                   cupertinoOverrideTheme: const CupertinoThemeData(
-                    primaryColor: Colors.white, // Controls the selection handles on iOS
+                    primaryColor: Color(0xFF4FAFBE), // Controls the selection handles on iOS
                   )),
-              themeMode: ThemeMode.dark,
+              themeMode: ThemeMode.light,
               builder: (context, child) {
                 FlutterError.onError = (FlutterErrorDetails details) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {

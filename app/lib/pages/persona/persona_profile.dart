@@ -186,7 +186,7 @@ class _PersonaProfilePageState extends State<PersonaProfilePage> {
                                             child: Container(
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                color: Colors.black.withOpacity(0.3),
+                                                color: Color(0xFF0D1F40).withOpacity(0.3),
                                               ),
                                               child: const Center(
                                                 child: Icon(
@@ -316,7 +316,7 @@ class _PersonaProfilePageState extends State<PersonaProfilePage> {
                                           onChanged: (value) {
                                             provider.setPersonaPublic(value);
                                           },
-                                          activeColor: Colors.deepPurple,
+                                          activeColor: Color(0xFF4FAFBE),
                                         );
                                       },
                                     ),
@@ -442,7 +442,7 @@ class _PersonaProfilePageState extends State<PersonaProfilePage> {
                       ),
                       if (provider.isLoading)
                         Container(
-                          color: Colors.black.withOpacity(0.5),
+                          color: Color(0xFF0D1F40).withOpacity(0.5),
                           child: const Center(
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation(Colors.white),

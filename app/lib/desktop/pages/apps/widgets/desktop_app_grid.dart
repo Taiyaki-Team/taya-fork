@@ -198,7 +198,7 @@ class _DesktopAppCardState extends State<_DesktopAppCard> {
                       ]
                     : [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.03),
+                          color: Color(0xFF0D1F40).withOpacity(0.03),
                           blurRadius: 8,
                           offset: const Offset(0, 2),
                         ),
@@ -258,7 +258,7 @@ class _DesktopAppCardState extends State<_DesktopAppCard> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Color(0xFF0D1F40).withOpacity(0.1),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),

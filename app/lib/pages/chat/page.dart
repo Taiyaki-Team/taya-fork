@@ -409,7 +409,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                             if (provider.isFileUploading(provider.selectedFiles[idx].path))
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Colors.black.withOpacity(0.5),
+                                                  color: Color(0xFF0D1F40).withOpacity(0.5),
                                                   borderRadius: BorderRadius.circular(16),
                                                 ),
                                                 child: const Center(
@@ -441,7 +441,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                                   child: const Icon(
                                                     FontAwesomeIcons.xmark,
                                                     size: 10,
-                                                    color: Colors.black,
+                                                    color: Color(0xFF0D1F40),
                                                   ),
                                                 ),
                                               ),
@@ -615,7 +615,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                                   boxShadow: canSend
                                                       ? [
                                                           BoxShadow(
-                                                            color: Colors.black.withOpacity(0.1),
+                                                            color: Color(0xFF0D1F40).withOpacity(0.1),
                                                             blurRadius: 8,
                                                             offset: const Offset(0, 2),
                                                           ),
@@ -624,7 +624,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                                 ),
                                                 child: Icon(
                                                   FontAwesomeIcons.arrowUp,
-                                                  color: canSend ? const Color(0xFF35343B) : Colors.white,
+                                                  color: canSend ? const Color(0xFFE0E0E0) : Colors.white,
                                                   size: 20,
                                                 ),
                                               ),
@@ -917,7 +917,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
       itemBuilder: (BuildContext context) {
         return _getAppsDropdownItems(context, provider);
       },
-      color: const Color(0xFF1F1F25),
+      color: const Color(0xFFF5F5F5),
     );
   }
 
@@ -1110,7 +1110,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
               // Main options container
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1C1C1E).withOpacity(0.95),
+                  color: const Color(0xFFF5F5F5).withOpacity(0.95),
                   borderRadius: BorderRadius.circular(13),
                 ),
                 child: Column(

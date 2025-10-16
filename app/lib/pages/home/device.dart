@@ -97,7 +97,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
             bottom: isLast
                 ? BorderSide.none
                 : BorderSide(
-                    color: Color(0xFF35343B),
+                    color: Color(0xFFE0E0E0),
                     width: 0.5,
                   ),
           ),
@@ -244,7 +244,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                             width: double.infinity,
                             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF1F1F25),
+                              color: const Color(0xFFF5F5F5),
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Row(
@@ -283,7 +283,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                         // Controllable Items Section
                         Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFF1F1F25),
+                            color: const Color(0xFFF5F5F5),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Column(
@@ -355,7 +355,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                         // Info Only Section
                         Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFF1F1F25),
+                            color: const Color(0xFFF5F5F5),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Column(

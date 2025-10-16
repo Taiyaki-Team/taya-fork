@@ -32,14 +32,14 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         title: const Row(
           children: [
-            Icon(Icons.lock_person_outlined, color: Colors.white),
+            Icon(Icons.lock_person_outlined, color: const Color(0xFF0D1F40)),
             SizedBox(width: 10),
-            Text('Maximum Security (E2EE)', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            Text('Maximum Security (E2EE)', style: TextStyle(color: const Color(0xFF0D1F40), fontWeight: FontWeight.bold)),
           ],
         ),
         content: RichText(
           text: TextSpan(
-            style: TextStyle(color: Colors.white.withOpacity(0.8), height: 1.5, fontSize: 15),
+            style: TextStyle(color: const Color(0xFF0D1F40).withOpacity(0.8), height: 1.5, fontSize: 15),
             children: const [
               TextSpan(
                   text:
@@ -60,7 +60,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: const Text('OK', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: const Text('OK', style: TextStyle(color: const Color(0xFF0D1F40), fontWeight: FontWeight.bold)),
           ),
         ],
       ),
@@ -124,7 +124,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
                 const SizedBox(width: 8),
                 const Text(
                   'Migration Failed',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                  style: TextStyle(color: const Color(0xFF0D1F40), fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ],
             ),
@@ -155,16 +155,16 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        color: Color(0xFF35343B).withOpacity(0.5),
+        color: Color(0xFFE0E0E0).withOpacity(0.5),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.deepPurple.shade300),
+        border: Border.all(color: Color(0xFF6BC4CF)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RichText(
             text: TextSpan(
-              style: const TextStyle(color: Colors.white, fontSize: 16, height: 1.4),
+              style: const TextStyle(color: const Color(0xFF0D1F40), fontSize: 16, height: 1.4),
               children: [
                 const TextSpan(text: 'Migrating from '),
                 TextSpan(
@@ -188,7 +188,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
                       ? provider.migrationProcessedCount / provider.migrationTotalCount
                       : 0.0,
                   backgroundColor: Colors.grey.shade700,
-                  color: Colors.deepPurple,
+                  color: Color(0xFF4FAFBE),
                   minHeight: 6,
                   borderRadius: BorderRadius.circular(3),
                 ),
@@ -198,7 +198,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
                 provider.migrationTotalCount > 0
                     ? '${(provider.migrationProcessedCount / provider.migrationTotalCount * 100).toInt()}%'
                     : '0%',
-                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: const Color(0xFF0D1F40), fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -225,7 +225,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.deepPurple.withOpacity(0.15),
+        color: Color(0xFF4FAFBE).withOpacity(0.15),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Theme.of(context).colorScheme.secondary,
@@ -249,7 +249,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
                   'Secure Encryption',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: const Color(0xFF0D1F40),
                     fontSize: 16,
                   ),
                 ),
@@ -275,7 +275,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
         decoration: BoxDecoration(
           color: const Color(0xFF1A1A1A),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Color(0xFF35343B)),
+          border: Border.all(color: Color(0xFFE0E0E0)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -292,7 +292,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
                         'End-to-End Encryption',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: const Color(0xFF0D1F40),
                           fontSize: 16,
                         ),
                       ),
@@ -307,7 +307,7 @@ class _DataProtectionSectionState extends State<DataProtectionSection> {
                           'Coming Soon',
                           style: TextStyle(
                             fontSize: 10,
-                            color: Colors.white,
+                            color: const Color(0xFF0D1F40),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

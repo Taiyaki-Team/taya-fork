@@ -188,16 +188,16 @@ class _PlansSheetState extends State<PlansSheet> {
       final confirmed = await showDialog<bool>(
         context: context,
         builder: (ctx) => AlertDialog(
-          backgroundColor: const Color(0xFF1F1F25),
+          backgroundColor: const Color(0xFFF5F5F5),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           title: const Row(
             children: [
-              Icon(Icons.payment, color: Colors.deepPurple, size: 24),
+              Icon(Icons.payment, color: Color(0xFF4FAFBE), size: 24),
               SizedBox(width: 8),
               Text(
                 'Upgrade to Annual Plan',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: const Color(0xFF0D1F40),
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
@@ -211,7 +211,7 @@ class _PlansSheetState extends State<PlansSheet> {
               const Text(
                 'Important Billing Information:',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: const Color(0xFF0D1F40),
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
@@ -235,19 +235,19 @@ class _PlansSheetState extends State<PlansSheet> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple.withOpacity(0.1),
+                  color: Color(0xFF4FAFBE).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.deepPurple.withOpacity(0.3)),
+                  border: Border.all(color: Color(0xFF4FAFBE).withOpacity(0.3)),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.info_outline, color: Colors.deepPurple, size: 20),
+                    const Icon(Icons.info_outline, color: Color(0xFF4FAFBE), size: 20),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         'You\'ll get 13 months of coverage total (current month + 12 months annual)',
                         style: TextStyle(
-                          color: Colors.deepPurple.shade300,
+                          color: Color(0xFF6BC4CF),
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
@@ -269,7 +269,7 @@ class _PlansSheetState extends State<PlansSheet> {
             ElevatedButton(
               onPressed: () => Navigator.of(ctx).pop(true),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: Color(0xFF4FAFBE),
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
@@ -409,10 +409,10 @@ class _PlansSheetState extends State<PlansSheet> {
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
                         colors: [
-                          Colors.deepPurple.withOpacity(0.5),
-                          Colors.deepPurple.withOpacity(0.3),
-                          Colors.black.withOpacity(0.8),
-                          Colors.black,
+                          Color(0xFF4FAFBE).withOpacity(0.5),
+                          Color(0xFF4FAFBE).withOpacity(0.3),
+                          Color(0xFF0D1F40).withOpacity(0.8),
+                          Color(0xFF0D1F40),
                         ],
                         stops: const [0.0, 0.2, 0.6, 1.0],
                       ),
@@ -555,7 +555,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                                           borderRadius: BorderRadius.circular(8),
                                                           boxShadow: [
                                                             BoxShadow(
-                                                              color: Colors.black.withOpacity(0.15),
+                                                              color: Color(0xFF0D1F40).withOpacity(0.15),
                                                               blurRadius: 4,
                                                               offset: const Offset(0, 2),
                                                             ),
@@ -570,7 +570,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                                                 width: 26,
                                                                 height: 3,
                                                                 decoration: BoxDecoration(
-                                                                  color: Colors.black,
+                                                                  color: Color(0xFF0D1F40),
                                                                   borderRadius: BorderRadius.circular(1.5),
                                                                 ),
                                                               ),
@@ -608,7 +608,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                                           borderRadius: BorderRadius.circular(8),
                                                           boxShadow: [
                                                             BoxShadow(
-                                                              color: Colors.black.withOpacity(0.15),
+                                                              color: Color(0xFF0D1F40).withOpacity(0.15),
                                                               blurRadius: 4,
                                                               offset: const Offset(0, 2),
                                                             ),
@@ -623,7 +623,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                                                 width: 26,
                                                                 height: 3,
                                                                 decoration: BoxDecoration(
-                                                                  color: Colors.black,
+                                                                  color: Color(0xFF0D1F40),
                                                                   borderRadius: BorderRadius.circular(1.5),
                                                                 ),
                                                               ),
@@ -740,7 +740,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                       'Your annual plan will start automatically when your monthly plan ends.',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        color: Colors.deepPurple.shade400,
+                                        color: Color(0xFF3FA8B5),
                                         fontSize: 14,
                                       ),
                                     );
@@ -789,18 +789,18 @@ class _PlansSheetState extends State<PlansSheet> {
                                     return Container(
                                       padding: const EdgeInsets.all(20),
                                       decoration: BoxDecoration(
-                                        color: Colors.deepPurple.withOpacity(0.1),
+                                        color: Color(0xFF4FAFBE).withOpacity(0.1),
                                         borderRadius: BorderRadius.circular(16),
-                                        border: Border.all(color: Colors.deepPurple.withOpacity(0.3)),
+                                        border: Border.all(color: Color(0xFF4FAFBE).withOpacity(0.3)),
                                       ),
                                       child: Column(
                                         children: [
-                                          const Icon(Icons.schedule, color: Colors.deepPurple, size: 32),
+                                          const Icon(Icons.schedule, color: Color(0xFF4FAFBE), size: 32),
                                           const SizedBox(height: 8),
                                           Text(
                                             'Upgrade Scheduled!',
                                             style: TextStyle(
-                                              color: Colors.deepPurple.shade300,
+                                              color: Color(0xFF6BC4CF),
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -810,7 +810,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                             'Your annual plan will start automatically when your monthly plan ends.',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              color: Colors.deepPurple.shade400,
+                                              color: Color(0xFF3FA8B5),
                                               fontSize: 14,
                                             ),
                                           ),
@@ -1123,7 +1123,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: _isUpgrading ? Colors.grey : Colors.white,
-                                      foregroundColor: _isUpgrading ? Colors.white : Colors.black,
+                                      foregroundColor: _isUpgrading ? Colors.white : Color(0xFF0D1F40),
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(16),
@@ -1136,7 +1136,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                           const SizedBox(
                                             height: 20,
                                             width: 20,
-                                            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                                            child: CircularProgressIndicator(strokeWidth: 2, color: const Color(0xFF0D1F40)),
                                           ),
                                         ] else ...[
                                           const Text(
@@ -1182,7 +1182,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: _isUpgrading ? Colors.grey : Colors.white,
-                                      foregroundColor: _isUpgrading ? Colors.white : Colors.black,
+                                      foregroundColor: _isUpgrading ? Colors.white : Color(0xFF0D1F40),
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(16),
@@ -1195,7 +1195,7 @@ class _PlansSheetState extends State<PlansSheet> {
                                           const SizedBox(
                                             height: 20,
                                             width: 20,
-                                            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                                            child: CircularProgressIndicator(strokeWidth: 2, color: const Color(0xFF0D1F40)),
                                           ),
                                         ] else ...[
                                           const Text(
@@ -1255,14 +1255,14 @@ class _PlansSheetState extends State<PlansSheet> {
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: Colors.white,
+              color: const Color(0xFF0D1F40),
               width: 1,
             ),
           ),
           child: Center(
             child: FaIcon(
               faIcon,
-              color: Colors.white,
+              color: const Color(0xFF0D1F40),
               size: 16,
             ),
           ),
@@ -1272,7 +1272,7 @@ class _PlansSheetState extends State<PlansSheet> {
           child: Text(
             text,
             style: const TextStyle(
-              color: Colors.white,
+              color: const Color(0xFF0D1F40),
               fontSize: 16,
               fontWeight: FontWeight.w400,
             ),
@@ -1297,7 +1297,7 @@ class _PlansSheetState extends State<PlansSheet> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25), // Use conversation list background
+          color: const Color(0xFFF5F5F5), // Use conversation list background
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isSelected ? Colors.white : Colors.transparent,
@@ -1313,13 +1313,13 @@ class _PlansSheetState extends State<PlansSheet> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: const Color(0xFF0D1F40),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Text(
                       'POPULAR',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Color(0xFF0D1F40),
                         fontSize: 9,
                         fontWeight: FontWeight.w600,
                         letterSpacing: 0.5,
@@ -1339,7 +1339,7 @@ class _PlansSheetState extends State<PlansSheet> {
                     Text(
                       title,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: const Color(0xFF0D1F40),
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
@@ -1362,7 +1362,7 @@ class _PlansSheetState extends State<PlansSheet> {
                     Text(
                       monthlyPrice,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: const Color(0xFF0D1F40),
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
@@ -1378,7 +1378,7 @@ class _PlansSheetState extends State<PlansSheet> {
                         child: Text(
                           saveTag,
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: const Color(0xFF0D1F40),
                             fontSize: 9,
                             fontWeight: FontWeight.w600,
                             letterSpacing: 0.3,
@@ -1397,7 +1397,7 @@ class _PlansSheetState extends State<PlansSheet> {
                         child: const Text(
                           'Active',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: const Color(0xFF0D1F40),
                             fontSize: 9,
                             fontWeight: FontWeight.w600,
                             letterSpacing: 0.3,
@@ -1419,7 +1419,7 @@ class _PlansSheetState extends State<PlansSheet> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       decoration: BoxDecoration(
-        color: const Color(0xFF1F1F25), // Use conversation list background
+        color: const Color(0xFFF5F5F5), // Use conversation list background
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Colors.white.withOpacity(0.1),
@@ -1537,7 +1537,7 @@ class _PlansSheetState extends State<PlansSheet> {
           child: Text(
             text,
             style: const TextStyle(
-              color: Colors.white,
+              color: const Color(0xFF0D1F40),
               fontSize: 14,
               height: 1.4,
             ),

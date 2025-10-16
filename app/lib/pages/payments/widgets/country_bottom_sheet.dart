@@ -84,7 +84,7 @@ class _CountryBottomSheetState extends State<CountryBottomSheet> {
                     builder: (context) {
                       if (provider.isLoading) {
                         return const Center(
-                          child: CircularProgressIndicator(color: Color(0xFF635BFF)),
+                          child: CircularProgressIndicator(color: Color(0xFF4FAFBE)),
                         );
                       }
 
@@ -100,7 +100,7 @@ class _CountryBottomSheetState extends State<CountryBottomSheet> {
                             title: Text(
                               (country['name'] as String).decodeString,
                               style: TextStyle(
-                                color: isSelected ? const Color(0xFF635BFF) : Colors.white,
+                                color: isSelected ? const Color(0xFF4FAFBE) : Colors.white,
                                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                               ),
                             ),

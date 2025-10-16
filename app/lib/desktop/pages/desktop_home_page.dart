@@ -101,7 +101,7 @@ class _MacWindowButtonState extends State<_MacWindowButton> {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Color(0xFF0D1F40).withOpacity(0.1),
                 blurRadius: 1,
                 offset: const Offset(0, 0.5),
               ),
@@ -113,7 +113,7 @@ class _MacWindowButtonState extends State<_MacWindowButton> {
                   size: 8,
                   color: widget.type == MacWindowButtonType.close
                       ? Colors.white.withOpacity(0.9)
-                      : Colors.black.withOpacity(0.7),
+                      : Color(0xFF0D1F40).withOpacity(0.7),
                 )
               : null,
         ),
@@ -404,7 +404,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> with WidgetsBindingOb
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.05),
+                                    color: Color(0xFF0D1F40).withValues(alpha: 0.05),
                                     blurRadius: 20,
                                     offset: const Offset(0, 4),
                                   ),
@@ -473,7 +473,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> with WidgetsBindingOb
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Color(0xFF0D1F40).withOpacity(0.1),
                     blurRadius: 10,
                     offset: const Offset(2, 0),
                   ),

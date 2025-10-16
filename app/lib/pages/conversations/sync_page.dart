@@ -116,7 +116,7 @@ class WalListItem extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               decoration: BoxDecoration(
-                color: const Color(0xFF1F1F25),
+                color: const Color(0xFFF5F5F5),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Stack(
@@ -265,7 +265,7 @@ class DateTimeListItem extends StatelessWidget {
           Expanded(
             child: Container(
               height: 1,
-              color: Color(0xFF35343B),
+              color: Color(0xFFE0E0E0),
             ),
           )
         ],
@@ -316,7 +316,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF1F1F25),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -370,7 +370,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
                 context.read<SyncProvider>().refreshWals();
               }
             },
-            activeColor: Colors.deepPurpleAccent,
+            activeColor: Color(0xFF3B9FB2),
           ),
         ],
       ),
@@ -517,7 +517,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
                           consentConfirmed = value ?? false;
                         });
                       },
-                      activeColor: Colors.deepPurple,
+                      activeColor: Color(0xFF4FAFBE),
                     ),
                     const SizedBox(width: 8),
                     const Expanded(
@@ -545,7 +545,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
                 child: Text(
                   'Enable Storage',
                   style: TextStyle(
-                    color: consentConfirmed ? Colors.deepPurple : Colors.grey,
+                    color: consentConfirmed ? Color(0xFF4FAFBE) : Colors.grey,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -659,7 +659,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -711,7 +711,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -762,7 +762,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: const Color(0xFF1F1F25),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -824,7 +824,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           decoration: BoxDecoration(
-            color: const Color(0xFF1F1F25),
+            color: const Color(0xFFF5F5F5),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
@@ -975,7 +975,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
                       padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1F1F25),
+                          color: const Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: Colors.grey.withOpacity(0.2)),
                         ),
@@ -1051,7 +1051,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
                         margin: const EdgeInsets.all(32.0),
                         padding: const EdgeInsets.all(32.0),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1F1F25),
+                          color: const Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
@@ -1059,12 +1059,12 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
                             Container(
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: Colors.deepPurple.withOpacity(0.1),
+                                color: Color(0xFF4FAFBE).withOpacity(0.1),
                                 shape: BoxShape.circle,
                               ),
                               child: const Icon(
                                 Icons.mic_none,
-                                color: Colors.deepPurple,
+                                color: Color(0xFF4FAFBE),
                                 size: 48,
                               ),
                             ),
@@ -1115,7 +1115,7 @@ class _SyncPageState extends State<SyncPage> with TickerProviderStateMixin {
                         margin: const EdgeInsets.all(32.0),
                         padding: const EdgeInsets.all(32.0),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1F1F25),
+                          color: const Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
@@ -1215,7 +1215,7 @@ class OptimizedWalsListWidget extends StatelessWidget {
                 Expanded(
                   child: Container(
                     height: 1,
-                    color: Color(0xFF35343B),
+                    color: Color(0xFFE0E0E0),
                   ),
                 )
               ],

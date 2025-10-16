@@ -49,7 +49,7 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
           provider.stopStripePolling();
         },
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: const Color(0xFFFFFFFF),
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             leading: IconButton(
@@ -80,7 +80,7 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                       child: Image.asset(
                         Assets.images.herologo.path,
                         width: 26,
-                        color: Colors.black,
+                        color: const Color(0xFF0D1F40),
                       ),
                     ),
                     Transform.translate(
@@ -88,7 +88,7 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                       child: Container(
                         padding: const EdgeInsets.all(14),
                         decoration: const BoxDecoration(
-                          color: Color(0xFF635BFF),
+                          color: Color(0xFF4FAFBE),
                           shape: BoxShape.circle,
                         ),
                         child: SvgPicture.asset(
@@ -222,7 +222,7 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                     child: const Text(
                       'Stripe Connected Account Agreement',
                       style: TextStyle(
-                        color: Color(0xFF635BFF),
+                        color: Color(0xFF4FAFBE),
                         fontSize: 14,
                       ),
                     ),
@@ -230,7 +230,7 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                   const SizedBox(height: 18),
                   AnimatedLoadingButton(
                     text: "Connect Now",
-                    loaderColor: Colors.black,
+                    loaderColor: const Color(0xFF0D1F40),
                     onPressed: provider.stripeConnectionState == PaymentConnectionState.inComplete ||
                             provider.selectedCountryId != null
                         ? () async {
@@ -252,7 +252,7 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                       fontSize: 16,
                       color: provider.stripeConnectionState == PaymentConnectionState.inComplete ||
                               provider.selectedCountryId != null
-                          ? Colors.black
+                          ? const Color(0xFF0D1F40)
                           : Colors.grey[600],
                     ),
                     width: MediaQuery.of(context).size.width * 0.8,
@@ -269,12 +269,12 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: const Color(0xFF635BFF),
+                            color: const Color(0xFF4FAFBE),
                             width: 3,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF635BFF).withOpacity(0.5),
+                              color: const Color(0xFF4FAFBE).withOpacity(0.5),
                               blurRadius: 20 * _pulseController.value,
                               spreadRadius: 10 * _pulseController.value,
                             ),
@@ -283,7 +283,7 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                         child: const Center(
                           child: Icon(
                             Icons.sync,
-                            color: Color(0xFF635BFF),
+                            color: Color(0xFF4FAFBE),
                             size: 40,
                           ),
                         ),
@@ -323,10 +323,10 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                       }
                     },
                     color: Colors.white,
-                    loaderColor: Colors.black,
+                    loaderColor: const Color(0xFF0D1F40),
                     textStyle: const TextStyle(
                       fontSize: 16,
-                      color: Colors.black,
+                      color: Color(0xFF0D1F40),
                     ),
                     width: MediaQuery.of(context).size.width * 0.8,
                   ),
@@ -348,15 +348,15 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          const Color(0xFF635BFF).withOpacity(0.15),
-                          Colors.purple.shade900.withOpacity(0.1),
+                          const Color(0xFF4FAFBE).withOpacity(0.15),
+                          Color(0xFF0F5878).withOpacity(0.1),
                         ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: const Color(0xFF635BFF).withOpacity(0.3),
+                        color: const Color(0xFF4FAFBE).withOpacity(0.3),
                         width: 1,
                       ),
                     ),
@@ -365,12 +365,12 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                         Container(
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF635BFF).withOpacity(0.1),
+                            color: const Color(0xFF4FAFBE).withOpacity(0.1),
                             shape: BoxShape.circle,
                           ),
                           child: const Icon(
                             Icons.check_circle_outline_rounded,
-                            color: Color(0xFF635BFF),
+                            color: Color(0xFF4FAFBE),
                             size: 48,
                           ),
                         ),
@@ -411,11 +411,11 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
                       }
                     },
                     color: Colors.white,
-                    loaderColor: Colors.black,
+                    loaderColor: const Color(0xFF0D1F40),
                     textStyle: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Colors.black,
+                      color: Color(0xFF0D1F40),
                     ),
                     width: MediaQuery.of(context).size.width * 0.8,
                   ),
@@ -450,12 +450,12 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: const Color(0xFF635BFF).withOpacity(0.1),
+            color: const Color(0xFF4FAFBE).withOpacity(0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(
             icon,
-            color: const Color(0xFF635BFF),
+            color: const Color(0xFF4FAFBE),
             size: 24,
           ),
         ),

@@ -201,7 +201,7 @@ class _DesktopAuthScreenState extends State<DesktopAuthScreen> {
     showDialog(
       context: context,
       barrierDismissible: true,
-      barrierColor: Colors.black.withValues(alpha: 0.6),
+      barrierColor: Color(0xFF0D1F40).withValues(alpha: 0.6),
       builder: (BuildContext context) {
         return Dialog(
           backgroundColor: Colors.transparent,
@@ -217,7 +217,7 @@ class _DesktopAuthScreenState extends State<DesktopAuthScreen> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.25),
+                  color: Color(0xFF0D1F40).withValues(alpha: 0.25),
                   blurRadius: 32,
                   offset: const Offset(0, 16),
                 ),
@@ -298,7 +298,7 @@ class _DesktopAuthScreenState extends State<DesktopAuthScreen> {
                                   borderRadius: BorderRadius.circular(responsive.radiusSmall),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withValues(alpha: 0.1),
+                                      color: Color(0xFF0D1F40).withValues(alpha: 0.1),
                                       blurRadius: 4,
                                       offset: const Offset(0, 2),
                                     ),
@@ -306,7 +306,7 @@ class _DesktopAuthScreenState extends State<DesktopAuthScreen> {
                                 ),
                                 child: Icon(
                                   authMethod == 'apple' ? Icons.apple : Icons.g_mobiledata,
-                                  color: authMethod == 'apple' ? Colors.black : Colors.white,
+                                  color: authMethod == 'apple' ? Color(0xFF0D1F40) : Colors.white,
                                   size: 20,
                                 ),
                               ),

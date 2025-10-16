@@ -17,7 +17,7 @@ class OutOfCreditsWidget extends StatelessWidget {
         }
 
         return Container(
-          color: const Color(0xFF1F1F25),
+          color: const Color(0xFFF5F5F5),
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +41,7 @@ class OutOfCreditsWidget extends StatelessWidget {
                 },
                 child: const Text(
                   'Check Usage',
-                  style: TextStyle(color: Color(0xFFC4B5FD), fontWeight: FontWeight.bold, fontSize: 13),
+                  style: TextStyle(color: Color(0xFFB8E8ED), fontWeight: FontWeight.bold, fontSize: 13),
                 ),
               ),
             ],

@@ -25,8 +25,8 @@ class MessageActionMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.black54,
+      decoration: BoxDecoration(
+        color: Color(0xFF0D1F40).withOpacity(0.54),
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),

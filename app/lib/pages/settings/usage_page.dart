@@ -282,9 +282,9 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF0D1F40),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0D1F40),
         title: const Text('Your Taya Insights'),
         centerTitle: true,
         elevation: 0,
@@ -300,7 +300,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
         ],
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: Colors.deepPurple,
+          indicatorColor: Color(0xFF4FAFBE),
           isScrollable: true,
           indicatorWeight: 3,
           labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -321,7 +321,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
               provider.allTimeUsage != null;
 
           if (provider.isLoading && !hasAnyData) {
-            return const Center(child: CircularProgressIndicator(color: Colors.deepPurple));
+            return const Center(child: CircularProgressIndicator(color: Color(0xFF4FAFBE)));
           }
 
           if (provider.error != null && !hasAnyData) {
@@ -391,7 +391,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 2.0),
-            child: FaIcon(_getIconForFeature(featureText), color: Colors.deepPurple.shade200, size: 16),
+            child: FaIcon(_getIconForFeature(featureText), color: Color(0xFF7DCAD5), size: 16),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -451,7 +451,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
               ElevatedButton(
                 onPressed: _isCancelling || _isUpgrading ? null : _showPlansSheet,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
+                  backgroundColor: Color(0xFF4FAFBE),
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 ),
@@ -459,15 +459,15 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                     ? const SizedBox(
                         height: 20,
                         width: 20,
-                        child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                        child: CircularProgressIndicator(strokeWidth: 2, color: const Color(0xFF0D1F40)),
                       )
                     : _isUpgrading
                         ? const SizedBox(
                             height: 20,
                             width: 20,
-                            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                            child: CircularProgressIndicator(strokeWidth: 2, color: const Color(0xFF0D1F40)),
                           )
-                        : const Text('Manage Plan', style: TextStyle(color: Colors.white)),
+                        : const Text('Manage Plan', style: TextStyle(color: const Color(0xFF0D1F40))),
               ),
             ],
           ),
@@ -518,7 +518,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                   ElevatedButton(
                     onPressed: _isUpgrading ? null : _showPlansSheet,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
+                      backgroundColor: Color(0xFF4FAFBE),
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                     ),
@@ -526,8 +526,8 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                         ? const SizedBox(
                             height: 20,
                             width: 20,
-                            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
-                        : const Text('Upgrade', style: TextStyle(color: Colors.white)),
+                            child: CircularProgressIndicator(strokeWidth: 2, color: const Color(0xFF0D1F40)))
+                        : const Text('Upgrade', style: TextStyle(color: const Color(0xFF0D1F40))),
                   ),
                   const SizedBox(width: 12),
                   FaIcon(_isSubscriptionExpanded! ? FontAwesomeIcons.chevronUp : FontAwesomeIcons.chevronDown,
@@ -541,7 +541,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
             LinearProgressIndicator(
               value: percentage,
               backgroundColor: Colors.grey.shade700,
-              valueColor: const AlwaysStoppedAnimation<Color>(Colors.deepPurple),
+              valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF4FAFBE)),
               minHeight: 6,
               borderRadius: BorderRadius.circular(3),
             ),
@@ -559,14 +559,14 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
               ElevatedButton(
                 onPressed: _isUpgrading ? null : _showPlansSheet,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
+                  backgroundColor: Color(0xFF4FAFBE),
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 ),
                 child: _isUpgrading
                     ? const SizedBox(
-                        height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
-                    : const Text('Upgrade to Unlimited', style: TextStyle(color: Colors.white)),
+                        height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2, color: const Color(0xFF0D1F40)))
+                    : const Text('Upgrade to Unlimited', style: TextStyle(color: const Color(0xFF0D1F40))),
               ),
             ],
           ),
@@ -580,7 +580,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
             LinearProgressIndicator(
               value: percentage,
               backgroundColor: Colors.grey.shade700,
-              valueColor: const AlwaysStoppedAnimation<Color>(Colors.deepPurple),
+              valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF4FAFBE)),
               minHeight: 6,
               borderRadius: BorderRadius.circular(3),
             ),
@@ -606,7 +606,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
           margin: const EdgeInsets.fromLTRB(16, 24, 16, 0),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: const Color(0xFF1F1F25),
+            color: const Color(0xFFF5F5F5),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
           ),
@@ -625,7 +625,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF0D1F40),
       builder: (context) {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setModalState) {
@@ -670,7 +670,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
     }
 
     if (stats == null) {
-      return const Center(child: CircularProgressIndicator(color: Colors.deepPurple));
+      return const Center(child: CircularProgressIndicator(color: Color(0xFF4FAFBE)));
     }
 
     if (stats.transcriptionSeconds == 0 &&
@@ -679,11 +679,11 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
         stats.memoriesCreated == 0) {
       return RefreshIndicator(
         onRefresh: onRefresh,
-        color: Colors.deepPurple,
+        color: Color(0xFF4FAFBE),
         child: RepaintBoundary(
           key: key,
           child: Container(
-            color: Colors.black,
+            color: Color(0xFF0D1F40),
             child: LayoutBuilder(builder: (context, constraints) {
               return SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
@@ -703,11 +703,11 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
 
     return RefreshIndicator(
       onRefresh: onRefresh,
-      color: Colors.deepPurple,
+      color: Color(0xFF4FAFBE),
       child: RepaintBoundary(
         key: key,
         child: Container(
-          color: Colors.black,
+          color: Color(0xFF0D1F40),
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
             children: [
@@ -751,7 +751,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                 title: 'Remembering',
                 value: '${numberFormatter.format(stats.memoriesCreated)} memories',
                 subtitle: 'Facts and details remembered for you.',
-                color: Colors.purple.shade300,
+                color: Color(0xFF6BC4CF),
                 subscription: provider.subscription,
               ),
             ],
@@ -843,7 +843,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
       Colors.blue.shade300,
       Colors.green.shade300,
       Colors.orange.shade300,
-      Colors.purple.shade300,
+      Color(0xFF6BC4CF),
     ];
 
     double maxY = 0;
@@ -933,7 +933,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                       TextSpan(
                         text: NumberFormat.compact(locale: 'en_US').format(flSpot.y),
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: const Color(0xFF0D1F40),
                           fontSize: 12,
                         ),
                       ),
@@ -1026,7 +1026,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
           height: 200,
           padding: const EdgeInsets.only(top: 16, right: 16),
           decoration: BoxDecoration(
-            color: const Color(0xFF1F1F25),
+            color: const Color(0xFFF5F5F5),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
           ),
@@ -1046,7 +1046,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
       {'color': Colors.blue.shade300, 'text': 'Listening (mins)'},
       {'color': Colors.green.shade300, 'text': 'Understanding (words)'},
       {'color': Colors.orange.shade300, 'text': 'Insights'},
-      {'color': Colors.purple.shade300, 'text': 'Memories'},
+      {'color': Color(0xFF6BC4CF), 'text': 'Memories'},
     ];
 
     return Wrap(
@@ -1098,7 +1098,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
         gradient: const LinearGradient(
           colors: [
             Color(0xFF2A2A2E),
-            Color(0xFF1F1F25),
+            Color(0xFFF5F5F5),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
