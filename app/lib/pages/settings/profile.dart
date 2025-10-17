@@ -172,20 +172,20 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF000000),
+      backgroundColor: const Color(0xFF46AFC1),
       appBar: AppBar(
         title: const Text(
           'Profile',
           style: TextStyle(
-            color: const Color(0xFF0D1F40),
+            color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFF000000),
+        backgroundColor: const Color(0xFF46AFC1),
         elevation: 0,
-        iconTheme: const IconThemeData(color: const Color(0xFF0D1F40)),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),

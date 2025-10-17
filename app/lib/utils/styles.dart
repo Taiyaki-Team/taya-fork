@@ -9,7 +9,7 @@ class TayaColors {
   static LinearGradient primaryGradient = const LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [Color.fromRGBO(77, 161, 181, 1), Color(0xFFFFFFFF)],
+    colors: [Color.fromRGBO(77, 161, 181, 1), Color.fromRGBO(170, 220, 230, 1)],
     stops: [0.0, 0.6],
   );
 }

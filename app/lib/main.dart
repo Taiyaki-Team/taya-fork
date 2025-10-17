@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart' as ble;
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:omi/backend/http/shared.dart';
 import 'package:omi/backend/preferences.dart';
 import 'package:omi/core/app_shell.dart';
@@ -258,21 +259,23 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               supportedLocales: const [Locale('en')],
               theme: ThemeData(
                   useMaterial3: false,
+                  textTheme: GoogleFonts.interTextTheme(
+                    ThemeData.light().textTheme.copyWith(
+                      titleLarge: const TextStyle(fontSize: 18, color: Color(0xFF0F5878)),
+                      titleMedium: const TextStyle(fontSize: 16, color: Color(0xFF0D1F40)),
+                      bodyMedium: const TextStyle(fontSize: 14, color: Color(0xFF0D1F40)),
+                      labelMedium: const TextStyle(fontSize: 12, color: Color(0xFF0F5878)),
+                    ),
+                  ),
                   colorScheme: const ColorScheme.light(
                     primary: Color(0xFF4FAFBE), // Teal
                     secondary: Color(0xFF3B9FB2), // Darker teal
                     surface: Color(0xFFFFFFFF), // White
                     background: Color(0xFFFFFFFF), // White
                   ),
-                  snackBarTheme: const SnackBarThemeData(
+                  snackBarTheme: SnackBarThemeData(
                     backgroundColor: Color(0xFF4FAFBE),
-                    contentTextStyle: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
-                  ),
-                  textTheme: TextTheme(
-                    titleLarge: const TextStyle(fontSize: 18, color: Color(0xFF0F5878)),
-                    titleMedium: const TextStyle(fontSize: 16, color: Color(0xFF0D1F40)),
-                    bodyMedium: const TextStyle(fontSize: 14, color: Color(0xFF0D1F40)),
-                    labelMedium: const TextStyle(fontSize: 12, color: Color(0xFF0F5878)),
+                    contentTextStyle: GoogleFonts.inter(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
                   ),
                   textSelectionTheme: const TextSelectionThemeData(
                     cursorColor: Color(0xFF4FAFBE),

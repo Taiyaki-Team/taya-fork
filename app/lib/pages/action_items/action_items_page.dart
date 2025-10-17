@@ -517,7 +517,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
 
   PreferredSizeWidget _buildSelectionAppBar(ActionItemsProvider provider) {
     return AppBar(
-      backgroundColor: Color(0xFF0D1F40).withValues(alpha: 0.05),
+      backgroundColor: Color(0xFF46AFC1).withValues(alpha: 0.05),
       elevation: 0,
       foregroundColor: Colors.white,
       leading: IconButton(

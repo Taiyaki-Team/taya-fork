@@ -734,8 +734,45 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          
-          const BatteryInfoWidget(),
+          Row(
+            children: [
+              const BatteryInfoWidget(),
+              const SizedBox(width: 8),
+              Consumer<CaptureProvider>(
+                builder: (context, captureProvider, child) {
+                  bool isRecording = captureProvider.recordingState == RecordingState.record;
+                  return GestureDetector(
+                    onTap: () async {
+                      if (isRecording) {
+                        await captureProvider.stopStreamRecording();
+                      } else {
+                        await captureProvider.streamRecording();
+                      }
+                    },
+                    child: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        color: isRecording 
+                            ? Colors.red.withOpacity(0.8)
+                            : const Color.fromRGBO(186, 236, 243, 0.5),
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.white,
+                        ),
+                      ),
+                      child: Icon(
+                        isRecording ? FontAwesomeIcons.stop : FontAwesomeIcons.microphone,
+                        size: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
           const SizedBox.shrink(),
           Row(
             children: [
@@ -868,14 +905,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
+                    color: const Color.fromRGBO(186, 236, 243, 0.5),
                     border: Border.all(width: 1, color: Colors.white),
                     borderRadius: BorderRadius.circular(100),
                   ),
-                  child: ClipOval(
-                    child: Image.network(
-                      "https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg",
-                      fit: BoxFit.cover,
-                    ),
+                  child: Icon(
+                    FontAwesomeIcons.solidUser,
+                    size: 18,
+                    color: Colors.white,
                   ),
                 ),
               ),

@@ -122,7 +122,7 @@ class _DeviceOnboardingPageState extends State<DeviceOnboardingPage> with Single
 
     return Material(
       child: Scaffold(
-        backgroundColor: Color(0xFF0D1F40),
+        backgroundColor: Color(0xFF46AFC1),
         body: Stack(
           children: [
             // Main content
@@ -143,7 +143,7 @@ class _DeviceOnboardingPageState extends State<DeviceOnboardingPage> with Single
                             ),
                           )
                         : Container(
-                            color: Color(0xFF0D1F40),
+                            color: Color(0xFF46AFC1),
                           ),
                   ),
                 ),
@@ -153,7 +153,7 @@ class _DeviceOnboardingPageState extends State<DeviceOnboardingPage> with Single
                   width: double.infinity,
                   padding: EdgeInsets.fromLTRB(32, 24, 32, 20),
                   decoration: const BoxDecoration(
-                    color: Color(0xFF0D1F40),
+                    color: Color(0xFF46AFC1),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
@@ -172,7 +172,6 @@ class _DeviceOnboardingPageState extends State<DeviceOnboardingPage> with Single
                             fontSize: 34,
                             fontWeight: FontWeight.bold,
                             height: 1.2,
-                            fontFamily: 'Manrope',
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -183,7 +182,6 @@ class _DeviceOnboardingPageState extends State<DeviceOnboardingPage> with Single
                             color: Colors.white.withOpacity(0.7),
                             fontSize: 16,
                             height: 1.4,
-                            fontFamily: 'Manrope',
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -201,7 +199,7 @@ class _DeviceOnboardingPageState extends State<DeviceOnboardingPage> with Single
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              foregroundColor: Color(0xFF0D1F40),
+                              foregroundColor: Color(0xFF46AFC1),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(28),
                               ),
@@ -214,7 +212,6 @@ class _DeviceOnboardingPageState extends State<DeviceOnboardingPage> with Single
                                   style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: 'Manrope',
                                   ),
                                 ),
                                 const SizedBox(width: 8),

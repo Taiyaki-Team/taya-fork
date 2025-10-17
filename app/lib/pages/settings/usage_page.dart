@@ -282,12 +282,13 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0D1F40),
+      backgroundColor: Color(0xFF46AFC1),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0D1F40),
-        title: const Text('Your Taya Insights'),
+        backgroundColor: Color(0xFF46AFC1),
+        title: const Text('Your Taya Insights', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new),
           onPressed: () => Navigator.of(context).pop(),
@@ -300,9 +301,11 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
         ],
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: Color(0xFF4FAFBE),
+          indicatorColor: Colors.white,
           isScrollable: true,
           indicatorWeight: 3,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white.withOpacity(0.6),
           labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           unselectedLabelStyle: const TextStyle(fontSize: 16),
           tabs: const [
@@ -331,7 +334,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                 child: Text(
                   provider.error!,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.grey.shade400, fontSize: 16),
+                  style: TextStyle(color: Color(0xFF0D1F40), fontSize: 16),
                 ),
               ),
             );
@@ -397,7 +400,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
           Expanded(
             child: Text(
               featureText,
-              style: TextStyle(fontSize: 14, color: Colors.grey.shade300, height: 1.4),
+              style: TextStyle(fontSize: 14, color: Color(0xFF0D1F40), height: 1.4),
             ),
           ),
         ],
@@ -437,7 +440,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
         children: [
           const Text('Unlimited Plan', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           FaIcon(_isSubscriptionExpanded! ? FontAwesomeIcons.chevronUp : FontAwesomeIcons.chevronDown,
-              size: 16, color: Colors.grey),
+              size: 16, color: Color(0xFF0D1F40)),
         ],
       );
 
@@ -474,7 +477,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
           const SizedBox(height: 12),
           Text(
             isCancelled ? 'Your plan will cancel on $renewalDate.' : 'Your plan renews on $renewalDate.',
-            style: TextStyle(fontSize: 14, color: Colors.grey.shade400),
+            style: TextStyle(fontSize: 14, color: Color(0xFF0D1F40)),
           ),
           if (sub.features.isNotEmpty) ...[
             const SizedBox(height: 16),
@@ -505,7 +508,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                       Flexible(
                         child: Text(
                           '${NumberFormat.decimalPattern('en_US').format(minutesUsed)} of $minutesLimit mins used',
-                          style: TextStyle(fontSize: 14, color: Colors.grey.shade400),
+                          style: TextStyle(fontSize: 14, color: Color(0xFF0D1F40)),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -531,7 +534,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                   ),
                   const SizedBox(width: 12),
                   FaIcon(_isSubscriptionExpanded! ? FontAwesomeIcons.chevronUp : FontAwesomeIcons.chevronDown,
-                      size: 16, color: Colors.grey),
+                      size: 16, color: Color(0xFF0D1F40)),
                 ],
               ),
             ],
@@ -574,7 +577,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
             const SizedBox(height: 12),
             Text(
               'Your plan includes $minutesLimit free minutes per month. Upgrade to go unlimited.',
-              style: TextStyle(fontSize: 14, color: Colors.grey.shade400),
+              style: TextStyle(fontSize: 14, color: Color(0xFF0D1F40)),
             ),
             const SizedBox(height: 12),
             LinearProgressIndicator(
@@ -625,7 +628,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Color(0xFF0D1F40),
+      backgroundColor: Color(0xFF46AFC1),
       builder: (context) {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setModalState) {
@@ -652,7 +655,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
           Text(
             'Start a conversation with Taya\nto see your usage insights here.',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Colors.grey.shade400),
+            style: TextStyle(fontSize: 16, color: Color(0xFF0D1F40)),
           ),
         ],
       ),
@@ -683,7 +686,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
         child: RepaintBoundary(
           key: key,
           child: Container(
-            color: Color(0xFF0D1F40),
+            color: Color(0xFF46AFC1),
             child: LayoutBuilder(builder: (context, constraints) {
               return SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
@@ -707,7 +710,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
       child: RepaintBoundary(
         key: key,
         child: Container(
-          color: Color(0xFF0D1F40),
+          color: Color(0xFF46AFC1),
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
             children: [
@@ -958,7 +961,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                 space: 8,
                 child: Text(
                   NumberFormat.compact(locale: 'en_US').format(value),
-                  style: const TextStyle(color: Colors.grey, fontSize: 10),
+                  style: const TextStyle(color: Color(0xFF0D1F40), fontSize: 10),
                 ),
               );
             },
@@ -1010,7 +1013,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
 
               return SideTitleWidget(
                 axisSide: meta.axisSide,
-                child: Text(text, style: const TextStyle(color: Colors.grey, fontSize: 10)),
+                child: Text(text, style: const TextStyle(color: Color(0xFF0D1F40), fontSize: 10)),
               );
             },
             reservedSize: 20,
@@ -1078,7 +1081,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
           children: [
             Container(width: 10, height: 10, color: color),
             const SizedBox(width: 6),
-            Text(text, style: TextStyle(fontSize: 12, color: Colors.grey.shade400)),
+            Text(text, style: TextStyle(fontSize: 12, color: Color(0xFF0D1F40))),
           ],
         ),
       ),
@@ -1137,7 +1140,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
             const SizedBox(height: 8),
             Text(
               subtitle,
-              style: TextStyle(fontSize: 14, color: Colors.grey.shade400, height: 1.4),
+              style: TextStyle(fontSize: 14, color: Color(0xFF0D1F40), height: 1.4),
             ),
             if (title == 'Listening' &&
                 subscription != null &&
@@ -1154,7 +1157,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                   children: [
                     Text(
                       '${numberFormatter.format(minutesUsed)} of $minutesLimit min used this month',
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+                      style: TextStyle(fontSize: 12, color: Color(0xFF0D1F40)),
                     ),
                     const SizedBox(height: 8),
                     LinearProgressIndicator(
@@ -1182,7 +1185,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                   children: [
                     Text(
                       '${numberFormatter.format(used)} of ${numberFormatter.format(limit)} words used this month',
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+                      style: TextStyle(fontSize: 12, color: Color(0xFF0D1F40)),
                     ),
                     const SizedBox(height: 8),
                     LinearProgressIndicator(
@@ -1210,7 +1213,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                   children: [
                     Text(
                       '${numberFormatter.format(used)} of ${numberFormatter.format(limit)} insights gained this month',
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+                      style: TextStyle(fontSize: 12, color: Color(0xFF0D1F40)),
                     ),
                     const SizedBox(height: 8),
                     LinearProgressIndicator(
@@ -1238,7 +1241,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
                   children: [
                     Text(
                       '${numberFormatter.format(used)} of ${numberFormatter.format(limit)} memories created this month',
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+                      style: TextStyle(fontSize: 12, color: Color(0xFF0D1F40)),
                     ),
                     const SizedBox(height: 8),
                     LinearProgressIndicator(

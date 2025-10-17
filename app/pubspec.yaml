@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.78+420
+version: 1.0.79+421
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -37,6 +37,7 @@ dependencies:
   skeletonizer: 2.0.1
   shimmer: ^3.0.0
   pull_down_button: ^0.10.2
+  google_fonts: ^6.2.1
 
   # Firebase
   firebase_core: 3.13.0

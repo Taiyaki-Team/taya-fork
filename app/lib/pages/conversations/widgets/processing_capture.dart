@@ -382,6 +382,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
           if (provider.segments.isNotEmpty) ...[
             Container(
               width: double.infinity,
+              constraints: const BoxConstraints(maxHeight: 150),
               margin: const EdgeInsets.only(top: 12, bottom: 4),
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: AutoScrollingText(
@@ -408,6 +409,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
             if (provider.segments.isNotEmpty) ...[
               Container(
                 width: double.infinity,
+                constraints: const BoxConstraints(maxHeight: 150),
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: AutoScrollingText(
                   text: provider.segments.map((segment) => segment.text).join(' '),

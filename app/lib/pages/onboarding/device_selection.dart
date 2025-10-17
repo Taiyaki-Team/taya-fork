@@ -128,7 +128,6 @@ class _DeviceSelectionPageState extends State<DeviceSelectionPage> with SingleTi
                             fontSize: 34,
                             fontWeight: FontWeight.bold,
                             height: 1.2,
-                            fontFamily: 'Manrope',
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -139,7 +138,6 @@ class _DeviceSelectionPageState extends State<DeviceSelectionPage> with SingleTi
                             color: Color(0xFF0D1F40).withOpacity(0.7),
                             fontSize: 16,
                             height: 1.4,
-                            fontFamily: 'Manrope',
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -158,7 +156,7 @@ class _DeviceSelectionPageState extends State<DeviceSelectionPage> with SingleTi
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF0D1F40),
+                              backgroundColor: Color(0xFF46AFC1),
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(28),
@@ -172,7 +170,6 @@ class _DeviceSelectionPageState extends State<DeviceSelectionPage> with SingleTi
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: 'Manrope',
                                   ),
                                 ),
                                 const SizedBox(width: 8),

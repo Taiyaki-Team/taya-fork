@@ -42,7 +42,7 @@ class _PhotoViewerPageState extends State<PhotoViewerPage> {
     final isProcessing = currentPhoto.description == null;
 
     return Scaffold(
-      backgroundColor: Color(0xFF0D1F40),
+      backgroundColor: Color(0xFF46AFC1),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

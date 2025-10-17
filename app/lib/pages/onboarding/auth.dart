@@ -66,7 +66,6 @@ class _AuthComponentState extends State<AuthComponent> {
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
                         height: 1.2,
-                        fontFamily: 'Manrope',
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -116,7 +115,6 @@ class _AuthComponentState extends State<AuthComponent> {
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
-                                  fontFamily: 'Manrope',
                                 ),
                               ),
                             ],
@@ -168,7 +166,6 @@ class _AuthComponentState extends State<AuthComponent> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Manrope',
                               ),
                             ),
                           ],
@@ -185,7 +182,6 @@ class _AuthComponentState extends State<AuthComponent> {
                         style: TextStyle(
                           color: Colors.white.withOpacity(0.6),
                           fontSize: 11,
-                          fontFamily: 'Manrope',
                         ),
                         children: [
                           const TextSpan(text: 'By continuing, you agree to our '),

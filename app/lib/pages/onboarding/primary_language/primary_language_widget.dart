@@ -286,7 +286,6 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     height: 1.2,
-                    fontFamily: 'Manrope',
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -320,7 +319,6 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
                           style: TextStyle(
                             color: selectedLanguageName != null ? Colors.white : Colors.grey[500],
                             fontSize: 18,
-                            fontFamily: 'Manrope',
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -368,7 +366,6 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Manrope',
                       ),
                     ),
                   ),

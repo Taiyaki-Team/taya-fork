@@ -59,7 +59,6 @@ class _PermissionsWidgetState extends State<PermissionsWidget> {
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                       height: 1.2,
-                      fontFamily: 'Manrope',
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -243,7 +242,6 @@ class _PermissionsWidgetState extends State<PermissionsWidget> {
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Manrope',
                               ),
                             ),
                           ),
@@ -286,7 +284,6 @@ class _PermissionsWidgetState extends State<PermissionsWidget> {
                     color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'Manrope',
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -295,7 +292,6 @@ class _PermissionsWidgetState extends State<PermissionsWidget> {
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.6),
                     fontSize: 12,
-                    fontFamily: 'Manrope',
                   ),
                 ),
               ],

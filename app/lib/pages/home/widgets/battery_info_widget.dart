@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:omi/backend/preferences.dart';
-import 'package:omi/gen/assets.gen.dart';
 import 'package:omi/pages/capture/connect.dart';
 import 'package:omi/pages/home/device.dart';
 import 'package:omi/providers/device_provider.dart';
@@ -12,18 +11,6 @@ import 'package:provider/provider.dart';
 
 class BatteryInfoWidget extends StatelessWidget {
   const BatteryInfoWidget({super.key});
-
-  String _getDeviceImagePath(String? deviceName) {
-    if (deviceName != null && deviceName.contains('Glass')) {
-      return Assets.images.omiGlass.path;
-    }
-
-    if (deviceName != null && deviceName.contains('Taya DevKit')) {
-      return Assets.images.omiDevkitWithoutRope.path;
-    }
-
-    return Assets.images.omiWithoutRope.path;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,20 +55,17 @@ class BatteryInfoWidget extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 8.0),
-                        // Add device icon
-                        Container(
-                          width: 20,
-                          height: 20,
-                          child: Image.asset(
-                            _getDeviceImagePath(deviceProvider.connectedDevice?.name),
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        const SizedBox(width: 8.0),
                         Text(
-                          deviceProvider.batteryLevel > 0 ? '${deviceProvider.batteryLevel.toString()}%' : "",
+                          "Connected",
                           style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
                         ),
+                        if (deviceProvider.batteryLevel > 0) ...[
+                          const SizedBox(width: 8.0),
+                          Text(
+                            '${deviceProvider.batteryLevel.toString()}%',
+                            style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ],
                     )),
               );
@@ -101,23 +85,12 @@ class BatteryInfoWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // Device icon with slash line
                       Container(
-                        width: 20,
-                        height: 20,
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                              _getDeviceImagePath(SharedPreferencesUtil().btDevice.name),
-                              fit: BoxFit.contain,
-                            ),
-                            // Slash line across the image
-                            Positioned.fill(
-                              child: CustomPaint(
-                                painter: SlashLinePainter(),
-                              ),
-                            ),
-                          ],
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
                         ),
                       ),
                       const SizedBox(width: 8.0),
@@ -174,37 +147,4 @@ class BatteryInfoWidget extends StatelessWidget {
       },
     );
   }
-}
-
-class SlashLinePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.red
-      ..strokeWidth = 2.0
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
-
-    // Position the cross at the bottom right
-    final crossSize = size.width * 0.2; // Size of the cross
-    final centerX = size.width - crossSize / 2 - 2; // Bottom right positioning
-    final centerY = size.height - crossSize / 2 - 2;
-    final halfCrossSize = crossSize / 2;
-
-    // Draw the X (cross) - two diagonal lines
-    canvas.drawLine(
-      Offset(centerX - halfCrossSize, centerY - halfCrossSize),
-      Offset(centerX + halfCrossSize, centerY + halfCrossSize),
-      paint,
-    );
-
-    canvas.drawLine(
-      Offset(centerX + halfCrossSize, centerY - halfCrossSize),
-      Offset(centerX - halfCrossSize, centerY + halfCrossSize),
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

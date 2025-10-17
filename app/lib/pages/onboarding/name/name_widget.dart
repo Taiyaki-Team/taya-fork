@@ -64,7 +64,6 @@ class _NameWidgetState extends State<NameWidget> {
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     height: 1.2,
-                    fontFamily: 'Manrope',
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -77,8 +76,7 @@ class _NameWidgetState extends State<NameWidget> {
                 //   style: TextStyle(
                 //     color: Colors.white.withOpacity(0.6),
                 //     fontSize: 16,
-                //     fontFamily: 'Manrope',
-                //     height: 1.5,
+                //                     //     height: 1.5,
                 //   ),
                 //   textAlign: TextAlign.center,
                 // ),
@@ -101,7 +99,6 @@ class _NameWidgetState extends State<NameWidget> {
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
-                      fontFamily: 'Manrope',
                       fontWeight: FontWeight.w500,
                     ),
                     textAlign: TextAlign.center,
@@ -110,7 +107,6 @@ class _NameWidgetState extends State<NameWidget> {
                       hintStyle: TextStyle(
                         color: Colors.grey[500],
                         fontSize: 18,
-                        fontFamily: 'Manrope',
                       ),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(
@@ -153,7 +149,6 @@ class _NameWidgetState extends State<NameWidget> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Manrope',
                       ),
                     ),
                   ),
@@ -172,8 +167,7 @@ class _NameWidgetState extends State<NameWidget> {
                 //           style: TextStyle(
                 //             color: Colors.white.withOpacity(0.6),
                 //             fontSize: 14,
-                //             fontFamily: 'Manrope',
-                //             decoration: TextDecoration.underline,
+                //                             //             decoration: TextDecoration.underline,
                 //           ),
                 //         ),
                 //       )
