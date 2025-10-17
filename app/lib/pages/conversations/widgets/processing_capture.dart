@@ -327,7 +327,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
                         width: 6,
                         height: 6,
                         decoration: BoxDecoration(
-                          color: isPaused ? const Color(0xFFFF9500) : const Color(0xFFFE5D50),
+                          color: isPaused ? Colors.grey.shade500 : const Color(0xFFFE5D50),
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -354,7 +354,7 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
                                   : const Color(0xFF3B9FB2)
                               : isDeviceRecording
                                   ? const Color(0xFFE0E0E0)
-                                  : const Color(0xFFFF9500),
+                                  : Colors.grey.shade500,
                           shape: BoxShape.circle,
                         ),
                         child: Center(

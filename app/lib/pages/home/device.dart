@@ -112,10 +112,10 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                     title,
                     style: TextStyle(
                       color: isRedBackground
-                          ? Colors.red.shade300
+                          ? Colors.red.shade700
                           : (onTap == null && !hasArrow && value.contains('Device must be connected'))
                               ? Colors.grey.shade500
-                              : Colors.white,
+                              : Color(0xFF0D1F40),
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
                     ),
@@ -126,10 +126,10 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                       value,
                       style: TextStyle(
                         color: isRedBackground
-                            ? Colors.red.shade200
+                            ? Colors.red.shade700
                             : (onTap == null && !hasArrow && value.contains('Device must be connected'))
                                 ? Colors.grey.shade500
-                                : Colors.white54,
+                                : Color(0xFF0D1F40).withOpacity(0.7),
                         fontSize: 14,
                       ),
                     ),
@@ -141,7 +141,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
               const SizedBox(width: 8),
               Icon(
                 Icons.arrow_forward_ios,
-                color: isRedBackground ? Colors.red.shade300 : Colors.white54,
+                color: isRedBackground ? Colors.red.shade700 : Color(0xFF0D1F40).withOpacity(0.5),
                 size: 16,
               ),
             ],
@@ -169,6 +169,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
+          iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -195,7 +196,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                         decoration: BoxDecoration(
                           color: provider.connectedDevice != null
-                              ? Colors.green.withValues(alpha: 0.2)
+                              ? Colors.white.withValues(alpha: 0.3)
                               : Colors.grey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -206,7 +207,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                               width: 6,
                               height: 6,
                               decoration: BoxDecoration(
-                                color: provider.connectedDevice != null ? Colors.green : Colors.grey,
+                                color: provider.connectedDevice != null ? Colors.white : Colors.grey,
                                 shape: BoxShape.circle,
                               ),
                             ),
@@ -214,7 +215,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                             Text(
                               provider.connectedDevice != null ? 'Connected' : 'Offline',
                               style: TextStyle(
-                                color: provider.connectedDevice != null ? Colors.green : Colors.grey,
+                                color: provider.connectedDevice != null ? Colors.white : Colors.grey,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -262,7 +263,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                                 const Text(
                                   'Battery Level',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color(0xFF0D1F40),
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -270,8 +271,8 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                                 const Spacer(),
                                 Text(
                                   '${provider.batteryLevel}%',
-                                  style: const TextStyle(
-                                    color: Colors.white54,
+                                  style: TextStyle(
+                                    color: Color(0xFF0D1F40).withOpacity(0.7),
                                     fontSize: 16,
                                   ),
                                 ),

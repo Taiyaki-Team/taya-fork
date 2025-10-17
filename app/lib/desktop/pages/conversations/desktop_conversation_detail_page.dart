@@ -245,9 +245,10 @@ class _DesktopConversationDetailPageState extends State<DesktopConversationDetai
           OmiAvatar(
             size: 32,
             fallback: Center(
-              child: Text(
-                widget.conversation.structured.getEmoji(),
-                style: const TextStyle(fontSize: 16),
+              child: Icon(
+                Icons.chat_bubble_outline,
+                size: 16,
+                color: ResponsiveHelper.textTertiary,
               ),
             ),
           ),

@@ -267,12 +267,6 @@ class _ConversationListItemState extends State<ConversationListItem> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (!widget.conversation.discarded)
-                  Text(
-                    widget.conversation.structured.getEmoji(),
-                    style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w500),
-                  ),
-
                 if (structured.title.isNotEmpty)
                   Expanded(
                     child: Container(
