@@ -316,183 +316,82 @@ class MemoriesPageState extends State<MemoriesPage> with AutomaticKeepAliveClien
                         controller: _scrollController,
                         physics: const AlwaysScrollableScrollPhysics(),
                         slivers: [
-                          // SliverToBoxAdapter(
-                          //   child: Padding(
-                          //     padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
-                          //     child: Row(
-                          //       children: [
-                          //         Consumer<HomeProvider>(builder: (context, home, child) {
-                          //           return Expanded(
-                          //             child: SizedBox(
-                          //               height: 44,
-                          //               child: SearchBar(
-                          //                 hintText: 'Search memories',
-                          //                 leading: const Padding(
-                          //                   padding: EdgeInsets.only(left: 6.0),
-                          //                   child:
-                          //                       Icon(FontAwesomeIcons.magnifyingGlass, color: Colors.white70, size: 14),
-                          //                 ),
-                          //                 backgroundColor: WidgetStateProperty.all(AppStyles.backgroundSecondary),
-                          //                 elevation: WidgetStateProperty.all(0),
-                          //                 padding: WidgetStateProperty.all(
-                          //                   const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                          //                 ),
-                          //                 focusNode: home.memoriesSearchFieldFocusNode,
-                          //                 controller: _searchController,
-                          //                 trailing: provider.searchQuery.isNotEmpty
-                          //                     ? [
-                          //                         IconButton(
-                          //                           icon: const Icon(Icons.close, color: Colors.white70, size: 16),
-                          //                           padding: EdgeInsets.zero,
-                          //                           constraints: const BoxConstraints(
-                          //                             minHeight: 36,
-                          //                             minWidth: 36,
-                          //                           ),
-                          //                           onPressed: () {
-                          //                             _searchController.clear();
-                          //                             provider.setSearchQuery('');
-                          //                             MixpanelManager().memorySearchCleared(provider.memories.length);
-                          //                           },
-                          //                         )
-                          //                       ]
-                          //                     : null,
-                          //                 hintStyle: WidgetStateProperty.all(
-                          //                   TextStyle(color: AppStyles.textTertiary, fontSize: 14),
-                          //                 ),
-                          //                 textStyle: WidgetStateProperty.all(
-                          //                   const TextStyle(color: AppStyles.textPrimary, fontSize: 14),
-                          //                 ),
-                          //                 shape: WidgetStateProperty.all(
-                          //                   RoundedRectangleBorder(
-                          //                     borderRadius: BorderRadius.circular(AppStyles.radiusLarge),
-                          //                   ),
-                          //                 ),
-                          //                 onChanged: (value) => provider.setSearchQuery(value),
-                          //                 onSubmitted: (value) {
-                          //                   if (value.isNotEmpty) {
-                          //                     MixpanelManager().memorySearched(value, provider.filteredMemories.length);
-                          //                   }
-                          //                 },
-                          //               ),
-                          //             ),
-                          //           );
-                          //         }),
-                          //         const SizedBox(width: 8),
-                          //         SizedBox(
-                          //           width: 44,
-                          //           height: 44,
-                          //           child: PopupMenuButton<FilterOption>(
-                          //             onSelected: _applyFilter,
-                          //             shape: RoundedRectangleBorder(
-                          //               borderRadius: BorderRadius.circular(12),
-                          //             ),
-                          //             color: AppStyles.backgroundSecondary,
-                          //             offset: const Offset(0, 8),
-                          //             elevation: 4,
-                          //             tooltip: 'Filter memories by category',
-                          //             position: PopupMenuPosition.under,
-                          //             itemBuilder: (BuildContext context) => <PopupMenuEntry<FilterOption>>[
-                          //               PopupMenuItem<FilterOption>(
-                          //                 value: FilterOption.all,
-                          //                 child: Row(
-                          //                   children: [
-                          //                     const Text(
-                          //                       'All',
-                          //                       style: TextStyle(color: Colors.white),
-                          //                     ),
-                          //                     const Spacer(),
-                          //                     if (_currentFilter == FilterOption.all)
-                          //                       const Icon(Icons.check, size: 16, color: Colors.white),
-                          //                   ],
-                          //                 ),
-                          //               ),
-                          //               PopupMenuItem<FilterOption>(
-                          //                 value: FilterOption.interesting,
-                          //                 child: Row(
-                          //                   children: [
-                          //                     const Text(
-                          //                       'Interesting',
-                          //                       style: TextStyle(color: Colors.white),
-                          //                     ),
-                          //                     const Spacer(),
-                          //                     if (_currentFilter == FilterOption.interesting)
-                          //                       const Icon(Icons.check, size: 16, color: Colors.white),
-                          //                   ],
-                          //                 ),
-                          //               ),
-                          //               PopupMenuItem<FilterOption>(
-                          //                 value: FilterOption.system,
-                          //                 child: Row(
-                          //                   children: [
-                          //                     const Text(
-                          //                       'System',
-                          //                       style: TextStyle(color: Colors.white),
-                          //                     ),
-                          //                     const Spacer(),
-                          //                     if (_currentFilter == FilterOption.system)
-                          //                       const Icon(Icons.check, size: 16, color: Colors.white),
-                          //                   ],
-                          //                 ),
-                          //               ),
-                          //             ],
-                          //             child: Container(
-                          //               decoration: BoxDecoration(
-                          //                 color: AppStyles.backgroundSecondary,
-                          //                 borderRadius: BorderRadius.circular(12),
-                          //               ),
-                          //               child: const Center(
-                          //                 child: Icon(
-                          //                   FontAwesomeIcons.filter,
-                          //                   size: 16,
-                          //                   color: Colors.white,
-                          //                 ),
-                          //               ),
-                          //             ),
-                          //           ),
-                          //         ),
-                          //         const SizedBox(width: 8),
-                          //         SizedBox(
-                          //           width: 44,
-                          //           height: 44,
-                          //           child: ElevatedButton(
-                          //             onPressed: () {
-                          //               _showMemoryManagementSheet(context, provider);
-                          //             },
-                          //             style: ElevatedButton.styleFrom(
-                          //               backgroundColor: AppStyles.backgroundSecondary,
-                          //               foregroundColor: Colors.white,
-                          //               padding: EdgeInsets.zero,
-                          //               shape: RoundedRectangleBorder(
-                          //                 borderRadius: BorderRadius.circular(12),
-                          //               ),
-                          //             ),
-                          //             child: const Icon(FontAwesomeIcons.sliders, size: 16),
-                          //           ),
-                          //         ),
-                          //         const SizedBox(width: 8),
-                          //         SizedBox(
-                          //           width: 44,
-                          //           height: 44,
-                          //           child: ElevatedButton(
-                          //             onPressed: () {
-                          //               showMemoryDialog(context, provider);
-                          //               MixpanelManager().memoriesPageCreateMemoryBtn();
-                          //             },
-                          //             style: ElevatedButton.styleFrom(
-                          //               backgroundColor: AppStyles.backgroundSecondary,
-                          //               foregroundColor: Colors.white,
-                          //               padding: EdgeInsets.zero,
-                          //               shape: RoundedRectangleBorder(
-                          //                 borderRadius: BorderRadius.circular(12),
-                          //               ),
-                          //             ),
-                          //             child: const Icon(FontAwesomeIcons.plus, size: 18),
-                          //           ),
-                          //         ),
-                          //       ],
-                          //     ),
-                          //   ),
-                          // ),
+                          SliverToBoxAdapter(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
+                              child: Consumer<HomeProvider>(builder: (context, home, child) {
+                                return SizedBox(
+                                  height: 44,
+                                  child: TextField(
+                                    focusNode: home.memoriesSearchFieldFocusNode,
+                                    controller: _searchController,
+                                    onChanged: (value) => provider.setSearchQuery(value),
+                                    onSubmitted: (value) {
+                                      if (value.isNotEmpty) {
+                                        MixpanelManager().memorySearched(value, provider.filteredMemories.length);
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+                                      hintText: 'Search memories',
+                                      hintStyle: TextStyle(
+                                        color: Color(0xFF0D1F40).withOpacity(0.5),
+                                        fontSize: 14,
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      border: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(20),
+                           borderSide: BorderSide.none,
+                         ),
+                         focusedBorder: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(20),
+                           borderSide: BorderSide(
+                             color: Color(0xFF4FAFBE),
+                             width: 1,
+                           ),
+                         ),
+                         enabledBorder: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(20),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      prefixIcon: Icon(
+                                        FontAwesomeIcons.magnifyingGlass,
+                                        color: Color(0xFF4FAFBE),
+                                        size: 16,
+                                      ),
+                                      suffixIcon: provider.searchQuery.isNotEmpty
+                                          ? IconButton(
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Color(0xFF0D1F40),
+                                                size: 18,
+                                              ),
+                                              padding: EdgeInsets.zero,
+                                              constraints: const BoxConstraints(
+                                                minHeight: 36,
+                                                minWidth: 36,
+                                              ),
+                                              onPressed: () {
+                                                _searchController.clear();
+                                                provider.setSearchQuery('');
+                                                MixpanelManager().memorySearchCleared(provider.memories.length);
+                                              },
+                                            )
+                                          : null,
+                                      contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 16,
+                                        vertical: 12,
+                                      ),
+                                    ),
+                                    style: TextStyle(
+                                      color: Color(0xFF0D1F40),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ),
 
                           // if (provider.unreviewed.isNotEmpty)
                           //   SliverPersistentHeader(

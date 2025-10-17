@@ -604,13 +604,13 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
             _isSubscriptionExpanded = !_isSubscriptionExpanded!;
           });
         },
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
         child: Container(
           margin: const EdgeInsets.fromLTRB(16, 24, 16, 0),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: const Color(0xFFF5F5F5),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(20),
             border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
           ),
           child: AnimatedSize(
@@ -1030,7 +1030,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
           padding: const EdgeInsets.only(top: 16, right: 16),
           decoration: BoxDecoration(
             color: const Color(0xFFF5F5F5),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(20),
             border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
           ),
           child: LineChart(
@@ -1106,7 +1106,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
         boxShadow: [
           BoxShadow(

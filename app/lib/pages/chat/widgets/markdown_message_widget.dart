@@ -28,7 +28,7 @@ Widget getMarkdownWidget(BuildContext context, String content) {
       code: style.copyWith(
         backgroundColor: Colors.transparent,
         decoration: TextDecoration.none,
-        color: Colors.white,
+        color: TayaColors.secondaryTextColor,
         fontWeight: FontWeight.w500,
       ),
     ),

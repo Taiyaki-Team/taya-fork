@@ -169,6 +169,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
+          elevation: 0,
           iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: CustomScrollView(
@@ -246,7 +247,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                             decoration: BoxDecoration(
                               color: const Color(0xFFF5F5F5),
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             child: Row(
                               children: [
@@ -285,7 +286,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                         Container(
                           decoration: BoxDecoration(
                             color: const Color(0xFFF5F5F5),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           child: Column(
                             children: [
@@ -357,7 +358,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                         Container(
                           decoration: BoxDecoration(
                             color: const Color(0xFFF5F5F5),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           child: Column(
                             children: [

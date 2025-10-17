@@ -19,22 +19,17 @@ class _SearchResultHeaderWidgetState extends State<SearchResultHeaderWidget> {
       var isSearching = provider.isFetchingConversations;
 
       return Container(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         child: onSearches
             ? (isSearching
                 ? Shimmer.fromColors(
                     baseColor: Colors.white,
                     highlightColor: Colors.grey,
                     child: const Text(
-                      "Searching your conversations",
+                      "Searching...",
                       style: TextStyle(color: Colors.white, fontSize: 14),
                     ))
-                : provider.totalSearchPages > 0
-                    ? const Text(
-                        "Search results",
-                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
-                      )
-                    : const SizedBox.shrink())
+                : const SizedBox.shrink())
             : const SizedBox.shrink(),
       );
     });

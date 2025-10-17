@@ -733,7 +733,7 @@ class GetGeolocationWidgets extends StatelessWidget {
                         margin: const EdgeInsets.only(top: 10, bottom: 8),
                         height: 200,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
                             image: imageProvider,
                             fit: BoxFit.cover,
@@ -746,7 +746,7 @@ class GetGeolocationWidgets extends StatelessWidget {
                         margin: const EdgeInsets.only(top: 10, bottom: 8),
                         height: 200,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(20),
                           color: Colors.grey.shade200,
                         ),
                         child: const Center(

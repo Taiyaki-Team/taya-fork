@@ -105,6 +105,7 @@ class _DeviceSettingsState extends State<DeviceSettings> {
         appBar: AppBar(
           title: const Text('Device Settings'),
           backgroundColor: Theme.of(context).colorScheme.primary,
+          elevation: 0,
         ),
         body: Padding(
           padding: const EdgeInsets.all(4.0),
@@ -194,7 +195,7 @@ class _DeviceSettingsState extends State<DeviceSettings> {
                       ]),
                       width: 2,
                     ),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: TextButton(
                     onPressed: () async {

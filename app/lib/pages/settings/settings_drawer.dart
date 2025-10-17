@@ -111,7 +111,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
         margin: const EdgeInsets.only(bottom: 1),
         decoration: BoxDecoration(
           color: const Color(0xFFF5F5F5),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -149,11 +149,147 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFF5F5F5),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         children: children,
       ),
+    );
+  }
+
+  // Collapsible section that nests all advanced options
+  Widget _buildAdvancedSection(BuildContext context, bool showSubscription) {
+    return _buildSectionContainer(
+      children: [
+        Theme(
+          data: Theme.of(context).copyWith(dividerColor: const Color(0xFFE0E0E0)),
+          child: ExpansionTile(
+            title: const Text(
+              'Advanced',
+              style: TextStyle(
+                color: Color(0xFF0D1F40),
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            tilePadding: const EdgeInsets.symmetric(horizontal: 12),
+            childrenPadding: EdgeInsets.zero,
+            iconColor: const Color(0xFF4A5568),
+            collapsedIconColor: const Color(0xFF4A5568),
+            children: [
+              _buildSettingsItem(
+                title: showSubscription ? 'Plan & Usage' : 'Usage Insights',
+                icon: const FaIcon(FontAwesomeIcons.chartBar, color: Color(0xFF4A5568), size: 20),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const UsagePage(),
+                    ),
+                  );
+                },
+              ),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
+              _buildSettingsItem(
+                title: 'Storage',
+                icon: const FaIcon(FontAwesomeIcons.database, color: Color(0xFF4A5568), size: 20),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const SyncPage(),
+                    ),
+                  );
+                },
+              ),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
+              _buildSettingsItem(
+                title: 'Device Settings',
+                icon: const FaIcon(FontAwesomeIcons.bluetooth, color: Color(0xFF4A5568), size: 20),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const DeviceSettings(),
+                    ),
+                  );
+                },
+              ),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
+              _buildSettingsItem(
+                title: 'Data & Privacy',
+                icon: const FaIcon(FontAwesomeIcons.shield, color: Color(0xFF4A5568), size: 20),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const DataPrivacyPage(),
+                    ),
+                  );
+                },
+              ),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
+              _buildSettingsItem(
+                title: 'Developer Mode',
+                icon: const FaIcon(FontAwesomeIcons.code, color: Color(0xFF4A5568), size: 20),
+                onTap: () async {
+                  Navigator.pop(context);
+                  await routeToPage(context, const DeveloperSettingsPage());
+                },
+              ),
+              const Divider(height: 1, color: Color(0xFFE0E0E0)),
+              _buildSettingsItem(
+                title: 'About Taya',
+                icon: const FaIcon(FontAwesomeIcons.infoCircle, color: Color(0xFF4A5568), size: 20),
+                onTap: () {
+                  Navigator.pop(context);
+                  routeToPage(context, const AboutOmiPage());
+                },
+              ),
+              // Support links (when available)
+              if (PlatformService.isIntercomSupported) const Divider(height: 1, color: Color(0xFFE0E0E0)),
+              if (PlatformService.isIntercomSupported)
+                _buildSettingsItem(
+                  title: 'Send Feedback',
+                  icon: const FaIcon(FontAwesomeIcons.solidEnvelope, color: Color(0xFF4A5568), size: 20),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    final Uri url = Uri.parse('https://feedback.omi.me/');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url, mode: LaunchMode.inAppBrowserView);
+                    }
+                  },
+                ),
+              if (PlatformService.isIntercomSupported) const Divider(height: 1, color: Color(0xFFE0E0E0)),
+              if (PlatformService.isIntercomSupported)
+                _buildSettingsItem(
+                  title: 'Report a bug',
+                  icon: const FaIcon(FontAwesomeIcons.exclamationTriangle, color: Color(0xFF4A5568), size: 20),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    final Uri url = Uri.parse('https://feedback.omi.me/');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url, mode: LaunchMode.inAppBrowserView);
+                    }
+                  },
+                ),
+              if (PlatformService.isIntercomSupported) const Divider(height: 1, color: Color(0xFFE0E0E0)),
+              if (PlatformService.isIntercomSupported)
+                _buildSettingsItem(
+                  title: 'Help Center',
+                  icon: const FaIcon(FontAwesomeIcons.book, color: Color(0xFF4A5568), size: 20),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    final Uri url = Uri.parse('https://help.omi.me/en/');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url, mode: LaunchMode.inAppBrowserView);
+                    }
+                  },
+                ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -252,7 +388,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
       final bool showSubscription = usageProvider.subscription?.showSubscriptionUi ?? false;
       return Column(
         children: [
-          // Profile & Notifications Section
+          // Profile (top-level)
           _buildSectionContainer(
             children: [
               _buildSettingsItem(
@@ -263,47 +399,12 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                   routeToPage(context, const ProfilePage());
                 },
               ),
-              const Divider(height: 1, color: Color(0xFFE0E0E0)),
-              _buildSettingsItem(
-                title: showSubscription ? 'Plan & Usage' : 'Usage Insights',
-                icon: const FaIcon(FontAwesomeIcons.chartBar, color: Color(0xFF4A5568), size: 20),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const UsagePage(),
-                    ),
-                  );
-                },
-              ),
-              const Divider(height: 1, color: Color(0xFFE0E0E0)),
-              _buildSettingsItem(
-                title: 'Storage',
-                icon: const FaIcon(FontAwesomeIcons.database, color: Color(0xFF4A5568), size: 20),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const SyncPage(),
-                    ),
-                  );
-                },
-              ),
-              const Divider(height: 1, color: Color(0xFFE0E0E0)),
-              _buildSettingsItem(
-                title: 'Device Settings',
-                icon: const FaIcon(FontAwesomeIcons.bluetooth, color: Color(0xFF4A5568), size: 20),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const DeviceSettings(),
-                    ),
-                  );
-                },
-              ),
             ],
           ),
+          const SizedBox(height: 12),
+
+          // Advanced (collapsible) - everything else nested here
+          _buildAdvancedSection(context, showSubscription),
           const SizedBox(height: 32),
 
           // Share & Get Section
@@ -340,84 +441,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
           // ),
           const SizedBox(height: 32),
 
-          // Support Section
-          if (PlatformService.isIntercomSupported)
-            _buildSectionContainer(
-              children: [
-                _buildSettingsItem(
-                  title: 'Send Feedback',
-                  icon: const FaIcon(FontAwesomeIcons.solidEnvelope, color: Color(0xFF4A5568), size: 20),
-                  onTap: () async {
-                    Navigator.pop(context);
-                    final Uri url = Uri.parse('https://feedback.omi.me/');
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url, mode: LaunchMode.inAppBrowserView);
-                    }
-                  },
-                ),
-                const Divider(height: 1, color: Color(0xFFE0E0E0)),
-                _buildSettingsItem(
-                  title: 'Report a bug',
-                  icon: const FaIcon(FontAwesomeIcons.exclamationTriangle, color: Color(0xFF4A5568), size: 20),
-                  onTap: () async {
-                    Navigator.pop(context);
-                    final Uri url = Uri.parse('https://feedback.omi.me/');
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url, mode: LaunchMode.inAppBrowserView);
-                    }
-                  },
-                ),
-                const Divider(height: 1, color: Color(0xFFE0E0E0)),
-                _buildSettingsItem(
-                  title: 'Help Center',
-                  icon: const FaIcon(FontAwesomeIcons.book, color: Color(0xFF4A5568), size: 20),
-                  onTap: () async {
-                    Navigator.pop(context);
-                    final Uri url = Uri.parse('https://help.omi.me/en/');
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url, mode: LaunchMode.inAppBrowserView);
-                    }
-                  },
-                ),
-              ],
-            ),
-          if (PlatformService.isIntercomSupported) const SizedBox(height: 32),
-
-          // Privacy & Settings Section
-          _buildSectionContainer(
-            children: [
-              _buildSettingsItem(
-                title: 'Data & Privacy',
-                icon: const FaIcon(FontAwesomeIcons.shield, color: Color(0xFF4A5568), size: 20),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const DataPrivacyPage(),
-                    ),
-                  );
-                },
-              ),
-              const Divider(height: 1, color: Color(0xFFE0E0E0)),
-              _buildSettingsItem(
-                title: 'Developer Mode',
-                icon: const FaIcon(FontAwesomeIcons.code, color: Color(0xFF4A5568), size: 20),
-                onTap: () async {
-                  Navigator.pop(context);
-                  await routeToPage(context, const DeveloperSettingsPage());
-                },
-              ),
-              const Divider(height: 1, color: Color(0xFFE0E0E0)),
-              _buildSettingsItem(
-                title: 'About Taya',
-                icon: const FaIcon(FontAwesomeIcons.infoCircle, color: Color(0xFF4A5568), size: 20),
-                onTap: () {
-                  Navigator.pop(context);
-                  routeToPage(context, const AboutOmiPage());
-                },
-              ),
-            ],
-          ),
+          // Advanced section replaces the above groups
           const SizedBox(height: 32),
 
           // Sign Out Section

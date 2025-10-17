@@ -306,6 +306,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
+            elevation: 0,
             leading: Container(
               width: 36,
               height: 36,
@@ -718,7 +719,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
               //              style: ElevatedButton.styleFrom(
               //                backgroundColor: Color(0xFF4FAFBE).withOpacity(0.5),
               //                shape: RoundedRectangleBorder(
-              //                  borderRadius: BorderRadius.circular(16),
+              //                  borderRadius: BorderRadius.circular(20),
               //                ),
               //              ),
               //              onPressed: () {
@@ -802,7 +803,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
                                               Material(
                                                 color: Colors.transparent,
                                                 child: InkWell(
-                                                  borderRadius: BorderRadius.circular(16),
+                                                  borderRadius: BorderRadius.circular(20),
                                                   onTap: _totalSearchResults > 0 ? () => _navigateSearch(false) : null,
                                                   child: Container(
                                                     width: 28,
@@ -820,7 +821,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
                                               Material(
                                                 color: Colors.transparent,
                                                 child: InkWell(
-                                                  borderRadius: BorderRadius.circular(16),
+                                                  borderRadius: BorderRadius.circular(20),
                                                   onTap: _totalSearchResults > 0 ? () => _navigateSearch(true) : null,
                                                   child: Container(
                                                     width: 28,
@@ -840,7 +841,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
                                             Material(
                                               color: Colors.transparent,
                                               child: InkWell(
-                                                borderRadius: BorderRadius.circular(16),
+                                                borderRadius: BorderRadius.circular(20),
                                                 onTap: () {
                                                   setState(() {
                                                     _searchQuery = '';
@@ -853,7 +854,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
                                                   width: 28,
                                                   height: 28,
                                                   decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(16),
+                                                    borderRadius: BorderRadius.circular(20),
                                                   ),
                                                   child: const Icon(Icons.clear, color: Colors.white70, size: 22),
                                                 ),
@@ -1116,13 +1117,6 @@ class _ActionItemDetailWidgetState extends State<ActionItemDetailWidget> {
             decoration: BoxDecoration(
               color: Colors.grey[900],
               borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xFF0D1F40).withValues(alpha: 0.1),
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
-                ),
-              ],
             ),
             child: Material(
               color: Colors.transparent,
@@ -1329,7 +1323,7 @@ class ActionItemsTab extends StatelessWidget {
                   height: 52,
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
                     child: Text(
@@ -1414,7 +1408,7 @@ class ActionItemsTab extends StatelessWidget {
                   height: 52,
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
                     child: Text(

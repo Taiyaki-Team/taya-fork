@@ -287,12 +287,12 @@ class NormalMessageWidget extends StatelessWidget {
             ? Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color(0xFFF5F5F5),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
-                    topRight: Radius.circular(16.0),
-                    bottomRight: Radius.circular(16.0),
-                    bottomLeft: Radius.circular(16.0),
+                    topRight: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
+                    bottomLeft: Radius.circular(20.0),
                   ),
                 ),
                 margin: EdgeInsets.only(top: previousThinkingText != null ? 0 : 8),
@@ -349,12 +349,12 @@ class NormalMessageWidget extends StatelessWidget {
             : Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color(0xFFF5F5F5),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
-                    topRight: Radius.circular(16.0),
-                    bottomRight: Radius.circular(16.0),
-                    bottomLeft: Radius.circular(16.0),
+                    topRight: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
+                    bottomLeft: Radius.circular(20.0),
                   ),
                 ),
                 child: getMarkdownWidget(context, messageText),
@@ -495,7 +495,7 @@ class _MemoriesMessageWidgetState extends State<MemoriesMessageWidget> {
                 width: double.maxFinite,
                 decoration: BoxDecoration(
                   color: const Color(0xFFF5F5F5),
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Row(
                   children: [
@@ -513,7 +513,7 @@ class _MemoriesMessageWidgetState extends State<MemoriesMessageWidget> {
                             height: 24,
                             width: 24,
                             child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4FAFBE)),
                             ))
                         : const Icon(Icons.arrow_right_alt)
                   ],
@@ -609,7 +609,7 @@ class InitialOptionWidget extends StatelessWidget {
         width: double.maxFinite,
         decoration: BoxDecoration(
           color: const Color(0xFFF5F5F5),
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(20.0),
         ),
         child: Text(optionText, style: Theme.of(context).textTheme.bodyMedium),
       ),

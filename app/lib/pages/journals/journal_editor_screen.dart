@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:omi/models/journal_entry.dart';
 import 'package:omi/providers/journal_provider.dart';
+import 'package:omi/providers/memories_provider.dart';
+import 'package:omi/providers/home_provider.dart';
+import 'package:omi/backend/schema/memory.dart';
 import 'package:provider/provider.dart';
 
 class JournalEditorScreen extends StatefulWidget {
@@ -24,6 +27,7 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
   JournalEntry? _journal;
   bool _isLoading = true;
   bool _isNewJournal = false;
+  bool _isSaving = false; // Prevent multiple saves
   
   // Rich text formatting state
   bool _isBold = false;
@@ -39,7 +43,8 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
 
   @override
   void dispose() {
-    _saveJournal();
+    // Don't save in dispose - it causes issues with accessing Provider after unmount
+    // Saving happens when Done button is pressed instead
     _titleController.dispose();
     _contentController.dispose();
     _titleFocus.dispose();
@@ -101,6 +106,105 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
     _journal = updatedJournal;
   }
 
+  Future<void> _saveJournalAsMemory() async {
+    if (_journal == null || _isSaving) return;
+
+    _isSaving = true; // Prevent multiple saves
+
+    try {
+      // Save the journal first
+      await _saveJournal();
+
+      // Create memory content from journal
+      final memoryContent = _createMemoryContent();
+      
+      if (memoryContent.isNotEmpty) {
+        final memoriesProvider = Provider.of<MemoriesProvider>(context, listen: false);
+        memoriesProvider.createMemory(
+          memoryContent,
+          MemoryVisibility.private, // Journal entries are private by default
+          MemoryCategory.interesting, // Journal entries are interesting by default
+        );
+
+        // Show success feedback
+        if (mounted) {
+          _showSuccessAnimation();
+        }
+      }
+    } finally {
+      _isSaving = false;
+    }
+  }
+
+  void _showSuccessAnimation() {
+    // Show a success snackbar with animation
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Colors.white,
+              size: 24,
+            ),
+            SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'Journal saved as memory!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: Color(0xFF4FAFBE),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        margin: EdgeInsets.only(
+          bottom: 100,
+          left: 16,
+          right: 16,
+        ),
+        duration: Duration(seconds: 2),
+        action: SnackBarAction(
+          label: 'View',
+          textColor: Colors.white,
+          onPressed: () {
+            // Navigate to memories tab
+            final homeProvider = Provider.of<HomeProvider>(context, listen: false);
+            homeProvider.setIndex(2); // Memories tab index
+          },
+        ),
+      ),
+    );
+
+    // Haptic feedback
+    HapticFeedback.mediumImpact();
+  }
+
+  String _createMemoryContent() {
+    final title = _titleController.text.trim();
+    final content = _contentController.text.trim();
+    
+    if (title.isEmpty && content.isEmpty) {
+      return '';
+    }
+    
+    // Combine title and content into a memory format
+    if (title.isNotEmpty && content.isNotEmpty) {
+      return '$title\n\n$content';
+    } else if (title.isNotEmpty) {
+      return title;
+    } else {
+      return content;
+    }
+  }
+
   Future<void> _addImage() async {
     final journalProvider = Provider.of<JournalProvider>(context, listen: false);
     final imagePath = await journalProvider.addImage();
@@ -152,7 +256,10 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
 
     if (_journal == null) {
       return Scaffold(
-        appBar: AppBar(title: Text('Journal not found')),
+        appBar: AppBar(
+          title: Text('Journal not found'),
+          elevation: 0,
+        ),
         body: Center(child: Text('Journal not found')),
       );
     }
@@ -178,8 +285,11 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
               borderRadius: BorderRadius.circular(20),
             ),
             child: InkWell(
-              onTap: () {
-                // _saveJournal().then((_) => Navigator.pop(context));
+              onTap: () async {
+                await _saveJournalAsMemory();
+                if (mounted && Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                }
               },
               child: Center(
                 child: Text(

@@ -66,6 +66,7 @@ class _PaymentsPageState extends State<PaymentsPage> {
         backgroundColor: Color(0xFF4FAFBE),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
+          elevation: 0,
           title: const Text('Payments', style: TextStyle(color: Colors.white)),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.white),

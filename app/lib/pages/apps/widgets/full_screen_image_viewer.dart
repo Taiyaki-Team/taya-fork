@@ -16,6 +16,7 @@ class FullScreenImageViewer extends StatelessWidget {
       backgroundColor: Color(0xFF4FAFBE),
       appBar: AppBar(
         backgroundColor: Color(0xFF4FAFBE),
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
         leading: IconButton(
           icon: const Icon(Icons.close),

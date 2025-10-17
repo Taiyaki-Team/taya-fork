@@ -174,6 +174,7 @@ class _SpeechProfilePageState extends State<SpeechProfilePage> with TickerProvid
             appBar: AppBar(
               backgroundColor: Theme.of(context).colorScheme.primary,
               automaticallyImplyLeading: true,
+              elevation: 0,
               title: const Text(
                 '',
                 style: TextStyle(color: Colors.white, fontSize: 20),
@@ -209,7 +210,6 @@ class _SpeechProfilePageState extends State<SpeechProfilePage> with TickerProvid
                       ),
               ],
               centerTitle: true,
-              elevation: 0,
               leading: widget.onbording
                   ? const SizedBox()
                   : IconButton(

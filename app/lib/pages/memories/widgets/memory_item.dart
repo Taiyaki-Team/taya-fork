@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:omi/backend/schema/memory.dart';
 import 'package:omi/pages/memories/page.dart';
 import 'package:omi/pages/settings/usage_page.dart';
@@ -36,22 +38,31 @@ class MemoryItem extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 4),
         padding: const EdgeInsets.symmetric(horizontal: AppStyles.spacingL, vertical: AppStyles.spacingL),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFF0D1F40).withValues(alpha: 0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
         ),
         child: Stack(
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Icon based on memory type
+                Padding(
+                  padding: const EdgeInsets.only(right: 12, top: 2),
+                  child: memory.manuallyAdded 
+                    ? FaIcon(
+                        FontAwesomeIcons.featherPointed, // Quill icon for journal entries
+                        size: 16,
+                        color: Color(0xFF4FAFBE),
+                      )
+                    : SvgPicture.asset(
+                        "assets/images/Sparkles.svg", // Same sparkle icon as moments tab
+                        width: 16,
+                        height: 16,
+                        color: Color(0xFF4FAFBE),
+                      ),
+                ),
                 Expanded(
                   child: Stack(
                     children: [
@@ -129,7 +140,7 @@ class MemoryItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 4),
         decoration: BoxDecoration(
           color: AppStyles.error,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(20),
         ),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 20),

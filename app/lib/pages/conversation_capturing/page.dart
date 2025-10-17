@@ -154,6 +154,7 @@ class _ConversationCapturingPageState extends State<ConversationCapturingPage> w
             appBar: AppBar(
               automaticallyImplyLeading: false,
               backgroundColor: Theme.of(context).colorScheme.primary,
+              elevation: 0,
               title: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

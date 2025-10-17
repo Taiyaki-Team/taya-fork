@@ -207,7 +207,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
                                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                                     decoration: BoxDecoration(
                                       color: Colors.grey[800],
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Text(
                                       '${incompleteItems.length}',
@@ -280,7 +280,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
                                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                                     decoration: BoxDecoration(
                                       color: Colors.grey[800],
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Text(
                                       '${completedItems.length}',
@@ -311,7 +311,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
                         height: 52,
                         decoration: BoxDecoration(
                           color: const Color(0xFFF5F5F5),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: Center(
                           child: Text(
@@ -428,7 +428,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
               margin: const EdgeInsets.symmetric(vertical: 2),
               decoration: BoxDecoration(
                 color: item.completed ? Colors.orange : Colors.green,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(20),
               ),
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(left: 20),
@@ -445,7 +445,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
               margin: const EdgeInsets.symmetric(vertical: 2),
               decoration: BoxDecoration(
                 color: Colors.red,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(20),
               ),
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.only(right: 20),

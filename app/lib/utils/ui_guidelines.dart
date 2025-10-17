@@ -18,29 +18,29 @@ class AppStyles {
 
   // Header Styles - Consistent hierarchy
   static const TextStyle headerLarge = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w600,
+    fontSize: 20,
+    fontWeight: FontWeight.normal,
     color: Color(0xFF0D1F40),
     height: 1.2,
   );
 
   static const TextStyle headerMedium = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w600,
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
     color: Color(0xFF0D1F40),
     height: 1.2,
   );
 
   static const TextStyle headerSmall = TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.w600,
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
     color: Color(0xFF0D1F40),
     height: 1.2,
   );
 
   static const TextStyle sectionHeader = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w600,
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
     color: Color(0xFF0D1F40),
     height: 1.2,
   );
@@ -88,23 +88,17 @@ class AppStyles {
   static const double spacingXL = 24.0;
   static const double spacingXXL = 32.0;
 
-  // Radius
-  static const double radiusSmall = 6.0;
-  static const double radiusMedium = 8.0;
-  static const double radiusLarge = 12.0;
+  // Radius - Rounded style
+  static const double radiusSmall = 12.0;
+  static const double radiusMedium = 16.0;
+  static const double radiusLarge = 20.0;
+  static const double radiusXL = 24.0;
   static const double radiusCircular = 100.0;
 
   // Widget specific
   static final cardDecoration = BoxDecoration(
     color: backgroundSecondary,
     borderRadius: BorderRadius.circular(radiusLarge),
-    boxShadow: [
-      BoxShadow(
-        color: Color(0xFF0D1F40).withOpacity(0.1),
-        blurRadius: 4,
-        offset: const Offset(0, 2),
-      ),
-    ],
   );
 
   static final inputDecoration = InputDecoration(

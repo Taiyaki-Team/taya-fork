@@ -100,7 +100,7 @@ class _ConversationsPageState extends State<ConversationsPage> with AutomaticKee
                         height: 80,
                         decoration: BoxDecoration(
                           color: AppStyles.backgroundSecondary,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
                     ),
@@ -130,7 +130,7 @@ class _ConversationsPageState extends State<ConversationsPage> with AutomaticKee
           margin: const EdgeInsets.symmetric(horizontal: 16.0),
           decoration: BoxDecoration(
             color: AppStyles.backgroundSecondary,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(20),
           ),
         ),
       ),
@@ -165,12 +165,7 @@ class _ConversationsPageState extends State<ConversationsPage> with AutomaticKee
               // const SliverToBoxAdapter(child: SpeechProfileCardWidget()),
               // const SliverToBoxAdapter(child: UpdateFirmwareCardWidget()),
               const SliverToBoxAdapter(child: ConversationCaptureWidget()),
-              // const SliverToBoxAdapter(child: SizedBox(height: 12)), // above search widget
-              // const SliverToBoxAdapter(
-              //   child: ConverstationsWidget(),
-              // ),
-              const SliverToBoxAdapter(child: SizedBox(height: 12)),
-              //  const SliverToBoxAdapter(child: SearchWidget()), //below search widget
+              const SliverToBoxAdapter(child: SearchWidget()),
               const SliverToBoxAdapter(child: SearchResultHeaderWidget()),
               getProcessingConversationsWidget(convoProvider.processingConversations),
               if (convoProvider.groupedConversations.isEmpty && !convoProvider.isLoadingConversations)

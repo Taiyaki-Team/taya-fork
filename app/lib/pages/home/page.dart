@@ -735,6 +735,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: const Color.fromRGBO(77, 161, 181, 1),
+      elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -781,52 +782,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
           const SizedBox.shrink(),
           Row(
             children: [
-              Container(
-                width: 36,
-                height: 36,
-                decoration: BoxDecoration(
-                    color: const Color.fromRGBO(186, 236, 243, 0.5),
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.white,
-                    )),
-                child: IconButton(
-                  color: Colors.red,
-                  padding: EdgeInsets.zero,
-                  icon: Icon(
-                    FontAwesomeIcons.magnifyingGlass,
-                    size: 16,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SearchPage(),
-                      ),
-                    );
-
-                    ///TODO add Logic for search
-                    ///
-
-                    // HapticFeedback.mediumImpact();
-                    // MixpanelManager().pageOpened('Settings');
-                    // String language = SharedPreferencesUtil().userPrimaryLanguage;
-                    // bool hasSpeech = SharedPreferencesUtil().hasSpeakerProfile;
-                    // String transcriptModel = SharedPreferencesUtil().transcriptionModel;
-                    // SettingsDrawer.show(context);
-                    // if (language != SharedPreferencesUtil().userPrimaryLanguage ||
-                    //     hasSpeech != SharedPreferencesUtil().hasSpeakerProfile ||
-                    //     transcriptModel != SharedPreferencesUtil().transcriptionModel) {
-                    //   if (context.mounted) {
-                    //     context.read<CaptureProvider>().onRecordProfileSettingChanged();
-                    //   }
-                    // }
-                  },
-                ),
-              ),
-
               /// replaced this with user image avatar image
               ///
               ///
@@ -925,7 +880,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
           ),
         ],
       ),
-      elevation: 0,
       centerTitle: true,
     );
   }

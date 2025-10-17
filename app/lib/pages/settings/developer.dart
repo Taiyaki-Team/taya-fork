@@ -49,6 +49,7 @@ class _DeveloperSettingsPageState extends State<DeveloperSettingsPage> {
             appBar: AppBarWithBanner(
               appBar: AppBar(
                 backgroundColor: Theme.of(context).colorScheme.primary,
+                elevation: 0,
                 title: const Text('Developer Settings'),
                 actions: [
                   TextButton(

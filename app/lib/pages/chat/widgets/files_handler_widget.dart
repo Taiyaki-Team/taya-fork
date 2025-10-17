@@ -41,7 +41,7 @@ class FilesHandlerWidget extends StatelessWidget {
                   height: MediaQuery.sizeOf(context).width * 0.22,
                   child: const Center(
                     child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4FAFBE)),
                     ),
                   ),
                 ),

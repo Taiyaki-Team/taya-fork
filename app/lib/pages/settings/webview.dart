@@ -51,6 +51,7 @@ class _PageWebViewState extends State<PageWebView> {
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 0,
       ),
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: progress != 100

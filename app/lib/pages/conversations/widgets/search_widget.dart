@@ -118,119 +118,75 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: TextFormField(
-              controller: searchController,
-              focusNode: context.read<HomeProvider>().convoSearchFieldFocusNode,
-              onChanged: (value) {
-                var provider = Provider.of<ConversationProvider>(context, listen: false);
-                _debouncer.run(() async {
-                  await provider.searchConversations(value);
-                });
-                setShowClearButton();
-              },
-              decoration: InputDecoration(
-                hintText: 'Search Conversations',
-                hintStyle: const TextStyle(color: Colors.white60, fontSize: 14),
-                filled: true,
-                fillColor: const Color(0xFF2A2A2A),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
-                suffixIcon: showClearButton
-                    ? GestureDetector(
-                        onTap: () async {
-                          var provider = Provider.of<ConversationProvider>(context, listen: false);
-                          await provider.searchConversations(""); // clear
-                          searchController.clear();
-                          setShowClearButton();
-                        },
-                        child: const Icon(
-                          Icons.close,
-                          color: Colors.white,
-                        ),
-                      )
-                    : null,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              ),
-              style: const TextStyle(color: Colors.white),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
+      child: TextFormField(
+        controller: searchController,
+        focusNode: context.read<HomeProvider>().convoSearchFieldFocusNode,
+        onChanged: (value) {
+          var provider = Provider.of<ConversationProvider>(context, listen: false);
+          _debouncer.run(() async {
+            await provider.searchConversations(value);
+          });
+          setShowClearButton();
+        },
+        decoration: InputDecoration(
+          hintText: 'Search moments',
+          hintStyle: TextStyle(
+            color: Color(0xFF0D1F40).withOpacity(0.5),
+            fontSize: 14,
+          ),
+          filled: true,
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              color: Color(0xFF4FAFBE),
+              width: 1,
             ),
           ),
-          const SizedBox(
-            width: 12,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide.none,
           ),
-          // Calendar button
-          Consumer<ConversationProvider>(
-            builder: (BuildContext context, ConversationProvider convoProvider, Widget? child) {
-              return Container(
-                decoration: BoxDecoration(
-                  color:
-                      convoProvider.selectedDate != null ? Color(0xFF4FAFBE).withOpacity(0.5) : const Color(0xFF2A2A2A),
-                  borderRadius: const BorderRadius.all(Radius.circular(16)),
-                ),
-                child: IconButton(
-                  onPressed: () async {
-                    HapticFeedback.mediumImpact();
-                    if (convoProvider.selectedDate != null) {
-                      // Clear date filter
-                      await convoProvider.clearDateFilter();
-                    } else {
-                      // Open date picker
-                      await _selectDate(context);
-                    }
-                  },
+          prefixIcon: Icon(
+            FontAwesomeIcons.magnifyingGlass,
+            color: Color(0xFF4FAFBE),
+            size: 16,
+          ),
+          suffixIcon: showClearButton
+              ? IconButton(
                   icon: Icon(
-                    convoProvider.selectedDate != null ? FontAwesomeIcons.calendarDay : FontAwesomeIcons.calendarDays,
-                    color: Colors.white,
+                    Icons.close,
+                    color: Color(0xFF0D1F40),
                     size: 18,
                   ),
-                  tooltip: convoProvider.selectedDate != null
-                      ? 'Filtered by ${DateFormat('MMM d, yyyy').format(convoProvider.selectedDate!)} - Tap to clear'
-                      : 'Filter by date',
-                ),
-              );
-            },
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(
+                    minHeight: 36,
+                    minWidth: 36,
+                  ),
+                  onPressed: () async {
+                    var provider = Provider.of<ConversationProvider>(context, listen: false);
+                    await provider.searchConversations(""); // clear
+                    searchController.clear();
+                    setShowClearButton();
+                  },
+                )
+              : null,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 12,
           ),
-          const SizedBox(
-            width: 12,
-          ),
-          // Filter button
-          Consumer<ConversationProvider>(
-              builder: (BuildContext context, ConversationProvider convoProvider, Widget? child) {
-            return Container(
-              decoration: BoxDecoration(
-                color: convoProvider.showDiscardedConversations ? Colors.red.withOpacity(0.5) : const Color(0xFF2A2A2A),
-                borderRadius: const BorderRadius.all(Radius.circular(16)),
-              ),
-              child: IconButton(
-                onPressed: () {
-                  HapticFeedback.mediumImpact();
-                  convoProvider.toggleDiscardConversations();
-                },
-                icon: Icon(
-                  FontAwesomeIcons.trashCan,
-                  color: Colors.white,
-                  size: 18,
-                ),
-              ),
-            );
-          }),
-        ],
+        ),
+        style: TextStyle(
+          color: Color(0xFF0D1F40),
+          fontSize: 14,
+        ),
       ),
     );
   }

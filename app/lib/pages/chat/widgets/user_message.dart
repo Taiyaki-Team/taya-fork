@@ -31,19 +31,19 @@ class HumanMessage extends StatelessWidget {
             alignment: WrapAlignment.end,
             children: [
               Container(
-                decoration: const BoxDecoration(
-                  color: Color.fromRGBO(7, 107, 139, 1),
+                decoration: BoxDecoration(
+                  color: Color(0xFF4FAFBE).withOpacity(0.15),
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16.0),
-                    topRight: Radius.circular(16.0),
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
                     bottomRight: Radius.circular(4.0),
-                    bottomLeft: Radius.circular(16.0),
+                    bottomLeft: Radius.circular(20.0),
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 child: Text(
                   message.text.decodeString,
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: const TextStyle(color: Color(0xFF0D1F40), fontSize: 16),
                 ),
               ),
             ],

@@ -48,6 +48,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
+          elevation: 0,
           title: const Text('Delete Account'),
         ),
         body: Padding(
@@ -126,7 +127,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
                           ]),
                           width: 2,
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: ElevatedButton(
                         onPressed: () {
@@ -157,7 +158,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
                           backgroundColor: Colors.transparent,
                           shadowColor: const Color.fromARGB(255, 17, 17, 17),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                         child: Container(

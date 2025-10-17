@@ -40,6 +40,7 @@ class _RecordingsStoragePermissionState extends State<RecordingsStoragePermissio
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 0,
         title: const Text('Authorize Saving Recordings'),
       ),
       body: loading || _hasPermission == null

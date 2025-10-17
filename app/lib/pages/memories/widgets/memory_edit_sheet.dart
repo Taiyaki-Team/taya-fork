@@ -42,18 +42,18 @@ class MemoryEditSheet extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
+                    color: Color(0xFF4FAFBE).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.label_outline, size: 14, color: Colors.white),
+                      const Icon(Icons.label_outline, size: 14, color: Color(0xFF4FAFBE)),
                       const SizedBox(width: 4),
                       Text(
                         memory.category.toString().split('.').last,
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: Color(0xFF4FAFBE),
                           fontSize: 14,
                         ),
                       ),
@@ -73,7 +73,7 @@ class MemoryEditSheet extends StatelessWidget {
               maxLines: null,
               textInputAction: TextInputAction.done,
               style: const TextStyle(
-                color: Colors.white,
+                color: Color(0xFF0D1F40),
                 fontSize: 16,
                 height: 1.4,
               ),
@@ -96,7 +96,7 @@ class MemoryEditSheet extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.05),
+                    color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
@@ -105,13 +105,13 @@ class MemoryEditSheet extends StatelessWidget {
                       Icon(
                         Icons.keyboard_return,
                         size: 13,
-                        color: Colors.grey.shade400,
+                        color: Colors.grey.shade600,
                       ),
                       const SizedBox(width: 4),
                       Text(
                         'Press done to save',
                         style: TextStyle(
-                          color: Colors.grey.shade400,
+                          color: Colors.grey.shade600,
                           fontSize: 11,
                         ),
                       ),
@@ -121,7 +121,7 @@ class MemoryEditSheet extends StatelessWidget {
                 Text(
                   '${contentController.text.length}/200',
                   style: TextStyle(
-                    color: Colors.grey.shade500,
+                    color: Colors.grey.shade600,
                     fontSize: 11,
                   ),
                 ),

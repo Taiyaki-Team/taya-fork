@@ -128,7 +128,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
       builder: (context, provider, connectivityProvider, child) {
         return Scaffold(
           key: scaffoldKey,
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Colors.white,
           appBar: _buildAppBar(context, provider),
           // endDrawer: _buildSessionsDrawer(context),
           body: GestureDetector(
@@ -147,12 +147,12 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4FAFBE)),
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
                                   provider.firstTimeLoadingText,
-                                  style: const TextStyle(color: Colors.white),
+                                  style: TextStyle(color: TayaColors.secondaryTextColor),
                                 ),
                               ],
                             )
@@ -161,7 +161,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     const CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4FAFBE)),
                                     ),
                                     const SizedBox(height: 16),
                                     Text(
@@ -418,7 +418,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                                     height: 16,
                                                     child: CircularProgressIndicator(
                                                       strokeWidth: 2,
-                                                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white70),
+                                                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4FAFBE)),
                                                     ),
                                                   ),
                                                 ),
@@ -943,7 +943,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
         radius: 12,
         child: CircularProgressIndicator(
           value: progress.progress,
-          valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+          valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF4FAFBE)),
         ),
       ),
     );

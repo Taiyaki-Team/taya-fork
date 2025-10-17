@@ -52,6 +52,7 @@ class _StripeConnectSetupState extends State<StripeConnectSetup> with SingleTick
           backgroundColor: const Color(0xFFFFFFFF),
           appBar: AppBar(
             backgroundColor: Colors.transparent,
+            elevation: 0,
             leading: IconButton(
               icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
               onPressed: () {

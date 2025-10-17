@@ -40,7 +40,7 @@ class DateListItem extends StatelessWidget {
               height: 1,
             ),
           ),
-          // Only show calendar and expand icons for the first date (Your moments)
+          // Only show calendar icon for the first date (Your moments)
           if (isFirst) ...[
             Consumer<ConversationProvider>(
                 builder: (BuildContext context, ConversationProvider convoProvider, Widget? child) {
@@ -59,23 +59,11 @@ class DateListItem extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                   child: FaIcon(
                     convoProvider.selectedDate != null ? FontAwesomeIcons.calendarDay : FontAwesomeIcons.calendarDays,
-                    color: Colors.grey.shade400,
+                    color: Color(0xFF0D1F40),
                   ),
                 ),
               );
             }),
-            InkWell(
-              onTap: () {
-                print("the expand icon is clicked ");
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: FaIcon(
-                  FontAwesomeIcons.expand,
-                  color: Colors.grey.shade400,
-                ),
-              ),
-            )
           ]
         ],
       ),

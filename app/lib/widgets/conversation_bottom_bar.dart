@@ -55,14 +55,6 @@ class ConversationBottomBar extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFF4FAFBE), // Teal color
           borderRadius: BorderRadius.circular(28),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFF4FAFBE).withOpacity(0.3),
-              spreadRadius: 1,
-              blurRadius: 5,
-              offset: const Offset(0, 2),
-            ),
-          ],
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -105,13 +97,6 @@ class ConversationBottomBar extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.red,
         shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.red.withOpacity(0.4),
-            spreadRadius: 1,
-            blurRadius: 4,
-          ),
-        ],
       ),
       child: Material(
         color: Colors.transparent,
