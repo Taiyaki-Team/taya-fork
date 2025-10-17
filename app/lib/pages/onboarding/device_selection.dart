@@ -156,7 +156,7 @@ class _DeviceSelectionPageState extends State<DeviceSelectionPage> with SingleTi
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF46AFC1),
+                              backgroundColor: Color(0xFF4FAFBE),
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(28),

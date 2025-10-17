@@ -34,7 +34,7 @@ class TabButton extends StatelessWidget {
       width: label != null ? 100 : 60,
       height: 40,
       decoration: BoxDecoration(
-        color: isSelected ? const Color(0xFF46AFC1) : Colors.transparent, // Lighter teal for selected state
+        color: isSelected ? const Color(0xFF4FAFBE) : Colors.transparent, // Teal for selected state
         borderRadius: BorderRadius.circular(20),
       ),
       child: Material(

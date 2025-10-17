@@ -59,10 +59,10 @@ class _PaymentWebViewPageState extends State<PaymentWebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF46AFC1),
+      backgroundColor: Color(0xFF4FAFBE),
       appBar: AppBar(
         title: const Text('Complete Your Upgrade', style: TextStyle(color: Colors.white)),
-        backgroundColor: Color(0xFF46AFC1),
+        backgroundColor: Color(0xFF4FAFBE),
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
         leading: IconButton(

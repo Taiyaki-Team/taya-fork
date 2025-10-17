@@ -204,7 +204,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
       case ConversationTab.transcript:
         return 'Transcript';
       case ConversationTab.summary:
-        return widget.title ?? "Converstation";
+        return 'Summary';
       case ConversationTab.actionItems:
         return 'Action Items';
     }
@@ -330,20 +330,7 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
                 icon: FaIcon(FontAwesomeIcons.arrowLeft, size: 16.0, color: TayaColors.secondaryTextColor),
               ),
             ),
-            title: Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(
-                  _getTabTitle(selectedTab),
-                  style: TextStyle(
-                    color: TayaColors.secondaryTextColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
+            title: const Text(''),
             titleSpacing: 0,
             actions: [
               Consumer<ConversationDetailProvider>(builder: (context, provider, child) {
@@ -581,9 +568,10 @@ class _ConversationDetailPageState extends State<ConversationDetailPage> with Ti
                 },
                 child: Column(
                   children: [
+                    // No title above the tabs - removed to avoid duplication
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                         child: Builder(builder: (context) {
                           return TabBarView(
                             controller: _controller,
@@ -947,7 +935,7 @@ class SummaryTab extends StatelessWidget {
                       data.item1
                           ? const ReprocessDiscardedWidget()
                           : GetAppsWidgets(searchQuery: searchQuery, currentResultIndex: currentResultIndex),
-                      const SizedBox(height: 150)
+                      const SizedBox(height: 80)
                     ],
                   ),
                 ],
@@ -1031,7 +1019,7 @@ class TranscriptWidgets extends StatelessWidget {
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
-                    backgroundColor: Color(0xFF46AFC1),
+                    backgroundColor: Color(0xFF4FAFBE),
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                     ),

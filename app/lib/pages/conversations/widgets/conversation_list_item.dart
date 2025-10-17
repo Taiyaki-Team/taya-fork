@@ -15,6 +15,7 @@ import 'package:omi/providers/conversation_provider.dart';
 import 'package:omi/utils/analytics/mixpanel.dart';
 import 'package:omi/utils/other/temp.dart';
 import 'package:omi/utils/other/time_utils.dart';
+import 'package:omi/utils/ui_guidelines.dart';
 import 'package:omi/widgets/dialog.dart';
 import 'package:omi/widgets/extensions/string.dart';
 import 'package:provider/provider.dart';
@@ -97,7 +98,7 @@ class _ConversationListItemState extends State<ConversationListItem> {
         },
         child: Padding(
           padding:
-              EdgeInsets.only(top: 12, left: widget.isFromOnboarding ? 0 : 16, right: widget.isFromOnboarding ? 0 : 16),
+              EdgeInsets.only(top: 16, left: widget.isFromOnboarding ? 0 : 16, right: widget.isFromOnboarding ? 0 : 16, bottom: 8),
           child: Container(
             width: double.maxFinite,
             decoration: BoxDecoration(
@@ -147,13 +148,13 @@ class _ConversationListItemState extends State<ConversationListItem> {
                   provider.deleteConversationLocally(conversation, conversationIdx, widget.date);
                 },
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.all(16),
+                  padding: const EdgeInsetsDirectional.all(20),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _getConversationHeader(),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 12),
                       _buildConversationBody(context),
                     ],
                   ),
@@ -273,10 +274,9 @@ class _ConversationListItemState extends State<ConversationListItem> {
                       padding: const EdgeInsets.only(left: 5),
                       child: Text(
                         structured.title.decodeString,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(color: const Color.fromRGBO(13, 41, 81, 1)),
+                        style: AppStyles.headerSmall.copyWith(
+                          color: const Color.fromRGBO(13, 41, 81, 1),
+                        ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),

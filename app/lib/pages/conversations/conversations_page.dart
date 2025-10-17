@@ -161,7 +161,7 @@ class _ConversationsPageState extends State<ConversationsPage> with AutomaticKee
             controller: _scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
-              const SliverToBoxAdapter(child: SizedBox(height: 16)), // above capture widget
+              const SliverToBoxAdapter(child: SizedBox(height: 20)), // above capture widget
               // const SliverToBoxAdapter(child: SpeechProfileCardWidget()),
               // const SliverToBoxAdapter(child: UpdateFirmwareCardWidget()),
               const SliverToBoxAdapter(child: ConversationCaptureWidget()),
@@ -169,7 +169,7 @@ class _ConversationsPageState extends State<ConversationsPage> with AutomaticKee
               // const SliverToBoxAdapter(
               //   child: ConverstationsWidget(),
               // ),
-              const SliverToBoxAdapter(child: SizedBox(height: 0)),
+              const SliverToBoxAdapter(child: SizedBox(height: 12)),
               //  const SliverToBoxAdapter(child: SearchWidget()), //below search widget
               const SliverToBoxAdapter(child: SearchResultHeaderWidget()),
               getProcessingConversationsWidget(convoProvider.processingConversations),

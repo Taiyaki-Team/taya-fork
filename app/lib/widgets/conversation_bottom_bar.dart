@@ -53,11 +53,11 @@ class ConversationBottomBar extends StatelessWidget {
         width: mode == ConversationBottomBarMode.recording ? 180 : null,
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
         decoration: BoxDecoration(
-          color: const Color(0xFF46AFC1), // Teal color
+          color: const Color(0xFF4FAFBE), // Teal color
           borderRadius: BorderRadius.circular(28),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFF46AFC1).withOpacity(0.3),
+              color: Color(0xFF4FAFBE).withOpacity(0.3),
               spreadRadius: 1,
               blurRadius: 5,
               offset: const Offset(0, 2),
@@ -149,36 +149,23 @@ class ConversationBottomBar extends StatelessWidget {
         final reprocessingApp = detailProvider.selectedAppForReprocessing;
 
         void handleTap() {
-          if (selectedTab == ConversationTab.summary) {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              builder: (context) => const SummarizedAppsBottomSheet(),
-            );
-          } else {
-            onTabSelected(ConversationTab.summary);
-          }
+          // Always just select the summary tab, no popup
+          onTabSelected(ConversationTab.summary);
         }
 
         return TabButton(
-          icon: null,
-          customIcon: app == null && reprocessingApp == null
-              ? SvgPicture.asset(
-                  Assets.images.aiMagic,
-                  color: Colors.white,
-                )
-              : null,
+          icon: FontAwesomeIcons.lightbulb, // Changed to lightbulb icon
+          customIcon: null, // Remove custom icon
           isSelected: selectedTab == ConversationTab.summary,
           onTap: handleTap,
-          label: null, // Remove the label to show only icon + dropdown
+          label: null, // Remove the label to show only icon
           appImage: isReprocessing
               ? (reprocessingApp != null ? reprocessingApp.getImageUrl() : Assets.images.herologo.path)
               : (app != null ? app.getImageUrl() : null),
           isLocalAsset: isReprocessing && reprocessingApp == null,
-          showDropdownArrow: true, // Always show dropdown arrow
+          showDropdownArrow: false, // Disable dropdown arrow
           isLoading: isReprocessing,
-          onDropdownPressed: handleTap,
+          onDropdownPressed: null, // Remove dropdown functionality
         );
       },
     );

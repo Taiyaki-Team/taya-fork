@@ -101,8 +101,8 @@ class GetSummaryWidgets extends StatelessWidget {
 
   Widget _buildInfoChips(ServerConversation conversation) {
     return Wrap(
-      spacing: 8,
-      runSpacing: 8,
+      spacing: 4,
+      runSpacing: 4,
       children: [
         // Date chip
         _buildChip(
@@ -128,7 +128,7 @@ class GetSummaryWidgets extends StatelessWidget {
 
   Widget _buildChip({required String label, required IconData icon}) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(156, 203, 211, 1),
         borderRadius: BorderRadius.circular(20),
@@ -138,10 +138,10 @@ class GetSummaryWidgets extends StatelessWidget {
         children: [
           Icon(
             icon,
-            size: 14,
+            size: 12,
             color: Colors.white,
           ),
-          const SizedBox(width: 6),
+          const SizedBox(width: 4),
           Text(
             label,
             style: const TextStyle(
@@ -165,23 +165,11 @@ class GetSummaryWidgets extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 8),
-            conversation.discarded
-                ? Text(
-                    'Discarded Conversation',
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 32),
-                  )
-                : GetEditTextField(
-                    conversationId: conversation.id,
-                    focusNode: data.item3,
-                    controller: data.item2,
-                    content: conversation.structured.title.decodeString,
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 32, color: Colors.white),
-                  ),
+            // Add spacing above the teal pills
             const SizedBox(height: 16),
+            // Just the info chips at the top - NO TITLE AT ALL
             _buildInfoChips(conversation),
-            const SizedBox(height: 16),
-            conversation.discarded ? const SizedBox.shrink() : const SizedBox(height: 8),
+            const SizedBox(height: 4),
           ],
         );
       },
@@ -446,7 +434,7 @@ class AppResultDetailWidget extends StatelessWidget {
     final String content = appResponse.content.trim().decodeString;
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
+      margin: const EdgeInsets.only(bottom: 8),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -611,6 +599,18 @@ class GetAppsWidgets extends StatelessWidget {
               : [
                   // Show the summarized app
                   if (!provider.conversation.discarded) ...[
+                    // Title right before Summary section
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(
+                        provider.conversation.structured.title.decodeString,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(fontSize: 20, color: TayaColors.secondaryTextColor),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -619,7 +619,7 @@ class GetAppsWidgets extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
-                              .copyWith(fontSize: 20, color: TayaColors.secondaryTextColor),
+                              .copyWith(fontSize: 16, color: TayaColors.secondaryTextColor),
                           textAlign: TextAlign.start,
                         ),
                         IconButton(
@@ -644,7 +644,7 @@ class GetAppsWidgets extends StatelessWidget {
                       currentResultIndex: currentResultIndex,
                     ),
                   ],
-                  const SizedBox(height: 8)
+                  const SizedBox(height: 4)
                 ],
         );
       },
@@ -652,13 +652,13 @@ class GetAppsWidgets extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          const SizedBox(height: 32),
+          const SizedBox(height: 16),
           Text(
             'No summary available\nfor this conversation.',
             style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -692,7 +692,7 @@ class GetAppsWidgets extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 16),
         ],
       ),
     );
@@ -747,7 +747,7 @@ class GetGeolocationWidgets extends StatelessWidget {
                         height: 200,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
-                          color: Color(0xFFE0E0E0),
+                          color: Colors.grey.shade200,
                         ),
                         child: const Center(
                           child: Text(

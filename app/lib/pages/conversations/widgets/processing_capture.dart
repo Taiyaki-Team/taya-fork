@@ -46,14 +46,14 @@ class _ConversationCaptureWidgetState extends State<ConversationCaptureWidget> {
           routeToPage(context, ConversationCapturingPage(topConversationId: topConvoId));
         },
         child: Container(
-          margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+          margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
           width: double.maxFinite,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16.0),
           ),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 18, 10, 16),
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

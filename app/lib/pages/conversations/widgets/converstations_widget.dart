@@ -189,7 +189,7 @@ class PlayPauseButton extends StatefulWidget {
   const PlayPauseButton({
     super.key,
     this.size = 48,
-    this.color = const Color(0xFF46AFC1),
+    this.color = const Color(0xFF4FAFBE),
     this.isPlaying = false,
   });
 

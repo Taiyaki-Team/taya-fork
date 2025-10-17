@@ -126,7 +126,7 @@ class _ActionItemTileWidgetState extends State<ActionItemTileWidget> {
       dueDateText = _formatDueDate(dueDate);
     } else {
       chipColor = Color(0xFF4FAFBE).withOpacity(0.15);
-      textColor = Color(0xFF46AFC1);
+      textColor = Color(0xFF4FAFBE);
       icon = Icons.schedule;
       dueDateText = _formatDueDate(dueDate);
     }

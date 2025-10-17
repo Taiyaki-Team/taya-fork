@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:omi/providers/conversation_provider.dart';
+import 'package:omi/utils/ui_guidelines.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -18,7 +19,7 @@ class _SearchResultHeaderWidgetState extends State<SearchResultHeaderWidget> {
       var isSearching = provider.isFetchingConversations;
 
       return Container(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
         child: onSearches
             ? (isSearching
                 ? Shimmer.fromColors(
@@ -31,7 +32,7 @@ class _SearchResultHeaderWidgetState extends State<SearchResultHeaderWidget> {
                 : provider.totalSearchPages > 0
                     ? const Text(
                         "Search results",
-                        style: const TextStyle(color: Colors.white, fontSize: 14),
+                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
                       )
                     : const SizedBox.shrink())
             : const SizedBox.shrink(),

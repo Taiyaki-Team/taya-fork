@@ -517,7 +517,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
 
   PreferredSizeWidget _buildSelectionAppBar(ActionItemsProvider provider) {
     return AppBar(
-      backgroundColor: Color(0xFF46AFC1).withValues(alpha: 0.05),
+      backgroundColor: Color(0xFF4FAFBE).withValues(alpha: 0.05),
       elevation: 0,
       foregroundColor: Colors.white,
       leading: IconButton(
@@ -686,7 +686,7 @@ class _ActionItemsPageState extends State<ActionItemsPage> with AutomaticKeepAli
             gradient: LinearGradient(
               colors: [
                 const Color(0xFF4FAFBE).withOpacity(0.1),
-                const Color(0xFF46AFC1).withOpacity(0.05),
+                const Color(0xFF4FAFBE).withOpacity(0.05),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,

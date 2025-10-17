@@ -119,7 +119,7 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -138,7 +138,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 hintText: 'Search Conversations',
                 hintStyle: const TextStyle(color: Colors.white60, fontSize: 14),
                 filled: true,
-                fillColor: const Color(0xFFF5F5F5),
+                fillColor: const Color(0xFF2A2A2A),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -150,7 +150,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
                 prefixIcon: const Icon(
                   Icons.search,
-                  color: Colors.white60,
+                  color: Colors.white,
                 ),
                 suffixIcon: showClearButton
                     ? GestureDetector(
@@ -166,13 +166,13 @@ class _SearchWidgetState extends State<SearchWidget> {
                         ),
                       )
                     : null,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               ),
               style: const TextStyle(color: Colors.white),
             ),
           ),
           const SizedBox(
-            width: 8,
+            width: 12,
           ),
           // Calendar button
           Consumer<ConversationProvider>(
@@ -180,7 +180,7 @@ class _SearchWidgetState extends State<SearchWidget> {
               return Container(
                 decoration: BoxDecoration(
                   color:
-                      convoProvider.selectedDate != null ? Color(0xFF4FAFBE).withOpacity(0.5) : const Color(0xFFF5F5F5),
+                      convoProvider.selectedDate != null ? Color(0xFF4FAFBE).withOpacity(0.5) : const Color(0xFF2A2A2A),
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
                 ),
                 child: IconButton(
@@ -207,14 +207,14 @@ class _SearchWidgetState extends State<SearchWidget> {
             },
           ),
           const SizedBox(
-            width: 8,
+            width: 12,
           ),
           // Filter button
           Consumer<ConversationProvider>(
               builder: (BuildContext context, ConversationProvider convoProvider, Widget? child) {
             return Container(
               decoration: BoxDecoration(
-                color: convoProvider.showDiscardedConversations ? Colors.red.withOpacity(0.5) : const Color(0xFFF5F5F5),
+                color: convoProvider.showDiscardedConversations ? Colors.red.withOpacity(0.5) : const Color(0xFF2A2A2A),
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
               ),
               child: IconButton(

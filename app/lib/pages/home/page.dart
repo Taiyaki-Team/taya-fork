@@ -797,7 +797,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
                   icon: Icon(
                     FontAwesomeIcons.magnifyingGlass,
                     size: 16,
-                    color: TayaColors.secondaryTextColor,
+                    color: Colors.white,
                   ),
                   onPressed: () {
                     Navigator.push(

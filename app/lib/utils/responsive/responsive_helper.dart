@@ -34,7 +34,7 @@ class ResponsiveHelper {
 
   // Premium teal gradient system
   static const Color purplePrimary = Color(0xFF4FAFBE); // Main teal
-  static const Color purpleSecondary = Color(0xFF46AFC1); // Lighter teal
+  static const Color purpleSecondary = Color(0xFF4FAFBE); // Same teal for consistency
   static const Color purpleAccent = Color(0xFF3B9FB2); // Darker teal
   static const Color purpleLight = Color(0xFF4DA1B5); // Bright teal
 

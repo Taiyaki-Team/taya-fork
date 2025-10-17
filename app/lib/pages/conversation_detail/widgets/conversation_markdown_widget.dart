@@ -229,7 +229,7 @@ class _ConversationMarkdownWidgetState extends State<ConversationMarkdownWidget>
           color: Colors.white,
         ),
         blockquoteDecoration: BoxDecoration(
-          color: Color(0xFFE0E0E0),
+          color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(4),
         ),
         code: style.copyWith(

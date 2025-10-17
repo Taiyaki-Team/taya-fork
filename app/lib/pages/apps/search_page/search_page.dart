@@ -208,11 +208,10 @@ class _SearchPageState extends State<SearchPage> {
                             return ListView.separated(
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
-                              padding: const EdgeInsets.all(0),
+                              padding: const EdgeInsets.symmetric(horizontal: 16),
                               itemBuilder: (contaxt, index) {
                                 return Container(
-                                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(16),
@@ -239,11 +238,15 @@ class _SearchPageState extends State<SearchPage> {
                                             color: Color.fromRGBO(191, 185, 165, 1),
                                           ),
                                           const SizedBox(
-                                            width: 5,
+                                            width: 8,
                                           ),
                                           const Text(
                                             "Moments",
-                                            style: TextStyle(color: Color.fromRGBO(191, 185, 165, 1)),
+                                            style: TextStyle(
+                                              color: Color.fromRGBO(191, 185, 165, 1),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                           ),
                                           Spacer(),
                                           Text(
@@ -275,7 +278,7 @@ class _SearchPageState extends State<SearchPage> {
                                             maxLines: 1,
                                           ),
                                           const SizedBox(
-                                            width: 10,
+                                            width: 12,
                                           ),
                                           Container(
                                             child: const FaIcon(
@@ -286,25 +289,24 @@ class _SearchPageState extends State<SearchPage> {
                                           )
                                         ],
                                       ),
-                                      SizedBox(
-                                        height: 10,
+                                      const SizedBox(
+                                        height: 12,
                                       ),
                                       Container(
                                         width: double.infinity,
                                         child: Text(
                                           ls[index].structured.title,
                                           textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                              color: TayaColors.secondaryTextColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 16),
+                                          style: AppStyles.headerSmall.copyWith(
+                                            color: TayaColors.secondaryTextColor,
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 );
                               },
-                              separatorBuilder: (_, __) => const SizedBox(height: 15),
+                              separatorBuilder: (_, __) => const SizedBox(height: 16),
                               itemCount: convoProvider.groupedConversations.values.expand((v) => v).toList().length,
                             );
                             // return Column(

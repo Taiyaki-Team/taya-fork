@@ -16,6 +16,35 @@ class AppStyles {
     color: Color(0xFF0D1F40),
   );
 
+  // Header Styles - Consistent hierarchy
+  static const TextStyle headerLarge = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+    color: Color(0xFF0D1F40),
+    height: 1.2,
+  );
+
+  static const TextStyle headerMedium = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: Color(0xFF0D1F40),
+    height: 1.2,
+  );
+
+  static const TextStyle headerSmall = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: Color(0xFF0D1F40),
+    height: 1.2,
+  );
+
+  static const TextStyle sectionHeader = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: Color(0xFF0D1F40),
+    height: 1.2,
+  );
+
   static const TextStyle body = TextStyle(
     fontSize: 15,
     height: 1.4,

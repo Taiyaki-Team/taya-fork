@@ -57,7 +57,7 @@ class _DeviceOnboardingWrapperState extends State<DeviceOnboardingWrapper> with 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF46AFC1),
+      backgroundColor: Color(0xFF4FAFBE),
       body: TabBarView(
         controller: _controller,
         physics: const NeverScrollableScrollPhysics(), // Disable swipe navigation

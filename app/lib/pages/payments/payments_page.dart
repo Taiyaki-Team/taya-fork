@@ -63,7 +63,7 @@ class _PaymentsPageState extends State<PaymentsPage> {
   Widget build(BuildContext context) {
     return Consumer<PaymentMethodProvider>(builder: (context, provider, child) {
       return Scaffold(
-        backgroundColor: Color(0xFF46AFC1),
+        backgroundColor: Color(0xFF4FAFBE),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: const Text('Payments', style: TextStyle(color: Colors.white)),

@@ -282,9 +282,9 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF46AFC1),
+      backgroundColor: Color(0xFF4FAFBE),
       appBar: AppBar(
-        backgroundColor: Color(0xFF46AFC1),
+        backgroundColor: Color(0xFF4FAFBE),
         title: const Text('Your Taya Insights', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         elevation: 0,
@@ -628,7 +628,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Color(0xFF46AFC1),
+      backgroundColor: Color(0xFF4FAFBE),
       builder: (context) {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setModalState) {
@@ -686,7 +686,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
         child: RepaintBoundary(
           key: key,
           child: Container(
-            color: Color(0xFF46AFC1),
+            color: Color(0xFF4FAFBE),
             child: LayoutBuilder(builder: (context, constraints) {
               return SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
@@ -710,7 +710,7 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
       child: RepaintBoundary(
         key: key,
         child: Container(
-          color: Color(0xFF46AFC1),
+          color: Color(0xFF4FAFBE),
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
             children: [

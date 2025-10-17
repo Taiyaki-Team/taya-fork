@@ -82,7 +82,7 @@ class _AppHomeWebPageState extends State<AppHomeWebPage> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF46AFC1),
+      backgroundColor: Color(0xFF4FAFBE),
       body: SlideTransition(
           position: _slideAnimation,
           child: SafeArea(
