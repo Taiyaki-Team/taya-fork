@@ -486,7 +486,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
                                         ),
                                       );
                                     } else {
-                                      home.setIndex(val);
+                                      home.setIndex(val, onConversationsTabSelected: () {
+                                        // Clear all filters when navigating to conversations tab
+                                        if (val == 0) {
+                                          context.read<ConversationProvider>().clearAllFilters();
+                                        }
+                                      });
                                     }
                                   },
                                 ));

@@ -287,7 +287,7 @@ class NormalMessageWidget extends StatelessWidget {
             ? Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1f1f25),
+                  color: Colors.white,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(16.0),
@@ -311,18 +311,18 @@ class NormalMessageWidget extends StatelessWidget {
                                         maxLines: 1,
                                         softWrap: false,
                                         previousThinkingText,
-                                        style: const TextStyle(color: Colors.white60, fontSize: 15),
+                                        style: const TextStyle(color: Colors.grey, fontSize: 15),
                                       )
                                     : const SizedBox.shrink(),
                                 Shimmer.fromColors(
-                                  baseColor: Colors.white,
-                                  highlightColor: Colors.grey,
+                                  baseColor: Colors.grey.shade800,
+                                  highlightColor: Colors.grey.shade400,
                                   child: Text(
                                     overflow: TextOverflow.fade,
                                     maxLines: 1,
                                     softWrap: false,
                                     thinkingText,
-                                    style: const TextStyle(color: Colors.white, fontSize: 15),
+                                    style: const TextStyle(color: Colors.black87, fontSize: 15),
                                   ),
                                 )
                               ],

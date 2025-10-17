@@ -314,7 +314,7 @@ class _ConversationListItemState extends State<ConversationListItem> {
           FittedBox(
             fit: BoxFit.scaleDown,
             child: isNew
-                ? const ConversationNewStatusIndicator(text: "New 🚀")
+                ? const ConversationNewStatusIndicator(text: "New")
                 : Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

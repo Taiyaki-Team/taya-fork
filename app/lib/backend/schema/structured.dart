@@ -18,9 +18,9 @@ class Structured {
   getEmoji() {
     try {
       if (emoji.isNotEmpty) return utf8.decode(emoji.toString().codeUnits);
-      return ['🧠', '😎', '🧑‍💻', '🚀'][Random().nextInt(4)];
+      return ['Brain', 'Cool', 'Dev', 'Launch'][Random().nextInt(4)];
     } catch (e) {
-      // return ['🧠', '😎', '🧑‍💻', '🚀'][Random().nextInt(4)];
+      // return ['Brain', 'Cool', 'Dev', 'Launch'][Random().nextInt(4)];
       return emoji; // should return random?
     }
   }

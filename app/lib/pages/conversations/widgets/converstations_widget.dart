@@ -95,7 +95,7 @@ class _ConverstationsWidgetState extends State<ConverstationsWidget> {
           _isPhoneMicPaused;
       bool isRecording = provider.recordingState == RecordingState.record;
 
-      print("💌💌💌💌💌💌💌>=== ${provider.segments.map((segment) => segment.text).join(' ')}");
+      print(">=== ${provider.segments.map((segment) => segment.text).join(' ')}");
       // Determine pause state based on recording type
       bool isPaused = false;
       if (isDeviceRecording) {

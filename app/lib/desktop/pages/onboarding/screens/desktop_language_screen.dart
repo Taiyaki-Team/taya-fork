@@ -117,7 +117,7 @@ class _DesktopLanguageScreenState extends State<DesktopLanguageScreen> with Tick
       return LanguageOption(
         code: entry.value,
         name: entry.key,
-        flag: _languageFlags[entry.value] ?? '🌐',
+        flag: _languageFlags[entry.value] ?? 'Global',
       );
     }).toList();
   }
@@ -134,7 +134,7 @@ class _DesktopLanguageScreenState extends State<DesktopLanguageScreen> with Tick
             .map((entry) => LanguageOption(
                   code: entry.value,
                   name: entry.key,
-                  flag: _languageFlags[entry.value] ?? '🌐',
+                  flag: _languageFlags[entry.value] ?? 'Global',
                 ))
             .toList();
       }

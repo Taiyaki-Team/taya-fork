@@ -179,14 +179,14 @@ class MessageProvider extends ChangeNotifier {
       }
       notifyListeners();
     } on PlatformException catch (e) {
-      debugPrint('🖼️ PlatformException during image picking: ${e.code} - ${e.message}');
+      debugPrint('PlatformException during image picking: ${e.code} - ${e.message}');
       if (e.code == 'photo_access_denied') {
         AppSnackbar.showSnackbarError('Photos permission denied. Please allow access to photos to select images');
       } else {
         AppSnackbar.showSnackbarError('Error selecting images: ${e.message ?? e.code}');
       }
     } catch (e) {
-      debugPrint('🖼️ General exception during image picking: $e');
+      debugPrint('General exception during image picking: $e');
       AppSnackbar.showSnackbarError('Error selecting images. Please try again.');
     }
   }

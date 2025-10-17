@@ -61,7 +61,7 @@ class ConversationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> searchConversations(String query, {bool showShimmer = false}) async {
+  Future<void> searchConversations(String query, {bool showShimmer = false, bool useLocalSearch = true}) async {
     if (query.isEmpty) {
       previousQuery = "";
       currentSearchPage = 0;
@@ -71,6 +71,13 @@ class ConversationProvider extends ChangeNotifier {
       return;
     }
 
+    if (useLocalSearch) {
+      // Use simple local word matching search
+      _performLocalSearch(query);
+      return;
+    }
+
+    // Use server search (original behavior)
     if (showShimmer) {
       setLoadingConversations(true);
     } else {
@@ -91,6 +98,41 @@ class ConversationProvider extends ChangeNotifier {
       setIsFetchingConversations(false);
     }
 
+    notifyListeners();
+  }
+
+  void _performLocalSearch(String query) {
+    final lowercaseQuery = query.toLowerCase();
+    previousQuery = query;
+    
+    // Search through all conversations locally
+    searchedConversations = conversations.where((convo) {
+      // Search in conversation title/overview
+      if (convo.structured?.title?.toLowerCase().contains(lowercaseQuery) == true ||
+          convo.structured?.overview?.toLowerCase().contains(lowercaseQuery) == true) {
+        return true;
+      }
+      
+      // Search in transcript segments
+      if (convo.transcriptSegments != null) {
+        for (var segment in convo.transcriptSegments!) {
+          if (segment.text.toLowerCase().contains(lowercaseQuery)) {
+            return true;
+          }
+        }
+      }
+      
+      return false;
+    }).toList();
+    
+    // Sort by creation date (newest first)
+    searchedConversations.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    
+    // Update pagination info for local search
+    currentSearchPage = 1;
+    totalSearchPages = 1;
+    
+    groupSearchConvosByDate();
     notifyListeners();
   }
 
@@ -314,6 +356,19 @@ class ConversationProvider extends ChangeNotifier {
     searchedConversations = [];
 
     // Re-apply grouping without date filter
+    groupConversationsByDate();
+    notifyListeners();
+  }
+
+  /// Clear all filters (date, search, etc.) and reset to default view
+  Future<void> clearAllFilters() async {
+    selectedDate = null;
+    previousQuery = "";
+    currentSearchPage = 0;
+    totalSearchPages = 0;
+    searchedConversations = [];
+
+    // Re-apply grouping without any filters
     groupConversationsByDate();
     notifyListeners();
   }

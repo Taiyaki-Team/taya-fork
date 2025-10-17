@@ -32,7 +32,7 @@ class _DataPrivacyPageState extends State<DataPrivacyPage> {
       child: Column(
         children: [
           const Text(
-            '🛡️',
+            'Privacy',
             style: TextStyle(fontSize: 64),
           ),
           const SizedBox(height: 16),

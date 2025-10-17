@@ -317,7 +317,7 @@ class _DesktopProfilePageState extends State<DesktopProfilePage> with TickerProv
               ),
               OmiSettingsTile(
                 title: 'Identifying Others',
-                subtitle: 'Tell Taya who said it 🗣️',
+                subtitle: 'Tell Taya who said it',
                 icon: FontAwesomeIcons.users,
                 onTap: () {
                   routeToPage(context, const UserPeoplePage());

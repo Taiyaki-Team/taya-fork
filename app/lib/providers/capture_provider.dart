@@ -186,7 +186,7 @@ class CaptureProvider extends ChangeNotifier
         break;
 
       default:
-        debugPrint('⚠️ Unsupported codec for amplitude calculation: $codec');
+        debugPrint('WARNING: Unsupported codec for amplitude calculation: $codec');
         return;
     }
 
@@ -206,7 +206,7 @@ class CaptureProvider extends ChangeNotifier
     double rms = sqrt(sum / _recentAudioSamples.length);
     _currentBleAmplitude = (rms / 32767.0).clamp(0.0, 1.0);
 
-    debugPrint('📊 Calculated amplitude: $_currentBleAmplitude from ${samples.length} samples');
+    debugPrint('Calculated amplitude: $_currentBleAmplitude from ${samples.length} samples');
   }
 
   ///

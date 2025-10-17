@@ -389,7 +389,7 @@ class _SpeechProfilePageState extends State<SpeechProfilePage> with TickerProvid
                                         routeToPage(context, const UserSpeechSamples());
                                       },
                                       child: const Text(
-                                        'Listen to my speech profile ➡️',
+                                        'Listen to my speech profile',
                                         style: TextStyle(color: Colors.white, fontSize: 16),
                                       ))
                                   : const SizedBox(),

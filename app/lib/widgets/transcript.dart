@@ -69,16 +69,16 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
   List<GlobalKey> _matchKeys = [];
   int _previousSearchResultIndex = -1;
 
-  // Define distinct muted colors for different speakers
+  // Define distinct medium-light colors for different speakers
   static const List<Color> _speakerColors = [
-    Color(0xFF3A2E26), // Dark warm brown
-    Color(0xFF26313A), // Dark navy blue
-    Color(0xFF2E3A26), // Dark forest green
-    Color(0xFF3A2634), // Dark burgundy
-    Color(0xFF263A34), // Dark teal
-    Color(0xFF34332A), // Dark olive
-    Color(0xFF2F2A3A), // Dark plum
-    Color(0xFF3A3026), // Dark bronze
+    Color(0xFFB8E6F0), // Medium blue
+    Color(0xFFD4F0B8), // Medium green
+    Color(0xFFF0D4B8), // Medium peach
+    Color(0xFFF0B8E6), // Medium pink
+    Color(0xFFB8F0D4), // Medium mint
+    Color(0xFFE6D4B8), // Medium beige
+    Color(0xFFD4B8F0), // Medium lavender
+    Color(0xFFF0E6B8), // Medium cream
   ];
 
   Color _getSpeakerBubbleColor(bool isUser, int speakerId) {
@@ -87,7 +87,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
     }
     // Use speakerId to get consistent color for each speaker
     final colorIndex = speakerId % _speakerColors.length;
-    return _speakerColors[colorIndex].withOpacity(0.8);
+    return _speakerColors[colorIndex];
   }
 
   Color _getSpeakerAvatarColor(bool isUser, int speakerId) {
@@ -95,7 +95,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
       return Color(0xFF4FAFBE).withOpacity(0.3);
     }
     final colorIndex = speakerId % _speakerColors.length;
-    return _speakerColors[colorIndex].withOpacity(0.3);
+    return _speakerColors[colorIndex].withOpacity(0.5);
   }
 
   @override
@@ -500,7 +500,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
                                     ? '${suggestion.personName}?'
                                     : (person != null ? person.name : 'Speaker ${data.speakerId}'),
                                 style: TextStyle(
-                                  color: person == null && !isTagging ? Colors.grey.shade400 : Colors.grey.shade300,
+                                  color: person == null && !isTagging ? Colors.grey.shade600 : Colors.grey.shade700,
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -583,7 +583,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
                                       text: TextSpan(
                                         style: TextStyle(
                                           letterSpacing: 0.0,
-                                          color: isUser ? Colors.white : Colors.grey.shade100,
+                                          color: isUser ? Colors.white : Colors.grey.shade800,
                                           fontSize: 15,
                                           height: 1.4,
                                         ),
@@ -610,7 +610,7 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
                                                 letterSpacing: 0.0,
                                                 color: isUser
                                                     ? Colors.white.withValues(alpha: 0.8)
-                                                    : Colors.grey.shade300.withValues(alpha: 0.8),
+                                                    : Colors.grey.shade700,
                                                 fontSize: 14,
                                                 fontStyle: FontStyle.italic,
                                                 height: 1.3,

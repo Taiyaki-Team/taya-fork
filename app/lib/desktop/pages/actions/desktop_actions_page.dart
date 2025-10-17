@@ -565,7 +565,7 @@ class DesktopActionsPageState extends State<DesktopActionsPage>
               ),
         const SizedBox(height: 24),
         const Text(
-          '✅ No Action Items',
+          'No Action Items',
           style: TextStyle(
             color: ResponsiveHelper.textPrimary,
             fontSize: 20,

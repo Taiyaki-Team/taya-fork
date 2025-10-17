@@ -38,6 +38,8 @@ class _ConversationsPageState extends State<ConversationsPage> with AutomaticKee
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final conversationProvider = Provider.of<ConversationProvider>(context, listen: false);
+      // Clear all filters when navigating to conversations page
+      await conversationProvider.clearAllFilters();
       if (conversationProvider.conversations.isEmpty) {
         await conversationProvider.getInitialConversations();
       }
@@ -147,6 +149,8 @@ class _ConversationsPageState extends State<ConversationsPage> with AutomaticKee
         return RefreshIndicator(
           onRefresh: () async {
             HapticFeedback.mediumImpact();
+            // Clear all filters when refreshing
+            await convoProvider.clearAllFilters();
             Provider.of<CaptureProvider>(context, listen: false).refreshInProgressConversations();
             await convoProvider.getInitialConversations();
             return;

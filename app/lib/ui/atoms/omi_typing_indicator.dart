@@ -36,8 +36,8 @@ class _IndicatorState extends State<_Indicator> with SingleTickerProviderStateMi
     _anim3 = _tween(0.15);
 
     _color = ColorTween(
-      begin: Colors.grey[400],
-      end: Colors.grey[600],
+      begin: Colors.white.withOpacity(0.8),
+      end: Colors.white,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 

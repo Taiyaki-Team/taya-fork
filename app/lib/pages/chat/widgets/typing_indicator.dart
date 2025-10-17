@@ -38,8 +38,8 @@ class _TypingIndicatorState extends State<TypingIndicator> with SingleTickerProv
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     _colorAnimation = ColorTween(
-      begin: Colors.grey[400],
-      end: Colors.grey[600],
+      begin: Colors.grey.shade600,
+      end: Colors.grey.shade800,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 

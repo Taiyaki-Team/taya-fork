@@ -44,13 +44,7 @@ class BatteryInfoWidget extends StatelessWidget {
                           width: 10,
                           height: 10,
                           decoration: BoxDecoration(
-                            color: deviceProvider.batteryLevel > 75
-                                ? const Color.fromARGB(255, 0, 255, 8)
-                                : deviceProvider.batteryLevel > 20
-                                    ? Colors.yellow.shade700
-                                    : deviceProvider.batteryLevel > 0
-                                        ? Colors.red
-                                        : Colors.grey,
+                            color: Colors.white,
                             shape: BoxShape.circle,
                           ),
                         ),

@@ -72,7 +72,7 @@ class _ProcessingConversationPageState extends State<ProcessingConversationPage>
                   icon: const Icon(Icons.arrow_back_rounded, size: 24.0),
                 ),
                 const SizedBox(width: 4),
-                Text(hasPhotos ? "📸" : "🎙️"),
+                Text(hasPhotos ? "Photo" : "Audio"),
                 const SizedBox(width: 4),
                 const Expanded(child: Text("In progress")),
               ],

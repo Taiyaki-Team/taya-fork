@@ -270,7 +270,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const Divider(height: 1, color: Color(0xFF3C3C43)),
                 _buildProfileItem(
                   title: 'Identifying Others',
-                  subtitle: 'Tell Taya who said it 🗣️',
+                  subtitle: 'Tell Taya who said it',
                   icon: const FaIcon(FontAwesomeIcons.users, color: Color(0xFF4A5568), size: 20),
                   onTap: () {
                     routeToPage(context, const UserPeoplePage());

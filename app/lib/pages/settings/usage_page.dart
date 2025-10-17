@@ -143,16 +143,16 @@ class _UsagePageState extends State<UsagePage> with TickerProviderStateMixin {
       final List<String> funStats = [];
 
       if (transcriptionMinutes > 0) {
-        funStats.add('🎧 Listened for ${numberFormatter.format(transcriptionMinutes)} minutes');
+        funStats.add('Listened for ${numberFormatter.format(transcriptionMinutes)} minutes');
       }
       if (stats.wordsTranscribed > 0) {
-        funStats.add('🧠 Understood ${numberFormatter.format(stats.wordsTranscribed)} words');
+        funStats.add('Understood ${numberFormatter.format(stats.wordsTranscribed)} words');
       }
       if (stats.insightsGained > 0) {
-        funStats.add('✨ Provided ${numberFormatter.format(stats.insightsGained)} insights');
+        funStats.add('Provided ${numberFormatter.format(stats.insightsGained)} insights');
       }
       if (stats.memoriesCreated > 0) {
-        funStats.add('📚 Remembered ${numberFormatter.format(stats.memoriesCreated)} memories');
+        funStats.add('Remembered ${numberFormatter.format(stats.memoriesCreated)} memories');
       }
 
       if (funStats.isNotEmpty) {

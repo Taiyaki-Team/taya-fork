@@ -545,7 +545,7 @@ class AddAppProvider extends ChangeNotifier {
       await appProvider!.getApps();
       var app = await getAppDetailsServer(updateAppId!);
       appProvider!.updateLocalApp(App.fromJson(app!));
-      AppSnackbar.showSnackbarSuccess('App updated successfully 🚀');
+      AppSnackbar.showSnackbarSuccess('App updated successfully');
       clear();
       success = true;
     } else {
@@ -612,7 +612,7 @@ class AddAppProvider extends ChangeNotifier {
     String? appId;
     var res = await submitAppServer(imageFile!, data);
     if (res.$1) {
-      AppSnackbar.showSnackbarSuccess('App submitted successfully 🚀');
+      AppSnackbar.showSnackbarSuccess('App submitted successfully');
       await appProvider!.getApps();
       clear();
       appId = res.$3;
@@ -626,11 +626,11 @@ class AddAppProvider extends ChangeNotifier {
 
   Future pickImage() async {
     try {
-      debugPrint('🖼️ Attempting to pick image from gallery...');
+      debugPrint('Attempting to pick image from gallery...');
 
       // Use file_picker for desktop platforms, image_picker for mobile
       if (kIsWeb || Platform.isMacOS || Platform.isWindows || Platform.isLinux) {
-        debugPrint('🖼️ Using file_picker for desktop platform');
+        debugPrint('Using file_picker for desktop platform');
         try {
           FilePickerResult? result = await FilePicker.platform.pickFiles(
             type: FileType.custom,
@@ -642,42 +642,42 @@ class AddAppProvider extends ChangeNotifier {
           );
 
           if (result != null && result.files.isNotEmpty && result.files.single.path != null) {
-            debugPrint('🖼️ Image picked successfully via file_picker: ${result.files.single.path}');
+            debugPrint('Image picked successfully via file_picker: ${result.files.single.path}');
             imageFile = File(result.files.single.path!);
-            debugPrint('🖼️ Image file set, notifying listeners...');
+            debugPrint('Image file set, notifying listeners...');
           } else {
-            debugPrint('🖼️ No image selected by user via file_picker');
+            debugPrint('No image selected by user via file_picker');
           }
         } on PlatformException catch (e) {
-          debugPrint('🖼️ FilePicker PlatformException: ${e.code} - ${e.message}');
+          debugPrint('FilePicker PlatformException: ${e.code} - ${e.message}');
           AppSnackbar.showSnackbarError('Error opening file picker: ${e.message}');
         } catch (e) {
-          debugPrint('🖼️ FilePicker general error: $e');
+          debugPrint('FilePicker general error: $e');
           AppSnackbar.showSnackbarError('Error selecting image: $e');
         }
       } else {
-        debugPrint('🖼️ Using image_picker for mobile platform');
+        debugPrint('Using image_picker for mobile platform');
         ImagePicker imagePicker = ImagePicker();
         var file = await imagePicker.pickImage(source: ImageSource.gallery);
         if (file != null) {
-          debugPrint('🖼️ Image picked successfully via image_picker: ${file.path}');
+          debugPrint('Image picked successfully via image_picker: ${file.path}');
           imageFile = File(file.path);
-          debugPrint('🖼️ Image file set, notifying listeners...');
+          debugPrint('Image file set, notifying listeners...');
         } else {
-          debugPrint('🖼️ No image selected by user via image_picker');
+          debugPrint('No image selected by user via image_picker');
         }
       }
 
       notifyListeners();
     } on PlatformException catch (e) {
-      debugPrint('🖼️ PlatformException during image picking: ${e.code} - ${e.message}');
+      debugPrint('PlatformException during image picking: ${e.code} - ${e.message}');
       if (e.code == 'photo_access_denied') {
         AppSnackbar.showSnackbarError('Photos permission denied. Please allow access to photos to select an image');
       } else {
         AppSnackbar.showSnackbarError('Error selecting image: ${e.message ?? e.code}');
       }
     } catch (e) {
-      debugPrint('🖼️ General exception during image picking: $e');
+      debugPrint('General exception during image picking: $e');
       AppSnackbar.showSnackbarError('Error selecting image. Please try again.');
     }
     checkValidity();
@@ -686,13 +686,13 @@ class AddAppProvider extends ChangeNotifier {
 
   Future<void> pickThumbnail() async {
     try {
-      debugPrint('🖼️ Attempting to pick thumbnail from gallery...');
+      debugPrint('Attempting to pick thumbnail from gallery...');
 
       File? thumbnailFile;
 
       // Use file_picker for desktop platforms, image_picker for mobile
       if (kIsWeb || Platform.isMacOS || Platform.isWindows || Platform.isLinux) {
-        debugPrint('🖼️ Using file_picker for desktop platform (thumbnail)');
+        debugPrint('Using file_picker for desktop platform (thumbnail)');
         try {
           FilePickerResult? result = await FilePicker.platform.pickFiles(
             type: FileType.custom,
@@ -704,33 +704,33 @@ class AddAppProvider extends ChangeNotifier {
           );
 
           if (result != null && result.files.isNotEmpty && result.files.single.path != null) {
-            debugPrint('🖼️ Thumbnail picked successfully via file_picker: ${result.files.single.path}');
+            debugPrint('Thumbnail picked successfully via file_picker: ${result.files.single.path}');
             thumbnailFile = File(result.files.single.path!);
           } else {
-            debugPrint('🖼️ No thumbnail selected by user via file_picker');
+            debugPrint('No thumbnail selected by user via file_picker');
             return;
           }
         } on PlatformException catch (e) {
-          debugPrint('🖼️ FilePicker PlatformException (thumbnail): ${e.code} - ${e.message}');
+          debugPrint('FilePicker PlatformException (thumbnail): ${e.code} - ${e.message}');
           AppSnackbar.showSnackbarError('Error opening file picker: ${e.message}');
           return;
         } catch (e) {
-          debugPrint('🖼️ FilePicker general error (thumbnail): $e');
+          debugPrint('FilePicker general error (thumbnail): $e');
           AppSnackbar.showSnackbarError('Error selecting thumbnail: $e');
           return;
         }
       } else {
-        debugPrint('🖼️ Using image_picker for mobile platform (thumbnail)');
+        debugPrint('Using image_picker for mobile platform (thumbnail)');
         ImagePicker imagePicker = ImagePicker();
         var file = await imagePicker.pickImage(
           source: ImageSource.gallery,
           imageQuality: 85,
         );
         if (file != null) {
-          debugPrint('🖼️ Thumbnail picked successfully via image_picker: ${file.path}');
+          debugPrint('Thumbnail picked successfully via image_picker: ${file.path}');
           thumbnailFile = File(file.path);
         } else {
-          debugPrint('🖼️ No thumbnail selected by user via image_picker');
+          debugPrint('No thumbnail selected by user via image_picker');
           return;
         }
       }
@@ -739,17 +739,17 @@ class AddAppProvider extends ChangeNotifier {
         setIsUploadingThumbnail(true);
 
         // Upload thumbnail
-        debugPrint('🖼️ Uploading thumbnail...');
+        debugPrint('Uploading thumbnail...');
         var result = await uploadAppThumbnail(thumbnailFile);
         if (result.isNotEmpty) {
           thumbnailUrls.add(result['thumbnail_url']!);
           thumbnailIds.add(result['thumbnail_id']!);
-          debugPrint('🖼️ Thumbnail uploaded successfully');
+          debugPrint('Thumbnail uploaded successfully');
         }
         setIsUploadingThumbnail(false);
       }
     } on PlatformException catch (e) {
-      debugPrint('🖼️ PlatformException during thumbnail picking: ${e.code} - ${e.message}');
+      debugPrint('PlatformException during thumbnail picking: ${e.code} - ${e.message}');
       if (e.code == 'photo_access_denied') {
         AppSnackbar.showSnackbarError('Photos permission denied. Please allow access to photos to select an image');
       } else {
@@ -757,7 +757,7 @@ class AddAppProvider extends ChangeNotifier {
       }
       setIsUploadingThumbnail(false);
     } catch (e) {
-      debugPrint('🖼️ General exception during thumbnail picking: $e');
+      debugPrint('General exception during thumbnail picking: $e');
       AppSnackbar.showSnackbarError('Error selecting thumbnail. Please try again.');
       setIsUploadingThumbnail(false);
     }

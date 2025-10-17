@@ -80,8 +80,12 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setIndex(int index) {
+  void setIndex(int index, {Function()? onConversationsTabSelected}) {
     selectedIndex = index;
+    // Clear filters when navigating to conversations tab (index 0)
+    if (index == 0 && onConversationsTabSelected != null) {
+      onConversationsTabSelected();
+    }
     notifyListeners();
   }
 

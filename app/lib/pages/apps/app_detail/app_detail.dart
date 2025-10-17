@@ -798,7 +798,7 @@ class _AppDetailPageState extends State<AppDetailPage> {
                               ? const Padding(
                                   padding: EdgeInsets.only(right: 12.0),
                                   child: Text(
-                                    '✅',
+                                    'Done',
                                     style: TextStyle(color: Colors.grey, fontSize: 18),
                                   ),
                                 )

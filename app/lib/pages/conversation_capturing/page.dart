@@ -167,7 +167,7 @@ class _ConversationCapturingPageState extends State<ConversationCapturingPage> w
                     icon: const Icon(Icons.arrow_back_rounded, size: 24.0),
                   ),
                   const SizedBox(width: 4),
-                  Text(provider.photos.isNotEmpty ? "📸" : "🎙️"),
+                  Text(provider.photos.isNotEmpty ? "Photo" : "Recording"),
                   const SizedBox(width: 4),
                   const Expanded(child: Text("Listening")),
                 ],
