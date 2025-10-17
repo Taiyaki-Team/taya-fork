@@ -1,6 +1,7 @@
 // journal_editor_screen.dart
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:omi/models/journal_entry.dart';
 import 'package:omi/providers/journal_provider.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +24,11 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
   JournalEntry? _journal;
   bool _isLoading = true;
   bool _isNewJournal = false;
+  
+  // Rich text formatting state
+  bool _isBold = false;
+  bool _isItalic = false;
+  bool _isUnderline = false;
 
   @override
   void initState() {
@@ -165,18 +171,26 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
         ),
         actions: [
           Container(
-            margin: EdgeInsets.only(right: 16),
-            child: ElevatedButton(
-              onPressed: () {
+            margin: EdgeInsets.only(right: 16, top: 8, bottom: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(156, 203, 211, 1), // Match the teal pills
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: InkWell(
+              onTap: () {
                 // _saveJournal().then((_) => Navigator.pop(context));
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromRGBO(139, 191, 201, 1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+              child: Center(
+                child: Text(
+                  'Done',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-              child: Text('Done', style: TextStyle(color: Colors.white)),
             ),
           ),
         ],
@@ -265,11 +279,11 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
               ),
             ),
 
-          // Content Section
+          // Content Section with Rich Text Editing
           Expanded(
             child: Container(
               padding: EdgeInsets.all(16),
-              child: TextFormField(
+              child: TextField(
                 controller: _contentController,
                 focusNode: _contentFocus,
                 maxLines: null,
@@ -277,6 +291,10 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
                 style: TextStyle(
                   fontSize: 16,
                   height: 1.5,
+                  color: Color(0xFF0D1F40),
+                  fontWeight: _isBold ? FontWeight.bold : FontWeight.normal,
+                  fontStyle: _isItalic ? FontStyle.italic : FontStyle.normal,
+                  decoration: _isUnderline ? TextDecoration.underline : TextDecoration.none,
                 ),
                 decoration: InputDecoration(
                   hintText: 'Tap and start writing...',
@@ -292,6 +310,7 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
 
           // Bottom Toolbar
           Container(
+            margin: EdgeInsets.only(bottom: 120), // Push it above the bottom navigation
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
               color: Colors.grey[50],
@@ -302,22 +321,40 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
             child: Row(
               children: [
                 IconButton(
-                  icon: Icon(Icons.format_bold),
+                  icon: Icon(Icons.format_bold, size: 20),
                   onPressed: () {
-                    // Bold text functionality
-                    _insertFormatting('**', '**');
+                    setState(() {
+                      _isBold = !_isBold;
+                    });
                   },
+                  tooltip: 'Bold',
+                  color: _isBold ? Color(0xFF4FAFBE) : Color(0xFF0D1F40),
                 ),
                 IconButton(
-                  icon: Icon(Icons.format_italic),
+                  icon: Icon(Icons.format_italic, size: 20),
                   onPressed: () {
-                    // Italic text functionality
-                    _insertFormatting('_', '_');
+                    setState(() {
+                      _isItalic = !_isItalic;
+                    });
                   },
+                  tooltip: 'Italic',
+                  color: _isItalic ? Color(0xFF4FAFBE) : Color(0xFF0D1F40),
                 ),
                 IconButton(
-                  icon: Icon(Icons.camera_alt),
+                  icon: Icon(Icons.format_underline, size: 20),
+                  onPressed: () {
+                    setState(() {
+                      _isUnderline = !_isUnderline;
+                    });
+                  },
+                  tooltip: 'Underline',
+                  color: _isUnderline ? Color(0xFF4FAFBE) : Color(0xFF0D1F40),
+                ),
+                IconButton(
+                  icon: Icon(Icons.camera_alt, size: 20),
                   onPressed: _addImage,
+                  tooltip: 'Add Image',
+                  color: Color(0xFF0D1F40),
                 ),
                 Spacer(),
                 Text(
@@ -335,22 +372,4 @@ class _JournalEditorScreenState extends State<JournalEditorScreen> {
     );
   }
 
-  void _insertFormatting(String prefix, String suffix) {
-    final text = _contentController.text;
-    final selection = _contentController.selection;
-
-    if (selection.isValid) {
-      final selectedText = text.substring(selection.start, selection.end);
-      final newText = text.replaceRange(
-        selection.start,
-        selection.end,
-        '$prefix$selectedText$suffix',
-      );
-
-      _contentController.text = newText;
-      _contentController.selection = TextSelection.collapsed(
-        offset: selection.start + prefix.length + selectedText.length + suffix.length,
-      );
-    }
-  }
 }
