@@ -59,7 +59,7 @@ class DateListItem extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                   child: FaIcon(
                     convoProvider.selectedDate != null ? FontAwesomeIcons.calendarDay : FontAwesomeIcons.calendarDays,
-                    color: const Color.fromRGBO(229, 221, 198, 1),
+                    color: Colors.grey.shade400,
                   ),
                 ),
               );
@@ -68,11 +68,11 @@ class DateListItem extends StatelessWidget {
               onTap: () {
                 print("the expand icon is clicked ");
               },
-              child: const Padding(
-                padding: EdgeInsets.all(12),
+              child: Padding(
+                padding: const EdgeInsets.all(12),
                 child: FaIcon(
                   FontAwesomeIcons.expand,
-                  color: Color.fromRGBO(229, 221, 198, 1),
+                  color: Colors.grey.shade400,
                 ),
               ),
             )

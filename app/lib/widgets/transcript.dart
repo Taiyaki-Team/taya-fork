@@ -76,9 +76,9 @@ class _TranscriptWidgetState extends State<TranscriptWidget> {
     Color(0xFFF0D4B8), // Medium peach
     Color(0xFFF0B8E6), // Medium pink
     Color(0xFFB8F0D4), // Medium mint
-    Color(0xFFE6D4B8), // Medium beige
+    Color(0xFFE0E0E0), // Light grey
     Color(0xFFD4B8F0), // Medium lavender
-    Color(0xFFF0E6B8), // Medium cream
+    Color(0xFFE8E8E8), // Light grey
   ];
 
   Color _getSpeakerBubbleColor(bool isUser, int speakerId) {
