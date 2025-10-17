@@ -130,7 +130,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
           key: scaffoldKey,
           backgroundColor: Colors.white,
           appBar: _buildAppBar(context, provider),
-          // endDrawer: _buildSessionsDrawer(context),
+          endDrawer: _buildHistoryDrawer(context, provider),
           body: GestureDetector(
               onTap: () {
                 // Hide keyboard when tapping outside textfield
@@ -829,7 +829,11 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                   color: TayaColors.secondaryTextColor,
                   size: 20,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  HapticFeedback.mediumImpact();
+                  FocusScope.of(context).unfocus();
+                  scaffoldKey.currentState?.openEndDrawer();
+                },
               ),
             ],
           ),
@@ -1213,6 +1217,210 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
       height: 0.5,
       color: Colors.grey.shade700,
       margin: const EdgeInsets.symmetric(horizontal: 20),
+    );
+  }
+
+  Widget _buildHistoryDrawer(BuildContext context, MessageProvider provider) {
+    // Group messages by date
+    Map<DateTime, List<ServerMessage>> groupedMessages = {};
+    for (var message in provider.messages) {
+      var date = DateTime(
+        message.createdAt.year,
+        message.createdAt.month,
+        message.createdAt.day,
+      );
+      if (!groupedMessages.containsKey(date)) {
+        groupedMessages[date] = [];
+      }
+      groupedMessages[date]!.add(message);
+    }
+    
+    var sortedDates = groupedMessages.keys.toList()..sort((a, b) => b.compareTo(a));
+
+    return Drawer(
+      backgroundColor: Colors.white,
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Color(0xFF4FAFBE),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Icon(FontAwesomeIcons.clockRotateLeft, color: Colors.white, size: 20),
+                  SizedBox(width: 12),
+                  Text(
+                    'Chat History',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Spacer(),
+                  IconButton(
+                    icon: Icon(Icons.close, color: Colors.white),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+            ),
+            
+            // Total message count
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                '${provider.messages.length} total messages',
+                style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: 14,
+                ),
+              ),
+            ),
+            
+            Divider(height: 1, color: Colors.grey.shade300),
+            
+            // Message groups by date
+            Expanded(
+              child: provider.messages.isEmpty
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.comments,
+                            size: 48,
+                            color: Colors.grey.shade400,
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            'No messages yet',
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : ListView.builder(
+                      itemCount: sortedDates.length,
+                      itemBuilder: (context, index) {
+                        var date = sortedDates[index];
+                        var messages = groupedMessages[date]!;
+                        var dateStr = dateTimeFormat('MMM dd, yyyy', date);
+                        if (date.day == DateTime.now().day &&
+                            date.month == DateTime.now().month &&
+                            date.year == DateTime.now().year) {
+                          dateStr = 'Today';
+                        } else if (date.day == DateTime.now().subtract(Duration(days: 1)).day &&
+                            date.month == DateTime.now().month &&
+                            date.year == DateTime.now().year) {
+                          dateStr = 'Yesterday';
+                        }
+                        
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Date header
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                              child: Text(
+                                dateStr,
+                                style: TextStyle(
+                                  color: Color(0xFF4FAFBE),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            // Messages for this date
+                            ...messages.reversed.map((message) {
+                              return ListTile(
+                                dense: true,
+                                leading: CircleAvatar(
+                                  radius: 16,
+                                  backgroundColor: message.sender == MessageSender.human
+                                      ? Color(0xFF4FAFBE).withOpacity(0.15)
+                                      : Color(0xFFF5F5F5),
+                                  child: Icon(
+                                    message.sender == MessageSender.human
+                                        ? FontAwesomeIcons.user
+                                        : FontAwesomeIcons.robot,
+                                    size: 12,
+                                    color: message.sender == MessageSender.human
+                                        ? Color(0xFF4FAFBE)
+                                        : Color(0xFF0D1F40),
+                                  ),
+                                ),
+                                title: Text(
+                                  message.text.decodeString,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: Color(0xFF0D1F40),
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  dateTimeFormat('h:mm a', message.createdAt),
+                                  style: TextStyle(
+                                    color: Colors.grey.shade500,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  // Optionally scroll to this message
+                                },
+                              );
+                            }).toList(),
+                            Divider(height: 1, color: Colors.grey.shade200),
+                          ],
+                        );
+                      },
+                    ),
+            ),
+            
+            // Clear chat button
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(color: Colors.grey.shade300, width: 1),
+                ),
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    _showClearChatDialog();
+                  },
+                  icon: Icon(FontAwesomeIcons.trash, size: 14),
+                  label: Text('Clear All Chat History'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red.shade50,
+                    foregroundColor: Colors.red,
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
