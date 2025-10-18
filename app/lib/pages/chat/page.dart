@@ -15,6 +15,8 @@ import 'package:omi/pages/chat/select_text_screen.dart';
 import 'package:omi/pages/chat/widgets/ai_message.dart';
 import 'package:omi/pages/chat/widgets/user_message.dart';
 import 'package:omi/pages/chat/widgets/voice_recorder_widget.dart';
+import 'package:omi/pages/conversation_detail/conversation_detail_provider.dart';
+import 'package:omi/pages/conversation_detail/page.dart';
 import 'package:omi/pages/home/page.dart';
 import 'package:omi/providers/connectivity_provider.dart';
 import 'package:omi/providers/home_provider.dart';
@@ -1221,21 +1223,31 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
   }
 
   Widget _buildHistoryDrawer(BuildContext context, MessageProvider provider) {
-    // Group messages by date
-    Map<DateTime, List<ServerMessage>> groupedMessages = {};
-    for (var message in provider.messages) {
+    // Get conversations (Moments) from ConversationProvider
+    final conversationProvider = context.read<ConversationProvider>();
+    
+    // Get all conversations sorted by date
+    var allConversations = <ServerConversation>[];
+    conversationProvider.groupedConversations.forEach((date, conversations) {
+      allConversations.addAll(conversations);
+    });
+    allConversations.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    
+    // Group conversations by date for display
+    Map<DateTime, List<ServerConversation>> groupedConversations = {};
+    for (var conversation in allConversations) {
       var date = DateTime(
-        message.createdAt.year,
-        message.createdAt.month,
-        message.createdAt.day,
+        conversation.createdAt.year,
+        conversation.createdAt.month,
+        conversation.createdAt.day,
       );
-      if (!groupedMessages.containsKey(date)) {
-        groupedMessages[date] = [];
+      if (!groupedConversations.containsKey(date)) {
+        groupedConversations[date] = [];
       }
-      groupedMessages[date]!.add(message);
+      groupedConversations[date]!.add(conversation);
     }
     
-    var sortedDates = groupedMessages.keys.toList()..sort((a, b) => b.compareTo(a));
+    var sortedDates = groupedConversations.keys.toList()..sort((a, b) => b.compareTo(a));
 
     return Drawer(
       backgroundColor: Colors.white,
@@ -1258,7 +1270,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                   Icon(FontAwesomeIcons.clockRotateLeft, color: Colors.white, size: 20),
                   SizedBox(width: 12),
                   Text(
-                    'Chat History',
+                    'Recent Moments',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -1274,11 +1286,11 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
               ),
             ),
             
-            // Total message count
+            // Total conversation count
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
-                '${provider.messages.length} total messages',
+                '${allConversations.length} moments recorded',
                 style: TextStyle(
                   color: Colors.grey.shade600,
                   fontSize: 14,
@@ -1288,9 +1300,9 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
             
             Divider(height: 1, color: Colors.grey.shade300),
             
-            // Message groups by date
+            // Conversation groups by date
             Expanded(
-              child: provider.messages.isEmpty
+              child: allConversations.isEmpty
                   ? Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -1302,10 +1314,18 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                           ),
                           SizedBox(height: 16),
                           Text(
-                            'No messages yet',
+                            'No moments yet',
                             style: TextStyle(
                               color: Colors.grey.shade600,
                               fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Your recorded moments will appear here',
+                            style: TextStyle(
+                              color: Colors.grey.shade500,
+                              fontSize: 12,
                             ),
                           ),
                         ],
@@ -1315,7 +1335,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                       itemCount: sortedDates.length,
                       itemBuilder: (context, index) {
                         var date = sortedDates[index];
-                        var messages = groupedMessages[date]!;
+                        var conversations = groupedConversations[date]!;
                         var dateStr = dateTimeFormat('MMM dd, yyyy', date);
                         if (date.day == DateTime.now().day &&
                             date.month == DateTime.now().month &&
@@ -1342,44 +1362,61 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                 ),
                               ),
                             ),
-                            // Messages for this date
-                            ...messages.reversed.map((message) {
+                            // Conversations for this date
+                            ...conversations.map((conversation) {
                               return ListTile(
                                 dense: true,
-                                leading: CircleAvatar(
-                                  radius: 16,
-                                  backgroundColor: message.sender == MessageSender.human
-                                      ? Color(0xFF4FAFBE).withOpacity(0.15)
-                                      : Color(0xFFF5F5F5),
-                                  child: Icon(
-                                    message.sender == MessageSender.human
-                                        ? FontAwesomeIcons.user
-                                        : FontAwesomeIcons.robot,
-                                    size: 12,
-                                    color: message.sender == MessageSender.human
-                                        ? Color(0xFF4FAFBE)
-                                        : Color(0xFF0D1F40),
+                                leading: Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      conversation.structured.emoji ?? '💬',
+                                      style: TextStyle(fontSize: 20),
+                                    ),
                                   ),
                                 ),
                                 title: Text(
-                                  message.text.decodeString,
+                                  conversation.structured.title,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     color: Color(0xFF0D1F40),
                                     fontSize: 14,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
                                 subtitle: Text(
-                                  dateTimeFormat('h:mm a', message.createdAt),
+                                  dateTimeFormat('h:mm a', conversation.createdAt),
                                   style: TextStyle(
                                     color: Colors.grey.shade500,
                                     fontSize: 12,
                                   ),
                                 ),
+                                trailing: Icon(
+                                  FontAwesomeIcons.chevronRight,
+                                  size: 12,
+                                  color: Colors.grey.shade400,
+                                ),
                                 onTap: () {
                                   Navigator.pop(context);
-                                  // Optionally scroll to this message
+                                  // Navigate to conversation detail
+                                  var idx = conversationProvider.groupedConversations[date]
+                                      ?.indexWhere((c) => c.id == conversation.id) ?? -1;
+                                  if (idx != -1) {
+                                    context.read<ConversationDetailProvider>().updateConversation(idx, date);
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (c) => ConversationDetailPage(
+                                          conversation: conversation,
+                                        ),
+                                      ),
+                                    );
+                                  }
                                 },
                               );
                             }).toList(),
@@ -1390,7 +1427,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                     ),
             ),
             
-            // Clear chat button
+            // View all moments button
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -1403,13 +1440,14 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                 child: ElevatedButton.icon(
                   onPressed: () {
                     Navigator.pop(context);
-                    _showClearChatDialog();
+                    // Navigate to conversations page
+                    context.read<HomeProvider>().setIndex(0);
                   },
-                  icon: Icon(FontAwesomeIcons.trash, size: 14),
-                  label: Text('Clear All Chat History'),
+                  icon: Icon(FontAwesomeIcons.list, size: 14),
+                  label: Text('View All Moments'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red.shade50,
-                    foregroundColor: Colors.red,
+                    backgroundColor: Color(0xFF4FAFBE),
+                    foregroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
