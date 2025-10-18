@@ -1223,31 +1223,43 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
   }
 
   Widget _buildHistoryDrawer(BuildContext context, MessageProvider provider) {
-    // Get conversations (Moments) from ConversationProvider
-    final conversationProvider = context.read<ConversationProvider>();
+    // Group chat messages into sessions (conversations between user and AI)
+    List<Map<String, dynamic>> chatSessions = [];
     
-    // Get all conversations sorted by date
-    var allConversations = <ServerConversation>[];
-    conversationProvider.groupedConversations.forEach((date, conversations) {
-      allConversations.addAll(conversations);
-    });
-    allConversations.sort((a, b) => b.createdAt.compareTo(a.createdAt));
-    
-    // Group conversations by date for display
-    Map<DateTime, List<ServerConversation>> groupedConversations = {};
-    for (var conversation in allConversations) {
-      var date = DateTime(
-        conversation.createdAt.year,
-        conversation.createdAt.month,
-        conversation.createdAt.day,
-      );
-      if (!groupedConversations.containsKey(date)) {
-        groupedConversations[date] = [];
+    for (int i = provider.messages.length - 1; i >= 0; i--) {
+      var message = provider.messages[i];
+      
+      // Start a new session when we find a user message
+      if (message.sender == MessageSender.human) {
+        // Find the AI response (next message in the list, which is older in reverse order)
+        ServerMessage? aiResponse;
+        if (i > 0 && provider.messages[i - 1].sender == MessageSender.ai) {
+          aiResponse = provider.messages[i - 1];
+        }
+        
+        chatSessions.add({
+          'userMessage': message,
+          'aiResponse': aiResponse,
+          'timestamp': message.createdAt,
+        });
       }
-      groupedConversations[date]!.add(conversation);
     }
     
-    var sortedDates = groupedConversations.keys.toList()..sort((a, b) => b.compareTo(a));
+    // Group sessions by date
+    Map<DateTime, List<Map<String, dynamic>>> groupedSessions = {};
+    for (var session in chatSessions) {
+      var date = DateTime(
+        session['timestamp'].year,
+        session['timestamp'].month,
+        session['timestamp'].day,
+      );
+      if (!groupedSessions.containsKey(date)) {
+        groupedSessions[date] = [];
+      }
+      groupedSessions[date]!.add(session);
+    }
+    
+    var sortedDates = groupedSessions.keys.toList()..sort((a, b) => b.compareTo(a));
 
     return Drawer(
       backgroundColor: Colors.white,
@@ -1270,7 +1282,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                   Icon(FontAwesomeIcons.clockRotateLeft, color: Colors.white, size: 20),
                   SizedBox(width: 12),
                   Text(
-                    'Recent Moments',
+                    'Chat History',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -1286,11 +1298,11 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
               ),
             ),
             
-            // Total conversation count
+            // Total session count
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
-                '${allConversations.length} moments recorded',
+                '${chatSessions.length} conversations',
                 style: TextStyle(
                   color: Colors.grey.shade600,
                   fontSize: 14,
@@ -1300,9 +1312,9 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
             
             Divider(height: 1, color: Colors.grey.shade300),
             
-            // Conversation groups by date
+            // Chat sessions by date
             Expanded(
-              child: allConversations.isEmpty
+              child: chatSessions.isEmpty
                   ? Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -1314,7 +1326,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                           ),
                           SizedBox(height: 16),
                           Text(
-                            'No moments yet',
+                            'No chat history yet',
                             style: TextStyle(
                               color: Colors.grey.shade600,
                               fontSize: 16,
@@ -1322,7 +1334,8 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                           ),
                           SizedBox(height: 8),
                           Text(
-                            'Your recorded moments will appear here',
+                            'Start chatting with Taya to see your conversations',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.grey.shade500,
                               fontSize: 12,
@@ -1335,7 +1348,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                       itemCount: sortedDates.length,
                       itemBuilder: (context, index) {
                         var date = sortedDates[index];
-                        var conversations = groupedConversations[date]!;
+                        var sessions = groupedSessions[date]!;
                         var dateStr = dateTimeFormat('MMM dd, yyyy', date);
                         if (date.day == DateTime.now().day &&
                             date.month == DateTime.now().month &&
@@ -1362,72 +1375,81 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                 ),
                               ),
                             ),
-                            // Conversations for this date
-                            ...conversations.map((conversation) {
-                              return ListTile(
-                                dense: true,
-                                leading: Container(
-                                  width: 40,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFF5F5F5),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      conversation.structured.emoji ?? '💬',
-                                      style: TextStyle(fontSize: 20),
+                            // Chat sessions for this date
+                            ...sessions.map((session) {
+                              var userMsg = session['userMessage'] as ServerMessage;
+                              var aiMsg = session['aiResponse'] as ServerMessage?;
+                              
+                              return Container(
+                                margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF5F5F5),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: ListTile(
+                                  dense: true,
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                  leading: CircleAvatar(
+                                    radius: 16,
+                                    backgroundColor: Color(0xFF4FAFBE).withOpacity(0.15),
+                                    child: Icon(
+                                      FontAwesomeIcons.message,
+                                      size: 12,
+                                      color: Color(0xFF4FAFBE),
                                     ),
                                   ),
-                                ),
-                                title: Text(
-                                  conversation.structured.title,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    color: Color(0xFF0D1F40),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  dateTimeFormat('h:mm a', conversation.createdAt),
-                                  style: TextStyle(
-                                    color: Colors.grey.shade500,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                trailing: Icon(
-                                  FontAwesomeIcons.chevronRight,
-                                  size: 12,
-                                  color: Colors.grey.shade400,
-                                ),
-                                onTap: () {
-                                  Navigator.pop(context);
-                                  // Navigate to conversation detail
-                                  var idx = conversationProvider.groupedConversations[date]
-                                      ?.indexWhere((c) => c.id == conversation.id) ?? -1;
-                                  if (idx != -1) {
-                                    context.read<ConversationDetailProvider>().updateConversation(idx, date);
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (c) => ConversationDetailPage(
-                                          conversation: conversation,
+                                  title: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        userMsg.text.decodeString,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color: Color(0xFF0D1F40),
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                    );
-                                  }
-                                },
+                                      if (aiMsg != null && aiMsg.text.isNotEmpty) ...[
+                                        SizedBox(height: 4),
+                                        Text(
+                                          aiMsg.text.decodeString,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            color: Colors.grey.shade600,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      ],
+                                    ],
+                                  ),
+                                  subtitle: Padding(
+                                    padding: EdgeInsets.only(top: 4),
+                                    child: Text(
+                                      dateTimeFormat('h:mm a', userMsg.createdAt),
+                                      style: TextStyle(
+                                        color: Colors.grey.shade500,
+                                        fontSize: 11,
+                                      ),
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    // Could scroll to this message in the chat
+                                  },
+                                ),
                               );
                             }).toList(),
-                            Divider(height: 1, color: Colors.grey.shade200),
+                            SizedBox(height: 8),
                           ],
                         );
                       },
                     ),
             ),
             
-            // View all moments button
+            // Clear chat button
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -1440,14 +1462,13 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                 child: ElevatedButton.icon(
                   onPressed: () {
                     Navigator.pop(context);
-                    // Navigate to conversations page
-                    context.read<HomeProvider>().setIndex(0);
+                    _showClearChatDialog();
                   },
-                  icon: Icon(FontAwesomeIcons.list, size: 14),
-                  label: Text('View All Moments'),
+                  icon: Icon(FontAwesomeIcons.trash, size: 14),
+                  label: Text('Clear All Chat History'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF4FAFBE),
-                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.red.shade50,
+                    foregroundColor: Colors.red,
                     padding: EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
