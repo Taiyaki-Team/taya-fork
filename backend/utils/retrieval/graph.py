@@ -42,7 +42,7 @@ from utils.other.endpoints import timeit
 from utils.app_integrations import get_github_docs_content
 
 model = ChatOpenAI(model="gpt-4o-mini")
-llm_medium_stream = ChatOpenAI(model='gpt-5', streaming=True)
+llm_medium_stream = ChatOpenAI(model='gpt-4o', streaming=True)
 
 
 class StructuredFilters(TypedDict):

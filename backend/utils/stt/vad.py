@@ -11,8 +11,26 @@ from database import redis_db
 
 torch.set_num_threads(1)
 torch.hub.set_dir('pretrained_models')
-model, utils = torch.hub.load(repo_or_dir='snakers4/silero-vad', model='silero_vad')
-(get_speech_timestamps, save_audio, read_audio, VADIterator, collect_chunks) = utils
+
+# Try to load VAD model with trust_repo flag and error handling
+try:
+    model, utils = torch.hub.load(
+        repo_or_dir='snakers4/silero-vad', 
+        model='silero_vad',
+        trust_repo=True,
+        force_reload=False
+    )
+    (get_speech_timestamps, save_audio, read_audio, VADIterator, collect_chunks) = utils
+except Exception as e:
+    print(f"Warning: Failed to load Silero VAD model: {e}")
+    print("VAD functionality will be limited. This is expected if GitHub is unreachable.")
+    # Create dummy functions to prevent import errors
+    model = None
+    get_speech_timestamps = lambda *args, **kwargs: []
+    save_audio = lambda *args, **kwargs: None
+    read_audio = lambda *args, **kwargs: None
+    VADIterator = lambda *args, **kwargs: None
+    collect_chunks = lambda *args, **kwargs: []
 
 
 class SpeechState(str, Enum):

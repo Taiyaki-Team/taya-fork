@@ -782,6 +782,36 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
           const SizedBox.shrink(),
           Row(
             children: [
+              // Apps/Plugins Button
+              GestureDetector(
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                  MixpanelManager().pageOpened('Apps');
+                  // Navigate to Apps page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AppsPage(showAppBar: true),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  width: 36,
+                  height: 36,
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(186, 236, 243, 0.5),
+                    border: Border.all(width: 1, color: Colors.white),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: Icon(
+                    FontAwesomeIcons.puzzlePiece,
+                    size: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              
               /// replaced this with user image avatar image
               ///
               ///

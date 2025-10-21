@@ -1090,7 +1090,9 @@ class _AppDetailPageState extends State<AppDetailPage> {
 
   Future<void> _toggleApp(String appId, bool isEnabled) async {
     var prefs = SharedPreferencesUtil();
-    setState(() => appLoading = true);
+    if (mounted) {
+      setState(() => appLoading = true);
+    }
     if (isEnabled) {
       var enabled = await enableAppServer(appId);
       if (!enabled) {
@@ -1108,7 +1110,9 @@ class _AppDetailPageState extends State<AppDetailPage> {
           );
         }
 
-        setState(() => appLoading = false);
+        if (mounted) {
+          setState(() => appLoading = false);
+        }
         return;
       }
 
@@ -1136,9 +1140,9 @@ class _AppDetailPageState extends State<AppDetailPage> {
     }
     if (mounted) {
       context.read<AppProvider>().filterApps();
+      setState(() => app.enabled = isEnabled);
+      setState(() => appLoading = false);
     }
-    setState(() => app.enabled = isEnabled);
-    setState(() => appLoading = false);
   }
 }
 

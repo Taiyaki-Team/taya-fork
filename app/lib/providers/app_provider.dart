@@ -16,6 +16,7 @@ class AppProvider extends BaseProvider {
   bool filterChat = true;
   bool filterMemories = true;
   bool filterExternal = true;
+  bool filterFreeOnly = true; // Only show free apps by default
   String searchQuery = '';
   bool installedAppsOptionSelected = true;
 
@@ -139,6 +140,18 @@ class AppProvider extends BaseProvider {
     notifyListeners();
   }
 
+  void toggleFreeOnlyFilter() {
+    filterFreeOnly = !filterFreeOnly;
+    filterApps();
+    notifyListeners();
+  }
+
+  void setFreeOnlyFilter(bool value) {
+    filterFreeOnly = value;
+    filterApps();
+    notifyListeners();
+  }
+
   bool isFilterActive() {
     return filters.isNotEmpty;
   }
@@ -199,10 +212,22 @@ class AppProvider extends BaseProvider {
               if (!app.capabilities.contains(value.id)) passesFilters = false;
             }
             break;
+          case 'Price':
+            if (value == 'Free Only') {
+              if (app.isPaid) passesFilters = false;
+            } else if (value == 'Paid Only') {
+              if (!app.isPaid) passesFilters = false;
+            }
+            break;
         }
 
         // Early exit if filter fails
         if (!passesFilters) break;
+      }
+
+      // Apply free-only filter if active
+      if (passesFilters && filterFreeOnly && app.isPaid) {
+        passesFilters = false;
       }
 
       // Apply search filter
@@ -507,6 +532,13 @@ class AppProvider extends BaseProvider {
               match = false;
             }
             break;
+          case 'Price':
+            if (value == 'Free Only') {
+              match = !app.isPaid;
+            } else if (value == 'Paid Only') {
+              match = app.isPaid;
+            }
+            break;
           default:
             break;
         }
@@ -515,8 +547,9 @@ class AppProvider extends BaseProvider {
     }
 
     bool matchesSearch = searchQuery.isEmpty || app.name.toLowerCase().contains(searchQuery);
+    bool matchesFreeFilter = !filterFreeOnly || !app.isPaid;
 
-    return matchesBaseFilters && matchesSearch;
+    return matchesBaseFilters && matchesSearch && matchesFreeFilter;
   }
 
   // Helper: Gets the comparator for sorting

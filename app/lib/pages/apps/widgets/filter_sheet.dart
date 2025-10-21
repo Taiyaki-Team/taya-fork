@@ -304,7 +304,7 @@ class FilterBottomSheet extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: isSelected ? Colors.white : Colors.grey.shade300,
+                color: isSelected ? Colors.white : Color(0xFF0D1F40),
               ),
             ),
           ),
@@ -365,7 +365,7 @@ class FilterBottomSheet extends StatelessWidget {
                     option['label']!,
                     style: TextStyle(
                       fontSize: 16,
-                      color: isSelected ? Colors.white : Colors.grey.shade300,
+                      color: isSelected ? Colors.white : Color(0xFF0D1F40),
                       fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
                     ),
                   ),
@@ -422,7 +422,7 @@ class FilterBottomSheet extends StatelessWidget {
                     capability.title,
                     style: TextStyle(
                       fontSize: 16,
-                      color: isSelected ? Colors.white : Colors.grey.shade300,
+                      color: isSelected ? Colors.white : Color(0xFF0D1F40),
                       fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
                     ),
                   ),

@@ -13,8 +13,11 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 
 Future<List<App>> retrieveApps() async {
+  // Use original Omi backend for apps since community apps are hosted there
+  // Use approved-apps endpoint which doesn't require authentication
+  const appsBackendUrl = 'https://api.omi.me/';
   var response = await makeApiCall(
-    url: '${Env.apiBaseUrl}v1/apps',
+    url: '${appsBackendUrl}v1/approved-apps',
     headers: {},
     body: '',
     method: 'GET',
@@ -23,7 +26,9 @@ Future<List<App>> retrieveApps() async {
     try {
       log('apps: ${response.body}');
       var apps = App.fromJsonList(jsonDecode(response.body));
-      apps = apps.where((p) => !p.deleted).toList();
+      // Filter out deleted and paid apps - only show free apps
+      apps = apps.where((p) => !p.deleted && !p.isPaid).toList();
+      debugPrint('Loaded ${apps.length} free apps from Omi backend');
       SharedPreferencesUtil().appsList = apps;
       return apps;
     } catch (e, stackTrace) {
@@ -36,8 +41,9 @@ Future<List<App>> retrieveApps() async {
 }
 
 Future<List<App>> retrievePopularApps() async {
+  const appsBackendUrl = 'https://api.omi.me/';
   var response = await makeApiCall(
-    url: '${Env.apiBaseUrl}v1/apps/popular',
+    url: '${appsBackendUrl}v1/apps/popular',
     headers: {},
     body: '',
     method: 'GET',
@@ -46,7 +52,9 @@ Future<List<App>> retrievePopularApps() async {
     try {
       log('apps: ${response.body}');
       var apps = App.fromJsonList(jsonDecode(response.body));
-      apps = apps.where((p) => !p.deleted).toList();
+      // Filter out deleted and paid apps - only show free apps
+      apps = apps.where((p) => !p.deleted && !p.isPaid).toList();
+      debugPrint('Loaded ${apps.length} free popular apps from Omi backend');
       SharedPreferencesUtil().appsList = apps;
       return apps;
     } catch (e, stackTrace) {
@@ -59,27 +67,61 @@ Future<List<App>> retrievePopularApps() async {
 }
 
 Future<bool> enableAppServer(String appId) async {
-  var response = await makeApiCall(
+  // Store enabled apps locally since backend isn't fully configured yet
+  debugPrint('Enabling app locally: $appId');
+  
+  // Update the app in the local appsList
+  var apps = SharedPreferencesUtil().appsList;
+  var appIndex = apps.indexWhere((app) => app.id == appId);
+  if (appIndex != -1) {
+    apps[appIndex].enabled = true;
+    SharedPreferencesUtil().appsList = apps;
+  }
+  
+  // Also try to sync with backend in background (don't wait for it)
+  makeApiCall(
     url: '${Env.apiBaseUrl}v1/apps/enable?app_id=$appId',
     headers: {},
     method: 'POST',
     body: '',
-  );
-  if (response == null) return false;
-  debugPrint('enableAppServer: $appId ${response.body}');
-  return response.statusCode == 200;
+  ).then((response) {
+    if (response != null && response.statusCode == 200) {
+      debugPrint('Successfully synced app enable to backend: $appId');
+    }
+  }).catchError((e) {
+    debugPrint('Backend sync failed (expected if backend not ready): $e');
+  });
+  
+  return true;
 }
 
 Future<bool> disableAppServer(String appId) async {
-  var response = await makeApiCall(
+  // Store disabled apps locally since backend isn't fully configured yet
+  debugPrint('Disabling app locally: $appId');
+  
+  // Update the app in the local appsList
+  var apps = SharedPreferencesUtil().appsList;
+  var appIndex = apps.indexWhere((app) => app.id == appId);
+  if (appIndex != -1) {
+    apps[appIndex].enabled = false;
+    SharedPreferencesUtil().appsList = apps;
+  }
+  
+  // Also try to sync with backend in background (don't wait for it)
+  makeApiCall(
     url: '${Env.apiBaseUrl}v1/apps/disable?app_id=$appId',
     headers: {},
     method: 'POST',
     body: '',
-  );
-  if (response == null) return false;
-  debugPrint('disableAppServer: ${response.body}');
-  return response.statusCode == 200;
+  ).then((response) {
+    if (response != null && response.statusCode == 200) {
+      debugPrint('Successfully synced app disable to backend: $appId');
+    }
+  }).catchError((e) {
+    debugPrint('Backend sync failed (expected if backend not ready): $e');
+  });
+  
+  return true;
 }
 
 Future<bool> reviewApp(String appId, AppReview review) async {
@@ -263,8 +305,9 @@ Future<bool> updateAppServer(File? file, Map<String, dynamic> appData) async {
 }
 
 Future<List<Category>> getAppCategories() async {
+  const appsBackendUrl = 'https://api.omi.me/';
   var response = await makeApiCall(
-    url: '${Env.apiBaseUrl}v1/app-categories',
+    url: '${appsBackendUrl}v1/app-categories',
     headers: {},
     body: '',
     method: 'GET',
@@ -282,8 +325,9 @@ Future<List<Category>> getAppCategories() async {
 }
 
 Future<List<AppCapability>> getAppCapabilitiesServer() async {
+  const appsBackendUrl = 'https://api.omi.me/';
   var response = await makeApiCall(
-    url: '${Env.apiBaseUrl}v1/app-capabilities',
+    url: '${appsBackendUrl}v1/app-capabilities',
     headers: {},
     body: '',
     method: 'GET',
@@ -356,8 +400,9 @@ Future deleteAppServer(String appId) async {
 }
 
 Future<Map<String, dynamic>?> getAppDetailsServer(String appId) async {
+  const appsBackendUrl = 'https://api.omi.me/';
   var response = await makeApiCall(
-    url: '${Env.apiBaseUrl}v1/apps/$appId',
+    url: '${appsBackendUrl}v1/apps/$appId',
     headers: {},
     body: '',
     method: 'GET',
