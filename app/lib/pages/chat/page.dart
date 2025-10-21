@@ -1280,30 +1280,22 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
           children: [
             // Header
             Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Color(0xFF4FAFBE),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
+              padding: const EdgeInsets.fromLTRB(20, 16, 12, 16),
               child: Row(
                 children: [
-                  Icon(FontAwesomeIcons.clockRotateLeft, color: Colors.white, size: 20),
-                  SizedBox(width: 12),
                   Text(
                     'Chat History',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                      color: Color(0xFF0D1F40),
+                      fontSize: 22,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Spacer(),
                   IconButton(
-                    icon: Icon(Icons.close, color: Colors.white),
+                    icon: Icon(Icons.close, color: Color(0xFF0D1F40), size: 22),
                     onPressed: () => Navigator.pop(context),
+                    padding: EdgeInsets.all(8),
                   ),
                 ],
               ),
@@ -1311,22 +1303,43 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
             
             // New chat button
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    provider.clearChat();
-                  },
-                  icon: Icon(FontAwesomeIcons.plus, size: 14),
-                  label: Text('New Chat'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF4FAFBE),
-                    foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFF4FAFBE),
+                      Color(0xFF3B9FB2),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      HapticFeedback.mediumImpact();
+                      Navigator.pop(context);
+                      provider.clearChat();
+                    },
+                    borderRadius: BorderRadius.circular(16),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 14),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(FontAwesomeIcons.plus, size: 16, color: Colors.white),
+                          SizedBox(width: 10),
+                          Text(
+                            'Start New Chat',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -1335,48 +1348,61 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
             
             // Total session count
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               child: Text(
-                '${chatSessions.length} conversations',
+                '${chatSessions.length} ${chatSessions.length == 1 ? 'conversation' : 'conversations'}',
                 style: TextStyle(
-                  color: Colors.grey.shade600,
+                  color: Colors.grey.shade500,
                   fontSize: 13,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
             
-            Divider(height: 1, color: Colors.grey.shade300),
+            Divider(height: 1, color: Colors.grey.shade200),
             
             // Chat sessions by date
             Expanded(
               child: chatSessions.isEmpty
                   ? Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.comments,
-                            size: 48,
-                            color: Colors.grey.shade400,
-                          ),
-                          SizedBox(height: 16),
-                          Text(
-                            'No chat history yet',
-                            style: TextStyle(
-                              color: Colors.grey.shade600,
-                              fontSize: 16,
+                      child: Padding(
+                        padding: const EdgeInsets.all(32.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: Color(0xFF4FAFBE).withOpacity(0.1),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                FontAwesomeIcons.comments,
+                                size: 40,
+                                color: Color(0xFF4FAFBE),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Start chatting with Taya to see your conversations',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.grey.shade500,
-                              fontSize: 12,
+                            SizedBox(height: 20),
+                            Text(
+                              'No conversations yet',
+                              style: TextStyle(
+                                color: Color(0xFF0D1F40),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
+                            SizedBox(height: 8),
+                            Text(
+                              'Start a conversation with Taya\nto see your chat history here',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.grey.shade600,
+                                fontSize: 14,
+                                height: 1.4,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   : ListView.builder(
@@ -1400,13 +1426,14 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                           children: [
                             // Date header
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                              padding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
                               child: Text(
                                 dateStr,
                                 style: TextStyle(
-                                  color: Color(0xFF4FAFBE),
-                                  fontSize: 14,
+                                  color: Color(0xFF0D1F40),
+                                  fontSize: 13,
                                   fontWeight: FontWeight.w600,
+                                  letterSpacing: 0.5,
                                 ),
                               ),
                             ),
@@ -1416,63 +1443,101 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                               var aiMsg = session['aiResponse'] as ServerMessage?;
                               var title = session['title'] as String;
                               
-                              return Container(
-                                margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFF5F5F5),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: ListTile(
-                                  dense: true,
-                                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                  leading: CircleAvatar(
-                                    radius: 16,
-                                    backgroundColor: Color(0xFF4FAFBE).withOpacity(0.15),
-                                    child: Icon(
-                                      FontAwesomeIcons.message,
-                                      size: 12,
-                                      color: Color(0xFF4FAFBE),
-                                    ),
-                                  ),
-                                  title: Text(
-                                    title,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      color: Color(0xFF0D1F40),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  subtitle: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      if (aiMsg != null && aiMsg.text.isNotEmpty) ...[
-                                        SizedBox(height: 4),
-                                        Text(
-                                          aiMsg.text.decodeString,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            color: Colors.grey.shade600,
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                      ],
-                                      SizedBox(height: 4),
-                                      Text(
-                                        dateTimeFormat('h:mm a', userMsg.createdAt),
-                                        style: TextStyle(
-                                          color: Colors.grey.shade500,
-                                          fontSize: 11,
+                              return Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    onTap: () {
+                                      HapticFeedback.lightImpact();
+                                      Navigator.pop(context);
+                                      // Could scroll to this message in the chat
+                                    },
+                                    borderRadius: BorderRadius.circular(16),
+                                    child: Container(
+                                      padding: EdgeInsets.all(12),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(16),
+                                        border: Border.all(
+                                          color: Colors.grey.shade200,
+                                          width: 1,
                                         ),
                                       ),
-                                    ],
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.all(8),
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF4FAFBE).withOpacity(0.1),
+                                              borderRadius: BorderRadius.circular(8),
+                                            ),
+                                            child: Icon(
+                                              FontAwesomeIcons.message,
+                                              size: 14,
+                                              color: Color(0xFF4FAFBE),
+                                            ),
+                                          ),
+                                          SizedBox(width: 12),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  title,
+                                                  maxLines: 2,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                    color: Color(0xFF0D1F40),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 1.3,
+                                                  ),
+                                                ),
+                                                if (aiMsg != null && aiMsg.text.isNotEmpty) ...[
+                                                  SizedBox(height: 6),
+                                                  Text(
+                                                    aiMsg.text.decodeString,
+                                                    maxLines: 2,
+                                                    overflow: TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                      color: Colors.grey.shade600,
+                                                      fontSize: 13,
+                                                      height: 1.3,
+                                                    ),
+                                                  ),
+                                                ],
+                                                SizedBox(height: 6),
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      FontAwesomeIcons.clock,
+                                                      size: 10,
+                                                      color: Colors.grey.shade400,
+                                                    ),
+                                                    SizedBox(width: 4),
+                                                    Text(
+                                                      dateTimeFormat('h:mm a', userMsg.createdAt),
+                                                      style: TextStyle(
+                                                        color: Colors.grey.shade500,
+                                                        fontSize: 11,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Icon(
+                                            FontAwesomeIcons.chevronRight,
+                                            size: 12,
+                                            color: Colors.grey.shade300,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                    // Could scroll to this message in the chat
-                                  },
                                 ),
                               );
                             }).toList(),
@@ -1487,27 +1552,22 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
+                color: Colors.grey.shade50,
                 border: Border(
-                  top: BorderSide(color: Colors.grey.shade300, width: 1),
+                  top: BorderSide(color: Colors.grey.shade200, width: 1),
                 ),
               ),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    _showClearChatDialog();
-                  },
-                  icon: Icon(FontAwesomeIcons.trash, size: 14),
-                  label: Text('Clear All Chat History'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red.shade50,
-                    foregroundColor: Colors.red,
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
+              child: TextButton.icon(
+                onPressed: chatSessions.isEmpty ? null : () {
+                  Navigator.pop(context);
+                  _showClearChatDialog();
+                },
+                icon: Icon(FontAwesomeIcons.trash, size: 13),
+                label: Text('Clear All History'),
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.red.shade600,
+                  disabledForegroundColor: Colors.grey.shade400,
+                  padding: EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
             ),
