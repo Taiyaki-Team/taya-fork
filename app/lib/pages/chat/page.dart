@@ -1222,6 +1222,16 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
     );
   }
 
+  String _generateChatTitle(String userMessage) {
+    // Generate a smart title from the user's question
+    var words = userMessage.trim().split(' ');
+    if (words.length <= 4) {
+      return userMessage;
+    }
+    // Take first 4 words and add ellipsis
+    return '${words.take(4).join(' ')}...';
+  }
+
   Widget _buildHistoryDrawer(BuildContext context, MessageProvider provider) {
     // Group chat messages into sessions (conversations between user and AI)
     List<Map<String, dynamic>> chatSessions = [];
@@ -1241,6 +1251,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
           'userMessage': message,
           'aiResponse': aiResponse,
           'timestamp': message.createdAt,
+          'title': _generateChatTitle(message.text.decodeString),
         });
       }
     }
@@ -1298,14 +1309,38 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
               ),
             ),
             
+            // New chat button
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    provider.clearChat();
+                  },
+                  icon: Icon(FontAwesomeIcons.plus, size: 14),
+                  label: Text('New Chat'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF4FAFBE),
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            
             // Total session count
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
               child: Text(
                 '${chatSessions.length} conversations',
                 style: TextStyle(
                   color: Colors.grey.shade600,
-                  fontSize: 14,
+                  fontSize: 13,
                 ),
               ),
             ),
@@ -1379,6 +1414,7 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                             ...sessions.map((session) {
                               var userMsg = session['userMessage'] as ServerMessage;
                               var aiMsg = session['aiResponse'] as ServerMessage?;
+                              var title = session['title'] as String;
                               
                               return Container(
                                 margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -1398,19 +1434,19 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                       color: Color(0xFF4FAFBE),
                                     ),
                                   ),
-                                  title: Column(
+                                  title: Text(
+                                    title,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: Color(0xFF0D1F40),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  subtitle: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        userMsg.text.decodeString,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          color: Color(0xFF0D1F40),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
                                       if (aiMsg != null && aiMsg.text.isNotEmpty) ...[
                                         SizedBox(height: 4),
                                         Text(
@@ -1419,21 +1455,19 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                             color: Colors.grey.shade600,
-                                            fontSize: 13,
+                                            fontSize: 12,
                                           ),
                                         ),
                                       ],
-                                    ],
-                                  ),
-                                  subtitle: Padding(
-                                    padding: EdgeInsets.only(top: 4),
-                                    child: Text(
-                                      dateTimeFormat('h:mm a', userMsg.createdAt),
-                                      style: TextStyle(
-                                        color: Colors.grey.shade500,
-                                        fontSize: 11,
+                                      SizedBox(height: 4),
+                                      Text(
+                                        dateTimeFormat('h:mm a', userMsg.createdAt),
+                                        style: TextStyle(
+                                          color: Colors.grey.shade500,
+                                          fontSize: 11,
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
                                   onTap: () {
                                     Navigator.pop(context);
