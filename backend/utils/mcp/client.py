@@ -10,12 +10,16 @@ from typing import Dict, Any, List, Optional
 logger = logging.getLogger(__name__)
 
 try:
-    from agents.mcp import MCPServerStdio
+    from grpc_mcp_sdk import MCPClient
     MCP_AVAILABLE = True
 except ImportError:
-    MCP_AVAILABLE = False
-    logger.warning("agents-sdk not installed. MCP integrations will use simulation mode.")
-    logger.warning("Install with: pip install agents-sdk")
+    try:
+        from agents.mcp import MCPServerStdio
+        MCP_AVAILABLE = True
+    except ImportError:
+        MCP_AVAILABLE = False
+        logger.warning("MCP SDK not installed. MCP integrations will use simulation mode.")
+        logger.warning("Install with: pip install grpc-mcp-sdk")
 
 
 class McpClientManager:
