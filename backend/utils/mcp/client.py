@@ -13,10 +13,14 @@ try:
     from mcp import ClientSession, StdioServerParameters
     from mcp.client.stdio import stdio_client
     MCP_AVAILABLE = True
+    logger.info("MCP SDK loaded successfully - real MCP connections enabled")
 except ImportError:
     MCP_AVAILABLE = False
-    logger.warning("MCP SDK not installed. MCP integrations will use simulation mode.")
-    logger.warning("Install with: pip install mcp")
+    logger.error("=" * 60)
+    logger.error("MCP SDK NOT INSTALLED - MCP integrations will NOT work")
+    logger.error("Real MCP SDK is required. Simulation mode is disabled.")
+    logger.error("Install with: pip install mcp")
+    logger.error("=" * 60)
 
 
 class McpClientManager:
@@ -65,7 +69,7 @@ class McpClientManager:
     
     async def connect_server(self, server_id: str, user_config: Optional[dict] = None) -> bool:
         """
-        Connect to an MCP server
+        Connect to an MCP server (requires real MCP SDK)
         
         Args:
             server_id: ID of the server to connect to
@@ -73,7 +77,15 @@ class McpClientManager:
         
         Returns:
             bool: True if connection successful
+        
+        Raises:
+            RuntimeError: If MCP SDK is not installed
         """
+        if not MCP_AVAILABLE:
+            error_msg = "MCP SDK not installed. Real MCP connections required. Install with: pip install mcp"
+            logger.error(error_msg)
+            raise RuntimeError(error_msg)
+        
         try:
             if server_id not in self._server_configs:
                 logger.error(f"Unknown server ID: {server_id}")
@@ -85,41 +97,35 @@ class McpClientManager:
             if user_config:
                 config['env'].update(user_config.get('env', {}))
             
-            if MCP_AVAILABLE:
-                # Use real MCP connection
-                logger.info(f"Connecting to MCP server {server_id} with real connection")
-                
-                server = MCPServerStdio(
-                    params={
-                        "command": config['command'],
-                        "args": config['args'],
-                        "env": config['env'],
+            # Use real MCP connection
+            logger.info(f"Connecting to MCP server {server_id} with real MCP SDK")
+            
+            # Use official MCP SDK
+            server_params = StdioServerParameters(
+                command=config['command'],
+                args=config['args'],
+                env=config['env']
+            )
+            
+            # Create stdio client context
+            async with stdio_client(server_params) as (read, write):
+                async with ClientSession(read, write) as session:
+                    # Initialize connection
+                    await session.initialize()
+                    
+                    # List available tools
+                    tools_result = await session.list_tools()
+                    tools = tools_result.tools if hasattr(tools_result, 'tools') else []
+                    
+                    logger.info(f"MCP server {server_id} connected successfully with {len(tools)} tools")
+                    
+                    self.servers[server_id] = {
+                        'session': session,
+                        'config': config,
+                        'status': 'connected',
+                        'connected_at': asyncio.get_event_loop().time(),
+                        'tools': [tool.name for tool in tools],
                     }
-                )
-                
-                # Initialize the server connection
-                await server.__aenter__()
-                
-                # Test connection by listing tools
-                tools = await server.list_tools()
-                logger.info(f"MCP server {server_id} connected successfully with {len(tools)} tools")
-                
-                self.servers[server_id] = {
-                    'server': server,
-                    'config': config,
-                    'status': 'connected',
-                    'connected_at': asyncio.get_event_loop().time(),
-                    'tools': [tool.name for tool in tools],
-                }
-            else:
-                # Simulation mode when MCP SDK not available
-                logger.info(f"Server {server_id} connection simulated (agents-sdk not installed)")
-                
-                self.servers[server_id] = {
-                    'config': config,
-                    'status': 'connected',
-                    'connected_at': asyncio.get_event_loop().time(),
-                }
             
             return True
         except Exception as e:
@@ -127,18 +133,27 @@ class McpClientManager:
             return False
     
     async def disconnect_server(self, server_id: str) -> bool:
-        """Disconnect from an MCP server"""
+        """
+        Disconnect from an MCP server
+        
+        Raises:
+            RuntimeError: If MCP SDK is not installed
+        """
+        if not MCP_AVAILABLE:
+            raise RuntimeError("MCP SDK not installed. Install with: pip install mcp")
+        
         try:
             if server_id in self.servers:
                 server_data = self.servers[server_id]
                 
-                # Close MCP server connection if using real MCP
-                if MCP_AVAILABLE and 'server' in server_data:
+                # Close MCP session if exists
+                session = server_data.get('session')
+                if session:
                     try:
-                        await server_data['server'].__aexit__(None, None, None)
-                        logger.info(f"MCP server {server_id} connection closed")
+                        await session.__aexit__(None, None, None)
+                        logger.info(f"MCP server {server_id} session closed")
                     except Exception as e:
-                        logger.warning(f"Error closing MCP server connection: {e}")
+                        logger.warning(f"Error closing MCP session: {e}")
                 
                 del self.servers[server_id]
                 logger.info(f"Disconnected from server: {server_id}")
@@ -165,31 +180,45 @@ class McpClientManager:
         ]
     
     async def list_tools(self, server_id: str) -> List[dict]:
-        """List available tools from a server"""
+        """
+        List available tools from a server (requires real MCP SDK)
+        
+        Raises:
+            RuntimeError: If MCP SDK is not installed or server not connected
+        """
+        if not MCP_AVAILABLE:
+            raise RuntimeError("MCP SDK not installed. Install with: pip install mcp")
+        
         if server_id not in self._server_configs:
-            return []
+            raise ValueError(f"Unknown server ID: {server_id}")
         
-        if MCP_AVAILABLE and server_id in self.servers and 'server' in self.servers[server_id]:
-            # Query real MCP server for tools
-            try:
-                server = self.servers[server_id]['server']
-                tools = await server.list_tools()
+        if server_id not in self.servers:
+            raise RuntimeError(f"Server {server_id} is not connected. Call connect_server first.")
+        
+        try:
+            # Get tools from connected MCP session
+            session = self.servers[server_id].get('session')
+            if not session:
+                # Return cached tools if available
                 return [
-                    {
-                        'name': tool.name,
-                        'description': tool.description if hasattr(tool, 'description') else f'{tool.name} tool',
-                        'input_schema': tool.inputSchema if hasattr(tool, 'inputSchema') else {},
-                    }
-                    for tool in tools
+                    {'name': tool, 'description': f'{tool} tool'}
+                    for tool in self.servers[server_id].get('tools', [])
                 ]
-            except Exception as e:
-                logger.error(f"Error listing tools from server {server_id}: {e}")
-        
-        # Fallback to predefined tools
-        return [
-            {'name': tool, 'description': f'{tool} tool'}
-            for tool in self._server_configs[server_id]['tools']
-        ]
+            
+            tools_result = await session.list_tools()
+            tools = tools_result.tools if hasattr(tools_result, 'tools') else []
+            
+            return [
+                {
+                    'name': tool.name,
+                    'description': tool.description if hasattr(tool, 'description') else f'{tool.name} tool',
+                    'input_schema': tool.inputSchema if hasattr(tool, 'inputSchema') else {},
+                }
+                for tool in tools
+            ]
+        except Exception as e:
+            logger.error(f"Error listing tools from server {server_id}: {e}")
+            raise
     
     async def call_tool(
         self,
@@ -198,7 +227,7 @@ class McpClientManager:
         arguments: Dict[str, Any]
     ) -> Dict[str, Any]:
         """
-        Call a tool on an MCP server
+        Call a tool on an MCP server (requires real MCP SDK)
         
         Args:
             server_id: ID of the server
@@ -207,44 +236,36 @@ class McpClientManager:
         
         Returns:
             dict: Tool execution result
-        """
-        try:
-            if not self.is_server_connected(server_id):
-                return {
-                    'success': False,
-                    'error': f'Server {server_id} is not connected'
-                }
             
+        Raises:
+            RuntimeError: If MCP SDK is not installed or server not connected
+        """
+        if not MCP_AVAILABLE:
+            raise RuntimeError("MCP SDK not installed. Install with: pip install mcp")
+        
+        if not self.is_server_connected(server_id):
+            return {
+                'success': False,
+                'error': f'Server {server_id} is not connected'
+            }
+        
+        try:
             logger.info(f"Calling tool {tool_name} on server {server_id} with args: {arguments}")
             
-            if MCP_AVAILABLE and 'server' in self.servers[server_id]:
-                # Use real MCP tool calling
-                server = self.servers[server_id]['server']
-                
-                try:
-                    result = await server.call_tool(tool_name, arguments)
-                    
-                    logger.info(f"MCP tool {tool_name} executed successfully on {server_id}")
-                    
-                    return {
-                        'success': True,
-                        'result': result.content if hasattr(result, 'content') else result,
-                        'data': arguments,
-                    }
-                except Exception as e:
-                    logger.error(f"MCP tool execution failed: {e}")
-                    return {
-                        'success': False,
-                        'error': f'Tool execution failed: {str(e)}'
-                    }
-            else:
-                # Simulation mode
-                logger.info(f"Tool {tool_name} executed in simulation mode")
-                return {
-                    'success': True,
-                    'result': f'Tool {tool_name} executed successfully (simulation mode - install agents-sdk for real connections)',
-                    'data': arguments,
-                }
+            session = self.servers[server_id].get('session')
+            if not session:
+                raise RuntimeError(f"No active session for server {server_id}")
+            
+            # Call tool using real MCP SDK
+            result = await session.call_tool(tool_name, arguments)
+            
+            logger.info(f"MCP tool {tool_name} executed successfully on {server_id}")
+            
+            return {
+                'success': True,
+                'result': result.content if hasattr(result, 'content') else result,
+                'data': arguments,
+            }
         except Exception as e:
             logger.error(f"Error calling tool {tool_name} on server {server_id}: {e}")
             return {

@@ -2,10 +2,11 @@
 
 ## Current Status
 
-✅ **MCP system is working!** 
+⚠️ **MCP requires real SDK - simulation mode DISABLED** 
 - Backend code: ✓ Deployed
 - API endpoints: ✓ Available
-- Mode: **Simulation** (real SDK installing on Railway)
+- Mode: **REAL ONLY** - MCP SDK required (mcp>=1.0.0)
+- Without SDK: API will return errors
 
 ## Quick Tests
 
@@ -136,25 +137,25 @@ print(MCP_AVAILABLE)  # Should be True
 
 ✅ Backend deployed with MCP support  
 ✅ API endpoints available  
-✅ Simulation mode (for testing UI)  
 ✅ Dynamic message suggestions  
 ✅ Integration connection management  
-🔄 Real MCP SDK installing on Railway  
+⚠️ **Real MCP SDK required** - No simulation fallback  
+🔄 MCP SDK installing on Railway deployment  
 
 ## Expected Behavior
 
-### Simulation Mode (Current)
-- ✓ Connects to servers
-- ✓ Lists tools
-- ✓ Returns simulated results
-- ✗ Doesn't actually create calendar events
+### Without MCP SDK (mcp not installed)
+- ✗ API returns error: "MCP SDK not installed"
+- ✗ Cannot connect to integrations
+- ✗ Integration endpoints throw RuntimeError
 
-### Real Mode (After mcp install)
-- ✓ Connects to servers
-- ✓ Lists tools  
+### With MCP SDK (mcp installed)
+- ✓ Connects to real MCP servers
+- ✓ Lists real tools  
 - ✓ Creates actual calendar events
-- ✓ Posts to Slack
-- ✓ Saves to Notion
+- ✓ Posts to real Slack channels
+- ✓ Saves to real Notion pages
+- ✓ Creates real tasks
 
 ## Check Deployment Status
 
