@@ -31,10 +31,10 @@ class BatteryInfoWidget extends StatelessWidget {
                         MixpanelManager().batteryIndicatorClicked();
                       },
                 child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                     decoration: BoxDecoration(
-                        color: Color.fromRGBO(186, 236, 243, 0.5),
-                        borderRadius: BorderRadius.circular(30),
+                        color: Color.fromRGBO(186, 236, 243, 0.8),
+                        borderRadius: BorderRadius.circular(20),
                         border: Border.all(width: 1, color: Colors.white)),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -51,13 +51,13 @@ class BatteryInfoWidget extends StatelessWidget {
                         const SizedBox(width: 8.0),
                         Text(
                           "Connected",
-                          style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                          style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
                         ),
                         if (deviceProvider.batteryLevel > 0) ...[
                           const SizedBox(width: 8.0),
                           Text(
                             '${deviceProvider.batteryLevel.toString()}%',
-                            style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ],
@@ -70,10 +70,11 @@ class BatteryInfoWidget extends StatelessWidget {
                   await routeToPage(context, const ConnectedDevice());
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
                   decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(14),
+                    color: Colors.red.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(width: 1, color: Colors.white),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -83,14 +84,14 @@ class BatteryInfoWidget extends StatelessWidget {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Colors.white,
                           shape: BoxShape.circle,
                         ),
                       ),
                       const SizedBox(width: 8.0),
                       Text(
                         "Disconnected",
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white70),
+                        style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -107,10 +108,10 @@ class BatteryInfoWidget extends StatelessWidget {
                   }
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(186, 236, 243, 0.5),
-                      borderRadius: BorderRadius.circular(30),
+                      color: Color.fromRGBO(186, 236, 243, 0.8),
+                      borderRadius: BorderRadius.circular(20),
                       border: Border.all(width: 1, color: Colors.white)),
                   child: Row(
                     children: [
@@ -123,12 +124,12 @@ class BatteryInfoWidget extends StatelessWidget {
                       deviceProvider.isConnecting && isMemoriesPage
                           ? Text(
                               "Searching",
-                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: TayaColors.secondaryTextColor),
+                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
                             )
                           : isMemoriesPage
                               ? Text(
                                   "Connect Device",
-                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                                  style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
                                 )
                               : const SizedBox.shrink(),
                     ],

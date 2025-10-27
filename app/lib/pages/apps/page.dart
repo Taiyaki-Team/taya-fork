@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:omi/backend/schema/app.dart';
-import 'package:omi/pages/apps/explore_install_page.dart';
-import 'package:omi/pages/apps/providers/add_app_provider.dart';
-import 'package:omi/providers/connectivity_provider.dart';
-import 'package:omi/providers/app_provider.dart';
+import 'package:omi/backend/schema/integration.dart';
+import 'package:omi/pages/apps/integration_detail_page.dart';
+import 'package:omi/pages/apps/integration_setup_page.dart';
+import 'package:omi/pages/apps/widgets/integration_card.dart';
+import 'package:omi/pages/apps/widgets/location_settings_sheet.dart';
+import 'package:omi/providers/integration_provider.dart';
 import 'package:provider/provider.dart';
 
 class AppsPage extends StatefulWidget {
@@ -15,112 +16,205 @@ class AppsPage extends StatefulWidget {
 }
 
 class AppsPageState extends State<AppsPage> with AutomaticKeepAliveClientMixin {
-  final ScrollController _scrollController = ScrollController();
-  final GlobalKey<ExploreInstallPageState> _exploreInstallPageKey = GlobalKey<ExploreInstallPageState>();
-
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AddAppProvider>().getCategories();
-    });
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<IntegrationProvider>().loadIntegrations();
+    });
   }
 
   void scrollToTop() {
-    _exploreInstallPageKey.currentState?.scrollToTop();
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
+    // Can be used if we add scroll functionality later
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context); // Required for AutomaticKeepAliveClientMixin
+    
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: widget.showAppBar
           ? AppBar(
               backgroundColor: Theme.of(context).colorScheme.primary,
               automaticallyImplyLeading: true,
-              title: const Text('Apps'),
+              title: const Text('Integrations'),
               centerTitle: true,
               elevation: 0,
             )
           : null,
-      body: DefaultTabController(
-        length: 1,
-        initialIndex: 0,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // TabBar(
-            //   indicatorSize: TabBarIndicatorSize.label,
-            //   isScrollable: true,
-            //   padding: EdgeInsets.zero,
-            //   indicatorPadding: EdgeInsets.zero,
-            //   labelStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18),
-            //   indicatorColor: Colors.white,
-            //   tabs: const [
-            //     Tab(text: 'Explore & Install'),
-            //     Tab(text: 'Manage & Create'),
-            //   ],
-            // ),
-            Expanded(
-              child: ExploreInstallPage(
-                key: _exploreInstallPageKey,
-                scrollController: _scrollController,
+      body: Consumer<IntegrationProvider>(
+        builder: (context, provider, child) {
+          if (provider.isLoading) {
+            return const Center(
+              child: CircularProgressIndicator(color: Colors.white),
+            );
+          }
+
+          if (provider.error != null) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.error_outline, size: 48, color: Colors.white70),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Error loading integrations',
+                    style: TextStyle(color: Colors.white70, fontSize: 16),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    provider.error!,
+                    style: const TextStyle(color: Colors.white54, fontSize: 14),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () => provider.loadIntegrations(),
+                    child: const Text('Retry'),
+                  ),
+                ],
               ),
-            ),
-            // const Expanded(
-            //     child: TabBarView(
-            //   children: [
-            //     ExploreInstallPage(),
-            //     ManageCreatePage(),
-            //   ],
-            // )),
-          ],
-        ),
+            );
+          }
+
+          return CustomScrollView(
+            slivers: [
+              // Header
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Integrations',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Connect your conversations to the tools you use',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // Built-in Section
+              if (provider.builtinIntegrations.isNotEmpty) ...[
+                const SliverToBoxAdapter(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    child: Text(
+                      'BUILT-IN',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white70,
+                        letterSpacing: 1.0,
+                      ),
+                    ),
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final integration = provider.builtinIntegrations[index];
+                      return IntegrationCard(
+                        integration: integration,
+                        onTap: () => _handleBuiltinIntegrationTap(context, integration, provider),
+                      );
+                    },
+                    childCount: provider.builtinIntegrations.length,
+                  ),
+                ),
+              ],
+
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
+
+              // Optional Integrations Section
+              if (provider.optionalIntegrations.isNotEmpty) ...[
+                const SliverToBoxAdapter(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    child: Text(
+                      'CONNECT SERVICES',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white70,
+                        letterSpacing: 1.0,
+                      ),
+                    ),
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final integration = provider.optionalIntegrations[index];
+                      return IntegrationCard(
+                        integration: integration,
+                        onTap: () => _handleOptionalIntegrationTap(context, integration),
+                      );
+                    },
+                    childCount: provider.optionalIntegrations.length,
+                  ),
+                ),
+              ],
+
+              const SliverToBoxAdapter(child: SizedBox(height: 32)),
+            ],
+          );
+        },
       ),
     );
+  }
+
+  void _handleBuiltinIntegrationTap(
+    BuildContext context,
+    Integration integration,
+    IntegrationProvider provider,
+  ) {
+    // For built-in integrations (like location), show a detailed settings sheet
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => LocationSettingsSheet(
+        integration: integration,
+        provider: provider,
+      ),
+    );
+  }
+
+  void _handleOptionalIntegrationTap(BuildContext context, Integration integration) {
+    // Navigate to setup or detail page based on connection status
+    if (integration.isConnected) {
+      // Already connected - show detail page
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => IntegrationDetailPage(integration: integration),
+        ),
+      );
+    } else {
+      // Not connected - show setup page
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => IntegrationSetupPage(integration: integration),
+        ),
+      );
+    }
   }
 
   @override
   bool get wantKeepAlive => true;
-}
-
-class EmptyAppsWidget extends StatelessWidget {
-  const EmptyAppsWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Use Selector to only rebuild when apps list changes, not the entire provider
-    return Selector<AppProvider, ({List<App> apps, bool isConnected})>(
-      selector: (context, provider) => (
-        apps: provider.apps,
-        isConnected: context.read<ConnectivityProvider>().isConnected,
-      ),
-      builder: (context, state, child) {
-        return state.apps.isEmpty
-            ? SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 64, left: 14, right: 14),
-                  child: Center(
-                    child: Text(
-                      state.isConnected
-                          ? 'No apps found'
-                          : 'Unable to fetch apps :(\n\nPlease check your internet connection and try again.',
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              )
-            : const SliverToBoxAdapter(child: SizedBox.shrink());
-      },
-    );
-  }
 }

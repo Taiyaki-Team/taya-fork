@@ -31,6 +31,7 @@ from utils.chat import (
 )
 from utils.llm.persona import initial_persona_chat_message
 from utils.llm.chat import initial_chat_message
+from utils.llm.message_suggestions import generate_message_suggestions
 from utils.other import endpoints as auth, storage
 from utils.other.chat_file import FileChatTool
 from utils.retrieval.graph import execute_graph_chat, execute_graph_chat_stream, execute_persona_chat_stream
@@ -546,3 +547,45 @@ def create_initial_message(
 ):
     compat_app_id = app_id or plugin_id
     return initial_message_util(uid, compat_app_id)
+
+
+@router.get('/v1/messages/suggestions', tags=['chat'])
+def get_message_suggestions(
+    app_id: Optional[str] = None,
+    limit: int = 5,
+    uid: str = Depends(auth.get_current_user_uid)
+):
+    """
+    Get AI-generated contextual message suggestions based on recent conversation history
+    
+    Args:
+        app_id: Optional app/plugin ID to filter messages
+        limit: Number of recent messages to consider for context (default: 5)
+        uid: Current user ID
+        
+    Returns:
+        List of 3 suggested messages
+    """
+    try:
+        # Get recent messages for context
+        messages_data = chat_db.get_messages(uid, limit=limit, app_id=app_id)
+        messages = [Message(**msg) for msg in messages_data]
+        
+        # Generate contextual suggestions
+        suggestions = generate_message_suggestions(messages, max_messages=limit)
+        
+        return {
+            'suggestions': suggestions,
+            'count': len(suggestions)
+        }
+    except Exception as e:
+        print(f"Error generating suggestions: {e}")
+        # Return fallback suggestions on error
+        return {
+            'suggestions': [
+                "Tell me more about that",
+                "What else should I know?",
+                "How can I apply this?"
+            ],
+            'count': 3
+        }

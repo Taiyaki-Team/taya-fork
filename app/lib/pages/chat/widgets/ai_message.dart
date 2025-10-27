@@ -35,6 +35,7 @@ class AIMessage extends StatefulWidget {
   final App? appSender;
   final Function(ServerConversation) updateConversation;
   final Function(int) setMessageNps;
+  final List<String>? suggestions;
 
   const AIMessage({
     super.key,
@@ -45,6 +46,7 @@ class AIMessage extends StatefulWidget {
     required this.setMessageNps,
     this.appSender,
     this.showTypingIndicator = false,
+    this.suggestions,
   });
 
   @override
@@ -73,6 +75,7 @@ class _AIMessageState extends State<AIMessage> {
           widget.appSender,
           widget.updateConversation,
           widget.setMessageNps,
+          suggestions: widget.suggestions,
         ),
       ],
     );
@@ -86,8 +89,9 @@ Widget buildMessageWidget(
   bool displayOptions,
   App? appSender,
   Function(ServerConversation) updateConversation,
-  Function(int) sendMessageNps,
-) {
+  Function(int) sendMessageNps, {
+  List<String>? suggestions,
+}) {
   if (message.memories.isNotEmpty) {
     return MemoriesMessageWidget(
         showTypingIndicator: showTypingIndicator,
@@ -105,6 +109,7 @@ Widget buildMessageWidget(
       showTypingIndicator: showTypingIndicator,
       messageText: message.text.decodeString,
       sendMessage: sendMessage,
+      suggestions: suggestions,
     );
   } else {
     return NormalMessageWidget(
@@ -122,12 +127,27 @@ class InitialMessageWidget extends StatelessWidget {
   final bool showTypingIndicator;
   final String messageText;
   final Function(String) sendMessage;
+  final List<String>? suggestions;
 
-  const InitialMessageWidget(
-      {super.key, required this.showTypingIndicator, required this.messageText, required this.sendMessage});
+  const InitialMessageWidget({
+    super.key,
+    required this.showTypingIndicator,
+    required this.messageText,
+    required this.sendMessage,
+    this.suggestions,
+  });
 
   @override
   Widget build(BuildContext context) {
+    // Use provided suggestions or fallback to defaults
+    final displaySuggestions = suggestions?.isNotEmpty == true
+        ? suggestions!
+        : [
+            'What did I do yesterday?',
+            'What could I do differently today?',
+            'Can you teach me something new?'
+          ];
+
     return Column(
       children: [
         showTypingIndicator
@@ -144,11 +164,14 @@ class InitialMessageWidget extends StatelessWidget {
             : getMarkdownWidget(context, messageText),
         const SizedBox(height: 8),
         const SizedBox(height: 8),
-        InitialOptionWidget(optionText: 'What did I do yesterday?', sendMessage: sendMessage),
-        const SizedBox(height: 8),
-        InitialOptionWidget(optionText: 'What could I do differently today?', sendMessage: sendMessage),
-        const SizedBox(height: 8),
-        InitialOptionWidget(optionText: 'Can you teach me something new?', sendMessage: sendMessage),
+        // Display dynamic suggestions
+        ...displaySuggestions.take(3).map((suggestion) => Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: InitialOptionWidget(
+                optionText: suggestion,
+                sendMessage: sendMessage,
+              ),
+            )),
       ],
     );
   }

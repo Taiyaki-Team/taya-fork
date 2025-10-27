@@ -50,6 +50,42 @@ Future<List<ServerMessage>> clearChatServer({String? appId}) async {
   }
 }
 
+Future<List<String>> getMessageSuggestions({String? appId, int limit = 5}) async {
+  if (appId == 'no_selected') appId = null;
+  var response = await makeApiCall(
+    url: '${Env.apiBaseUrl}v1/messages/suggestions?app_id=${appId ?? ''}&limit=$limit',
+    headers: {},
+    method: 'GET',
+    body: '',
+  );
+  
+  if (response == null) {
+    // Return fallback suggestions
+    return [
+      "Tell me more about that",
+      "What else should I know?",
+      "How can I apply this?"
+    ];
+  }
+  
+  if (response.statusCode == 200) {
+    var data = jsonDecode(response.body);
+    List<String> suggestions = List<String>.from(data['suggestions'] ?? []);
+    return suggestions.isNotEmpty ? suggestions : [
+      "Tell me more about that",
+      "What else should I know?",
+      "How can I apply this?"
+    ];
+  } else {
+    // Return fallback suggestions on error
+    return [
+      "Tell me more about that",
+      "What else should I know?",
+      "How can I apply this?"
+    ];
+  }
+}
+
 ServerMessageChunk? parseMessageChunk(String line, String messageId) {
   if (line.startsWith('think: ')) {
     return ServerMessageChunk(messageId, line.substring(7).replaceAll("__CRLF__", "\n"), MessageChunkType.think);

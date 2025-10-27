@@ -44,6 +44,18 @@ class SharedPreferencesUtil {
 
   set hasPersonaCreated(bool value) => saveBool('hasPersonaCreated', value);
 
+  //-------------------------------- Integrations ----------------------------------//
+
+  bool? get locationTrackingEnabled => getBool('locationTrackingEnabled');
+
+  set locationTrackingEnabled(bool? value) {
+    if (value != null) {
+      saveBool('locationTrackingEnabled', value);
+    } else {
+      remove('locationTrackingEnabled');
+    }
+  }
+
   String? get verifiedPersonaId => getString('verifiedPersonaId');
 
   set verifiedPersonaId(String? value) {

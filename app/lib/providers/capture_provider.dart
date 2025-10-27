@@ -22,6 +22,7 @@ import 'package:omi/providers/people_provider.dart';
 import 'package:omi/providers/usage_provider.dart';
 import 'package:omi/services/connectivity_service.dart';
 import 'package:omi/services/devices.dart';
+import 'package:omi/services/location_service.dart';
 import 'package:omi/services/notifications.dart';
 import 'package:omi/services/services.dart';
 import 'package:omi/services/sockets/sdcard_socket.dart';
@@ -295,6 +296,9 @@ class CaptureProvider extends ChangeNotifier
   List<ConversationPhoto> photos = [];
   Map<String, SpeakerLabelSuggestionEvent> suggestionsBySegmentId = {};
   List<String> taggingSegmentIds = [];
+  
+  // Location tracking
+  LocationData? _recordingLocation;
 
   bool hasTranscripts = false;
 
@@ -758,6 +762,16 @@ class CaptureProvider extends ChangeNotifier
     _isStreaming = true;
     updateRecordingState(RecordingState.initialising);
     await Permission.microphone.request();
+
+    // Capture location when starting recording
+    try {
+      _recordingLocation = await LocationService().getCurrentLocation();
+      if (_recordingLocation != null) {
+        debugPrint('Location captured: ${_recordingLocation!.getDisplayAddress()}');
+      }
+    } catch (e) {
+      debugPrint('Error capturing location: $e');
+    }
 
     // prepare
     await changeAudioRecordProfile(audioCodec: BleAudioCodec.pcm16, sampleRate: 16000);

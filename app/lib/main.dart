@@ -33,6 +33,7 @@ import 'package:omi/providers/conversation_provider.dart';
 import 'package:omi/providers/developer_mode_provider.dart';
 import 'package:omi/providers/device_provider.dart';
 import 'package:omi/providers/home_provider.dart';
+import 'package:omi/providers/integration_provider.dart';
 import 'package:omi/providers/journal_provider.dart';
 import 'package:omi/providers/mcp_provider.dart';
 import 'package:omi/providers/memories_provider.dart';
@@ -196,6 +197,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           ChangeNotifierProvider(create: (context) => AuthenticationProvider()),
           ChangeNotifierProvider(create: (context) => ConversationProvider()),
           ListenableProvider(create: (context) => AppProvider()),
+          ChangeNotifierProvider(create: (context) => IntegrationProvider()),
           ChangeNotifierProvider(create: (context) => PeopleProvider()),
           ChangeNotifierProvider(create: (context) => JournalProvider()),
           ChangeNotifierProvider(create: (context) => UsageProvider()),

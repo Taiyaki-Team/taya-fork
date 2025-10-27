@@ -740,44 +740,110 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              const BatteryInfoWidget(),
-              const SizedBox(width: 8),
-              Consumer<CaptureProvider>(
-                builder: (context, captureProvider, child) {
-                  bool isRecording = captureProvider.recordingState == RecordingState.record;
-                  return GestureDetector(
-                    onTap: () async {
-                      if (isRecording) {
-                        await captureProvider.stopStreamRecording();
-                      } else {
-                        await captureProvider.streamRecording();
-                      }
-                    },
-                    child: Container(
-                      width: 36,
-                      height: 36,
+          Consumer2<CaptureProvider, DeviceProvider>(
+            builder: (context, captureProvider, deviceProvider, child) {
+              bool isPhoneRecording = captureProvider.recordingState == RecordingState.record;
+              bool isDeviceRecording = deviceProvider.isConnected && captureProvider.havingRecordingDevice;
+              bool isRecording = isPhoneRecording || isDeviceRecording;
+              
+              return Row(
+                children: [
+                  const BatteryInfoWidget(),
+                  SizedBox(width: isRecording ? 8 : 4),
+                  
+                  // Recording status indicator
+                  if (isRecording)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
                       decoration: BoxDecoration(
-                        color: isRecording 
-                            ? Colors.red.withOpacity(0.8)
-                            : const Color.fromRGBO(186, 236, 243, 0.5),
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          width: 1,
-                          color: Colors.white,
-                        ),
+                        color: const Color.fromRGBO(186, 236, 243, 0.8),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(width: 1, color: Colors.white),
                       ),
-                      child: Icon(
-                        isRecording ? FontAwesomeIcons.stop : FontAwesomeIcons.microphone,
-                        size: 16,
-                        color: Colors.white,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 8,
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            isDeviceRecording ? 'Device' : 'Phone Mic',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  );
-                },
-              ),
-            ],
+                  
+                  SizedBox(width: isRecording ? 8 : 4),
+                  
+                  // Microphone/Stop button (moved to left section)
+                  if (true)
+                    GestureDetector(
+                      onTap: () async {
+                        HapticFeedback.mediumImpact();
+                        if (isRecording) {
+                          // Stop recording and summarize
+                          if (isDeviceRecording) {
+                            await captureProvider.stopStreamDeviceRecording();
+                          } else {
+                            await captureProvider.stopStreamRecording();
+                          }
+                          // Process and summarize the conversation
+                          captureProvider.forceProcessingCurrentConversation();
+                        } else {
+                          // Start phone recording
+                          await captureProvider.streamRecording();
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+                        decoration: BoxDecoration(
+                          color: isRecording 
+                              ? Colors.red.withOpacity(0.8)
+                              : const Color.fromRGBO(186, 236, 243, 0.8),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(width: 1, color: Colors.white),
+                        ),
+                        child: isRecording 
+                          ? Icon(
+                              FontAwesomeIcons.stop,
+                              size: 14,
+                              color: Colors.white,
+                            )
+                          : Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.microphone,
+                                  size: 12,
+                                  color: Colors.white,
+                                ),
+                                const SizedBox(width: 6),
+                                Text(
+                                  'Phone Mic',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                      ),
+                    ),
+                ],
+              );
+            },
           ),
           const SizedBox.shrink(),
           Row(
@@ -796,11 +862,11 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
                   );
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 8),
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: const Color.fromRGBO(186, 236, 243, 0.5),
+                    color: const Color.fromRGBO(186, 236, 243, 0.8),
                     border: Border.all(width: 1, color: Colors.white),
                     borderRadius: BorderRadius.circular(100),
                   ),
@@ -891,11 +957,11 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
                   SettingsDrawer.show(context);
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 8),
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: const Color.fromRGBO(186, 236, 243, 0.5),
+                    color: const Color.fromRGBO(186, 236, 243, 0.8),
                     border: Border.all(width: 1, color: Colors.white),
                     borderRadius: BorderRadius.circular(100),
                   ),

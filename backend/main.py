@@ -21,6 +21,7 @@ from routers import (
     custom_auth,
     payment,
     integration,
+    integrations,
     conversations,
     memories,
     mcp,
@@ -74,6 +75,7 @@ app.include_router(auth.router)  # Added auth router (for the main Omi App, this
 
 app.include_router(payment.router)
 app.include_router(mcp.router)
+app.include_router(integrations.router)
 
 
 methods_timeout = {

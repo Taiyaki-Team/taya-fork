@@ -38,6 +38,10 @@ class MessageProvider extends ChangeNotifier {
   List<MessageFile> uploadedFiles = [];
   bool isUploadingFiles = false;
   Map<String, bool> uploadingFiles = {};
+  
+  // Dynamic message suggestions
+  List<String> messageSuggestions = [];
+  bool isLoadingSuggestions = false;
 
   void updateAppProvider(AppProvider p) {
     appProvider = p;
@@ -280,6 +284,8 @@ class MessageProvider extends ChangeNotifier {
       setHasCachedMessages(true);
     }
     setLoadingMessages(false);
+    // Load contextual suggestions based on conversation history
+    loadMessageSuggestions();
     notifyListeners();
   }
 
@@ -319,10 +325,54 @@ class MessageProvider extends ChangeNotifier {
 
   Future clearChat() async {
     setClearingChat(true);
-    var mes = await clearChatServer(appId: appProvider?.selectedChatAppId);
-    messages = mes;
+    // Don't delete messages from server - just clear local UI and start fresh
+    // This preserves all chat history while giving users a clean slate
+    // The initial message will trigger the displayOptions flag to show recommended prompts
+    messages = [
+      ServerMessage(
+        const Uuid().v4(),
+        DateTime.now(),
+        "Hi, I'm your AI assistant. How can I help you today?",
+        MessageSender.ai,
+        MessageType.text,
+        null, // appId
+        false, // fromIntegration
+        [], // files
+        [], // filesId
+        [], // memories
+        askForNps: false,
+      )
+    ];
     setClearingChat(false);
+    // Load fresh suggestions for the new chat
+    loadMessageSuggestions();
     notifyListeners();
+  }
+
+  Future<void> loadMessageSuggestions() async {
+    try {
+      isLoadingSuggestions = true;
+      notifyListeners();
+      
+      var suggestions = await getMessageSuggestions(
+        appId: appProvider?.selectedChatAppId,
+        limit: 5,
+      );
+      
+      messageSuggestions = suggestions;
+      isLoadingSuggestions = false;
+      notifyListeners();
+    } catch (e) {
+      print('Error loading message suggestions: $e');
+      // Use fallback suggestions
+      messageSuggestions = [
+        "What did I do yesterday?",
+        "What could I do differently today?",
+        "Can you teach me something new?"
+      ];
+      isLoadingSuggestions = false;
+      notifyListeners();
+    }
   }
 
   void addMessageLocally(String messageText) {
@@ -513,6 +563,8 @@ class MessageProvider extends ChangeNotifier {
       timer?.cancel();
       flushBuffer();
       setShowTypingIndicator(false);
+      // Refresh suggestions after conversation update
+      loadMessageSuggestions();
     }
   }
 

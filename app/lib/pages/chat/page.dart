@@ -323,6 +323,9 @@ class ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin {
                                                         provider.messageSenderApp(message.appId)?.isNotPersona() ==
                                                             true,
                                                     appSender: provider.messageSenderApp(message.appId),
+                                                    suggestions: provider.messageSuggestions.isNotEmpty
+                                                        ? provider.messageSuggestions
+                                                        : null,
                                                     updateConversation: (ServerConversation conversation) {
                                                       context
                                                           .read<ConversationProvider>()
